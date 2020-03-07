@@ -1,6 +1,6 @@
-
+import 'react-native-gesture-handler';
 import SplashScreen from './app/screens/SplashScreen/index.js'
-import RegistrationScreen from './app/screens/RegistrationScreen/index.js';
+import LoginScreen from './app/screens/LoginScreen/index.js';
 
 import React, { Component } from 'react';
 import {
@@ -43,7 +43,7 @@ export default class App extends Component{
    }
   else {
     return (
-      <RegistrationScreen/>
+      <LoginScreen/>
     );
    }
  }
