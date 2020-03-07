@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Button, View, Text,StatusBar,Image} from 'react-native';
+import { Button, View, Text,StatusBar,Image,ScrollView} from 'react-native';
 
 import styles from './style'
 import {
@@ -21,7 +21,8 @@ export default class SplashScreen extends Component {
     render (){
 
     return (
-        <View style={styles.SplashContaner}>
+        <ScrollView>
+ <View style={styles.SplashContaner}>
           <StatusBar
             backgroundColor="#FF655B"
             barStyle="light-content"></StatusBar>
@@ -39,6 +40,8 @@ export default class SplashScreen extends Component {
             </View>
           
         </View>
+        </ScrollView>
+       
       );
   
     }

@@ -1,5 +1,9 @@
+import { Dimensions } from "react-native";
+
 export default {
     SplashContaner: {
+      width:Dimensions.get('window').width,
+      height:Dimensions.get('window').height,
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
