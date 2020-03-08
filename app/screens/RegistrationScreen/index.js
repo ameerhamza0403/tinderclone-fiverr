@@ -271,12 +271,12 @@ function SchoolComponent ({navigation}){
    </Text>
    <Text style={styles.textStyle}>
    
-   school is
+ occupation is
    </Text>
                  </View>
                  <View style={{flex:2,width:'80%' , alignItems:'center',alignSelf:'center',marginTop:40}}>
                      <TextInput style={styles.textInput}
-                     placeholder="School Name">
+                     placeholder="occupation">
    
                      </TextInput>
                  </View>

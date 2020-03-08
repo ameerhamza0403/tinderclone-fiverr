@@ -29,7 +29,7 @@ style={{flexDirection:'column',width:Dimensions.get('window').width,backgroundCo
 
 <Text style={styles.logoText}>
 
-    Tinder
+  HobbyFinder
 </Text>
 
     </View>

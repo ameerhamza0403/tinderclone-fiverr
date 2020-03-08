@@ -31,7 +31,7 @@ export default class SplashScreen extends Component {
           </View>
   
           <View style={styles.textCon}>
-            <Text style={styles.text}> Tinder  </Text>
+            <Text style={styles.text}> HobbyFinder  </Text>
           </View>
   
       
