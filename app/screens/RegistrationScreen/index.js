@@ -7,7 +7,8 @@ import { StyleSheet, View, Text, Image,AsyncStorage, StatusBar,ScrollView,Dimens
 import styles from './style'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
+import EditProfileInfo from '../EditProfileInfo/index.js'
 
 
 
@@ -331,7 +332,7 @@ function PhoneComponent ({navigation}){
                  <View style={{alignItems:'center',marginTop:40,flex:2}}>
                  <View   style={styles.roundBtn} >
              
-             <TouchableHighlight style={{alignItems:'center', }} onPress={() => navigation.navigate('Birthday')}>
+             <TouchableHighlight style={{alignItems:'center', }} onPress={() => navigation.navigate('EditProfile')}>
                <View >
                <Text style={{color:'white' , fontSize:16,}}>
            Continue
@@ -380,6 +381,7 @@ function App() {
         <Stack.Screen name="Name" component={NameComponent} />
         <Stack.Screen name="School" component={SchoolComponent} />
         <Stack.Screen name="Phone" component={PhoneComponent} />
+        <Stack.Screen name="EditProfile" component={EditProfileInfo} />
 
       </Stack.Navigator>
     </NavigationContainer>
