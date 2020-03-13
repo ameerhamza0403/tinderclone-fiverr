@@ -12,6 +12,7 @@ import { StyleSheet,
       TextInput,
       Switch,
       TouchableHighlight} from 'react-native';
+      import { Icon } from 'react-native-elements'
 
 import styles from './style'
 import { NavigationContainer } from '@react-navigation/native';
@@ -36,10 +37,139 @@ export default class EditProfileInfo extends React.Component{
              <StatusBar
             backgroundColor="#FF655B"
             barStyle="light-content"></StatusBar>
-                 <View style={{width:'100%',height:55,backgroundColor:'#FF655B',alignItems:'center'}}>
+            <Card>
+            <View style={{width:'100%',height:60,backgroundColor:'#fff',}}>
                  <Text style={styles.headerText}>
-                         Edit My Profile Info
+                         Edit Profile
                      </Text>
+
+                 </View>
+            </Card>
+               
+                 <View style={{width:'100%'}}>
+
+                     <View style={{flexDirection:'row'}}>
+
+                     <View style={styles.imageView}>
+
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+
+</View>
+<View style={styles.imageView}>
+
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+</View>
+<View style={styles.imageView}>
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+
+</View>
+                     </View>
+
+ 
+                     <View style={{flexDirection:'row'}}>
+
+                     <View style={styles.imageView}>
+
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+</View>
+<View style={styles.imageView}>
+
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+</View>
+<View style={styles.imageView}>
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
+
+
+</View>
+                     </View>
+
+                     
+                     <View style={{flexDirection:'row'}}>
+                     <View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+
+
+
+</View>
+<View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+
+
+
+</View>
+<View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+
+
+
+</View>
+                     </View>
+                     <View style={{alignItems:'center',marginTop:20,flex:2}}>
+                 <View   style={styles.roundBtn} >
+             
+             <TouchableHighlight style={{alignItems:'center', }} onPress={() => navigation.navigate('EditProfile')}>
+               <View >
+               <Text style={{color:'white' , fontSize:16,}}>
+           Add Media
+             </Text>
+               </View>
+             
+                        
+             
+               
+             </TouchableHighlight>
+                           
+                          </View>
+                 </View>
+                 <View style={styles.viewContainer}>
+                     
+<View style={{marginTop:8,backgroundColor:'white',flexDirection:'row',width:'100%'}}>
+                  
+<Text style={[styles.heading,{color:'red',height:40,marginTop:7,fontSize:15}]}>
+                     Smart Photos
+                     </Text>  
+                     
+                     <View style={{alignItems:'flex-end',marginTop:10,flex:1}}> 
+                     <Switch
+                       trackColor={{true: 'red', false: 'grey'}}
+          style={{marginTop:0}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+                     </View>
+                     
+       
+                     
+</View>
+
+
+                
+          
+                 </View>
+               
+               
+                  
+
+
 
                  </View>
                  <View style={styles.viewContainer}>
@@ -47,11 +177,13 @@ export default class EditProfileInfo extends React.Component{
                          Company
                      </Text>
 <View style={{marginTop:8,backgroundColor:'white'}}>
-
-                     <TextInput style={styles.textInput}
+        <TextInput style={styles.textInput}
                      placeholder="Add Company">
    
                      </TextInput>
+    
+
+                   
 
                      
 </View>

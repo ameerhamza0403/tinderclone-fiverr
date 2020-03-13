@@ -5,7 +5,7 @@ export default {
       
       },
       viewContainer:{
-          marginTop:10,
+          marginTop:5,
           width:'100%',
           height:80,
           padding:2,
@@ -19,8 +19,20 @@ marginLeft:7
       headerText :{
 
         fontSize:20,
-        color:'white',
-        marginTop:15
+        color:'black',
+        marginTop:15,
+marginLeft:20
+              },
+              imageView:{
+width:125,
+margin:5,
+height:190,
+borderRadius:10
+              },
+              imageStyle:{
+                width: '100%',
+                height: '100%',
+                borderRadius:10
               },
       roundBtnTrans:{
 
@@ -41,7 +53,7 @@ marginLeft:7
       roundBtn:{
 
         borderColor:'white',
-        borderRadius:30,
+        borderRadius:10,
         width:'85%',
         marginTop:20,
         height:50,
