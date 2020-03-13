@@ -27,7 +27,10 @@ marginLeft:20
 width:125,
 margin:5,
 height:190,
-borderRadius:10
+borderRadius:10,backgroundColor:'#e7e7e7'
+              },
+              iconStyle:{
+                width:30,height:35
               },
               imageStyle:{
                 width: '100%',

@@ -49,16 +49,31 @@ export default class EditProfileInfo extends React.Component{
                  <View style={{width:'100%'}}>
 
                      <View style={{flexDirection:'row'}}>
+                         <View>
 
-                     <View style={styles.imageView}>
+
+                         <View style={styles.imageView}>
 
 <Image
 style={styles.imageStyle}
 source={require('../../../assests/images/testImage.jpg')}
 />
 
-
 </View>
+<View style={{position:'absolute',left:100,top:170}}>
+    
+<Image style={styles.iconStyle}
+    source={require('../../../assests/images/delImage.png')}/>
+</View>
+                         </View>
+
+
+
+
+
+                         <View>
+
+
 <View style={styles.imageView}>
 
 <Image
@@ -67,27 +82,39 @@ source={require('../../../assests/images/testImage.jpg')}
 />
 
 </View>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/delImage.png')}/>
+</View>
+</View>
+
+
+<View>
+
+
 <View style={styles.imageView}>
+
 <Image
 style={styles.imageStyle}
 source={require('../../../assests/images/testImage.jpg')}
 />
 
+</View>
+<View style={{position:'absolute',left:100,top:170}}>
 
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/delImage.png')}/>
+</View>
 </View>
                      </View>
 
  
                      <View style={{flexDirection:'row'}}>
 
-                     <View style={styles.imageView}>
+                     <View>
 
-<Image
-style={styles.imageStyle}
-source={require('../../../assests/images/testImage.jpg')}
-/>
 
-</View>
 <View style={styles.imageView}>
 
 <Image
@@ -96,34 +123,110 @@ source={require('../../../assests/images/testImage.jpg')}
 />
 
 </View>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/delImage.png')}/>
+</View>
+</View>
+
+
+<View>
+
+
 <View style={styles.imageView}>
+
 <Image
 style={styles.imageStyle}
 source={require('../../../assests/images/testImage.jpg')}
 />
 
+</View>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/delImage.png')}/>
+</View>
+</View>
+
+
+<View>
+
+
+<View style={styles.imageView}>
+
+<Image
+style={styles.imageStyle}
+source={require('../../../assests/images/testImage.jpg')}
+/>
 
 </View>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/delImage.png')}/>
+</View>
+</View>
+
+
                      </View>
 
                      
+                   
+
                      <View style={{flexDirection:'row'}}>
-                     <View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+
+                     <View>
+
+
+<View style={styles.imageView}>
 
 
 
 </View>
-<View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/AddImage.png')}/>
+</View>
+</View>
+
+
+<View>
+
+
+<View style={styles.imageView}>
 
 
 
 </View>
-<View style={[styles.imageView,{backgroundColor:'#E7E7E7'}]}>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/AddImage.png')}/>
+</View>
+</View>
+
+
+<View>
+
+
+<View style={styles.imageView}>
 
 
 
 </View>
-                     </View>
+<View style={{position:'absolute',left:100,top:170}}>
+
+<Image style={styles.iconStyle}
+source={require('../../../assests/images/AddImage.png')}/>
+</View>
+</View>
+
+
+ </View>
+
+                     
                      <View style={{alignItems:'center',marginTop:20,flex:2}}>
                  <View   style={styles.roundBtn} >
              
