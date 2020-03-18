@@ -10,6 +10,11 @@ export default {
           height:80,
           padding:2,
       },
+      input:{
+width:300,
+height:50
+
+      },
       heading :{
 
 fontSize:18,
@@ -23,6 +28,12 @@ marginLeft:7
         marginTop:15,
 marginLeft:20
               },
+              detailText:{
+                marginLeft:7,color:'#ABABAB'
+
+
+              },
+
               imageView:{
 width:125,
 margin:5,
@@ -57,7 +68,7 @@ borderRadius:10,backgroundColor:'#e7e7e7'
 
         borderColor:'white',
         borderRadius:10,
-        width:'85%',
+        width:'100%',
         marginTop:20,
         height:50,
         backgroundColor:'#FF655B',

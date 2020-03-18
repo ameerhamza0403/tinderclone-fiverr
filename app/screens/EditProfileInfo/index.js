@@ -13,6 +13,7 @@ import { StyleSheet,
       Switch,
       TouchableHighlight} from 'react-native';
       import { Icon } from 'react-native-elements'
+      import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 
 import styles from './style'
 import { NavigationContainer } from '@react-navigation/native';
@@ -448,31 +449,223 @@ source={require('../../../assests/images/AddImage.png')}/>
                 
           
                  </View>
-                 <View style={[styles.viewContainer,{marginTop:0}]}>
+             
                     
-<View style={{marginTop:8,backgroundColor:'white',flexDirection:'row',width:'100%'}}>
-                  
-<Text style={[styles.heading,{color:'#626262',height:40,marginTop:7}]}>
-                    Make My Distance Invisible
+                    
+                                    
+                 <View style={[styles.viewContainer,{height:400}]}>
+                     <Text style={styles.heading}>
+                    What are Your Skills
+                     </Text>
+
+                     
+<View style={{marginTop:8,backgroundColor:'white',width:'100%',height:200}}>
+<View style={{flexDirection:'row'}}>
+<Text style={[styles.heading,{color:'#626262',height:25,marginTop:7}]}>
+                      Beginner
                      </Text>  
                      
-                     <View style={{alignItems:'flex-end',marginTop:10,flex:1}}> 
+                     <View style={{alignItems:'flex-end',marginTop:5,flex:1}}> 
                      <Switch
-                      trackColor={{true: 'red', false: 'grey'}}
+                       trackColor={{true: 'red', false: 'grey'}}
           style={{marginTop:0}}
           onValueChange = {this.toggleSwitch}
           value = {this.state.switchValue}/>
-                     </View>
+                     </View>               
+                         </View>
+
+                         <View style={{width:350}}>
+
+                             <Text style={styles.detailText}>
+
+                             I am new to playing tennis or have only played a couple of times before
+                             </Text>
+                         </View>
+
+
+
+                    
+
+                  
+
+                     
+
+                         <View style={{marginTop:8,backgroundColor:'white',width:'100%',height:200}}>
+<View style={{flexDirection:'row'}}>
+<Text style={[styles.heading,{color:'#626262',height:25,marginTop:7}]}>
+                      Improver
+                     </Text>  
+                     
+                     <View style={{alignItems:'flex-end',marginTop:5,flex:1}}> 
+                     <Switch
+                       trackColor={{true: 'red', false: 'grey'}}
+          style={{marginTop:0}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+                     </View>               
+                         </View>
+
+                         <View style={{width:350}}>
+
+                             <Text style={styles.detailText}>
+
+                        I know the basic techniques but still make quite a few mistakes
+                             </Text>
+                         </View>
+
+
+
+                    
+
+                  
+
                      
        
+
+                         <View style={{marginTop:8,backgroundColor:'white',width:'100%',height:200}}>
+<View style={{flexDirection:'row'}}>
+<Text style={[styles.heading,{color:'#626262',height:25,marginTop:7}]}>
+                      Intermediate
+                     </Text>  
+                     
+                     <View style={{alignItems:'flex-end',marginTop:5,flex:1}}> 
+                     <Switch
+                       trackColor={{true: 'red', false: 'grey'}}
+          style={{marginTop:0}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+                     </View>               
+                         </View>
+
+                         <View style={{width:350}}>
+
+                             <Text style={styles.detailText}>
+
+                                 I can rally comfortably but lack consistency in a match situation
+
+                          
+                             </Text>
+                         </View>
+
+
+
+                    
+
+                  
+
+                     
+       
+       
+
+                         <View style={{marginTop:8,backgroundColor:'white',width:'100%',height:200}}>
+<View style={{flexDirection:'row'}}>
+<Text style={[styles.heading,{color:'#626262',height:25,marginTop:7}]}>
+                      Advance
+                     </Text>  
+                     
+                     <View style={{alignItems:'flex-end',marginTop:5,flex:1}}> 
+                     <Switch
+                       trackColor={{true: 'red', false: 'grey'}}
+          style={{marginTop:0}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+                     </View>               
+                         </View>
+
+                         <View style={{width:350}}>
+
+                             <Text style={styles.detailText}>
+
+                               I am a good club player and can play with spin,placement and power
+                             </Text>
+                         </View>
+
+
+
+                    
+
+                  
+
+                     
+       
+       
+
+                         <View style={{marginTop:8,backgroundColor:'white',width:'100%',height:200}}>
+<View style={{flexDirection:'row'}}>
+<Text style={[styles.heading,{color:'#626262',height:25,marginTop:7}]}>
+                      Expert
+                     </Text>  
+                     
+                     <View style={{alignItems:'flex-end',marginTop:5,flex:1}}> 
+                     <Switch
+                       trackColor={{true: 'red', false: 'grey'}}
+          style={{marginTop:0}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+                     </View>               
+                         </View>
+
+                         <View style={{width:350}}>
+
+                             <Text style={styles.detailText}>
+
+                             I play at a very high level and have competed reqionally or nationally
+                             </Text>
+                         </View>
+
+
+
+                    
+
+                  
+
+                     
+       
+       
+                     
+</View>                      
+</View> 
+
+
+
+</View> 
+
+
                      
 </View>
 
 
-                
-          
+                     
+</View>
+
+
+
+
+
                  </View>
+             
+                    
+                    
+                              
+ 
+                 <View style={{alignItems:'center',marginTop:0,flex:2}}>
+                 <View   style={styles.roundBtn} >
+             
+             <TouchableHighlight style={{alignItems:'center', }} onPress={() => navigation.navigate('School')}>
+               <View >
+               <Text style={{color:'white' , fontSize:16,}}>
+          Save
+             </Text>
+               </View>
+             
+                        
+             
                
+             </TouchableHighlight>
+                           
+                          </View>
+                 </View> 
+                
                 
       </View>
    
