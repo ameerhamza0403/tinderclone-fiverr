@@ -10,10 +10,6 @@ import DatePicker from 'react-native-datepicker';
 import EditProfileInfo from '../EditProfileInfo/index.js'
 
 
-import styles from './style';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import DatePicker from 'react-native-datepicker';
 
 function EmailComponent({navigation}) {
   return (
@@ -328,7 +324,7 @@ function PhoneComponent({navigation}) {
           <View style={styles.roundBtn}>
             <TouchableHighlight
               style={{alignItems: 'center'}}
-              onPress={() => navigation.navigate('Birthday')}>
+              onPress={() => navigation.navigate('EditProfile')}>
               <View>
                 <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
               </View>
