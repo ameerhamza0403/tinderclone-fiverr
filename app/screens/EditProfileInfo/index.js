@@ -249,7 +249,7 @@ export default class EditProfileInfo extends React.Component {
                 placeholder="Add City"></TextInput>
             </View>
           </View>
-          <View style={styles.viewContainer}>
+          {/*<View style={styles.viewContainer}>
             <Text style={styles.heading}>Show my Instagram Photos</Text>
             <View style={{marginTop: 8, backgroundColor: 'white'}}>
               <Text
@@ -261,7 +261,7 @@ export default class EditProfileInfo extends React.Component {
               </Text>
             </View>
           </View>
-          <View style={styles.viewContainer}>
+           <View style={styles.viewContainer}>
             <Text style={styles.heading}>My Anthem</Text>
             <View style={{marginTop: 8, backgroundColor: 'white'}}>
               <TextInput
@@ -277,8 +277,8 @@ export default class EditProfileInfo extends React.Component {
               ]}>
               Choose how you share your Spotify Anthem on Feed in Settings
             </Text>
-          </View>
-          <View style={[styles.viewContainer, {marginTop: 15}]}>
+          </View> */}
+          {/* <View style={[styles.viewContainer, {marginTop: 15}]}>
             <Text style={styles.heading}>My Top Spotify Artists</Text>
             <View
               style={{
@@ -299,8 +299,8 @@ export default class EditProfileInfo extends React.Component {
                 Add Spotify to Your Profile
               </Text>
             </View>
-          </View>
-          <View style={styles.viewContainer}>
+          </View> */}
+          {/* <View style={styles.viewContainer}>
             <Text
               style={[
                 styles.heading,
@@ -308,7 +308,7 @@ export default class EditProfileInfo extends React.Component {
               ]}>
               Choose how you share your Top Spotify Artists on Feed in Settings
             </Text>
-          </View>
+          </View> */}
           <View style={[styles.viewContainer, {marginTop: 0}]}>
             <Text style={styles.heading}>I am</Text>
             <View style={{marginTop: 8, backgroundColor: 'white'}}>
