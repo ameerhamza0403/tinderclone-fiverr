@@ -1,19 +1,14 @@
 import * as React from 'react';
 
 import AppIntroSlider from 'react-native-app-intro-slider';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  AsyncStorage,
-  StatusBar,
-  ScrollView,
-  Dimensions,
-  Button,
-  TextInput,
-  TouchableHighlight,
-} from 'react-native';
+import { StyleSheet, View, Text, Image,AsyncStorage, StatusBar,ScrollView,Dimensions,Button,TextInput,TouchableHighlight} from 'react-native';
+
+import styles from './style'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import DatePicker from 'react-native-datepicker';
+import EditProfileInfo from '../EditProfileInfo/index.js'
+
 
 import styles from './style';
 import {NavigationContainer} from '@react-navigation/native';
@@ -363,6 +358,8 @@ function App() {
         <Stack.Screen name="School" component={SchoolComponent} />
         <Stack.Screen name="Phone" component={PhoneComponent} />
         <Stack.Screen name="Interest" component={InterestedComponent} />
+        <Stack.Screen name="EditProfile" component={EditProfileInfo} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
