@@ -14,6 +14,9 @@ import {
 
 
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class Profile extends Component {
 
@@ -95,7 +98,7 @@ export default class Profile extends Component {
          <View style={styles.navigation_inner_container}>
            <TouchableOpacity 
              style={styles.button_container}
-             // onPress={() => this.pushToScreen('Edit')}
+             onPress={() => navigation.navigate('EditProfile')}
            >
              <Image source={require('../../../assests/images/star.png')} style={styles.button_style} /> 
            </TouchableOpacity>
@@ -122,4 +125,7 @@ export default class Profile extends Component {
     );
   }
 }
+
+
+
 
