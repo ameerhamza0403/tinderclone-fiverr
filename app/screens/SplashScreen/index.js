@@ -24,7 +24,7 @@ export default class SplashScreen extends Component {
         <ScrollView>
  <View style={styles.SplashContaner}>
           <StatusBar
-            backgroundColor="#FF655B"
+            backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
           <View style={{marginTop:0,width:150 ,height:200}}>
             <Image  style={styles.logo} source={require('../../../assests/images/fireicon.png')}/>

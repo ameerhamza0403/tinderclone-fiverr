@@ -7,13 +7,13 @@ export default {
         justifyContent: 'center',
         alignItems: 'center',
         flex: 1,
-        backgroundColor: '#FF655B',
+        backgroundColor: '#FF4A00FF',
       },
       BottomContainer: {
        width:20,
        height:20,
        
-       backgroundColor: '#FF655B',
+       backgroundColor: '#FF4A00FF',
         alignItems: 'center',
       },
       logo: {

@@ -7,13 +7,16 @@ import styles from './style'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DatePicker from 'react-native-datepicker';
-import EditProfileInfo from '../MyProfile/index'
+import EditProfileInfo from '../EditProfileInfo/'
 
 
 
 function EmailComponent({navigation}) {
   return (
     <ScrollView>
+         <StatusBar
+            backgroundColor="#FF4A00FF"
+            barStyle="light-content"></StatusBar>
       <View style={styles.mainContainer}>
         <View style={{margin: 50, flex: 2}}>
           <Text style={styles.textStyle}>My</Text>
