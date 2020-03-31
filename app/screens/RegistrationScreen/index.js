@@ -7,7 +7,7 @@ import styles from './style'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import DatePicker from 'react-native-datepicker';
-import EditProfileInfo from '../EditProfileInfo/index.js'
+import EditProfileInfo from '../MyProfile/index'
 
 
 
