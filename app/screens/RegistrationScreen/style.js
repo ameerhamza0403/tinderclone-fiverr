@@ -32,7 +32,7 @@ fontSize:27
         width:'85%',
         marginTop:20,
         height:50,
-        backgroundColor:'#FF655B',
+        backgroundColor:'#FF4A00FF',
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',

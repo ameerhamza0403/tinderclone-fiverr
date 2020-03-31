@@ -12,11 +12,11 @@ export default class LoginScreen extends React.Component{
       
       <ScrollView>
           <StatusBar
-            backgroundColor="#FF655B"
+            backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
           <View style={styles.mainContainer}>
 <View
-style={{flexDirection:'column',width:Dimensions.get('window').width,backgroundColor:'#FF655B', height:Dimensions.get('window').height,flex: 1,resizeMode: 'stretch'}}
+style={{flexDirection:'column',width:Dimensions.get('window').width,backgroundColor:'#FF4A00FF', height:Dimensions.get('window').height,flex: 1,resizeMode: 'stretch'}}
 
 
 >

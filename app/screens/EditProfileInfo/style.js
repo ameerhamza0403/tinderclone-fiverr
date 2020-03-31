@@ -66,7 +66,7 @@ export default {
     width: '100%',
     marginTop: 20,
     height: 50,
-    backgroundColor: '#FF655B',
+    backgroundColor: '#FF4A00FF',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -74,6 +74,19 @@ export default {
     borderTopWidth: 1,
     borderLeftWidth: 1,
     borderRightWidth: 1,
+  },
+
+  danceBtn: {
+    marginLeft:5,
+    borderColor: 'white',
+    borderRadius: 15,
+    width: '22%',
+    marginTop: 20,
+    height: 45,
+    backgroundColor: '#FF4A00FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+
   },
   textInput: {
     alignSelf: 'stretch',

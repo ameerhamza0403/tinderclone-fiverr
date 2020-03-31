@@ -50,7 +50,7 @@ export default class EditProfileInfo extends React.Component {
       <ScrollView>
         <View style={styles.mainContainer}>
           <StatusBar
-            backgroundColor="#FF655B"
+            backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
           <Card>
             <View style={{width: '100%', height: 60, backgroundColor: '#fff'}}>
@@ -325,7 +325,9 @@ export default class EditProfileInfo extends React.Component {
                 placeholder="Add Sexual Orientation"></TextInput>
             </View>
           </View>
-          <View style={styles.viewContainer}>
+
+
+          <View style={[styles.viewContainer,{height:150}]}>
             <Text style={styles.heading}>Control Your Profile</Text>
             <View
               style={{
@@ -339,7 +341,32 @@ export default class EditProfileInfo extends React.Component {
                   styles.heading,
                   {color: '#626262', height: 40, marginTop: 7},
                 ]}>
-                Don't Show My Age
+                Make My Distance Visible
+              </Text>
+
+              <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
+                <Switch
+                  trackColor={{true: 'red', false: 'grey'}}
+                  style={{marginTop: 0}}
+                  onValueChange={this.toggleSwitch}
+                  value={this.state.switchValue}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                marginTop: 8,
+                backgroundColor: 'white',
+                flexDirection: 'row',
+                width: '100%',
+              }}>
+              <Text
+                style={[
+                  styles.heading,
+                  {color: '#626262', height: 40, marginTop: 7},
+                ]}>
+                Show My Age
               </Text>
 
               <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
@@ -568,7 +595,7 @@ export default class EditProfileInfo extends React.Component {
                 <Slider
                   maximumValue={5}
                   minimumValue={1}
-                  activeColor={'#FF655B'}
+                  activeColor={'#FF4A00FF'}
                   step={1}
                   value={this.state.sliderValue}
                   onValueChange={value => {
@@ -603,6 +630,145 @@ export default class EditProfileInfo extends React.Component {
             </View>
           </View>
 
+
+          <View style={{backgroundColor:'white',alignItems:'center',width:'100%'}}>
+<Text style={{fontSize:18,fontWeight:'bold'}}>
+  Wants To Dance
+</Text>
+<Text style={{fontSize:16}}>
+  Max 3 Dances can be selected
+</Text>
+
+<View style={{flexDirection:'row'}}>
+
+
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+              
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+          
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                underlayColor={'black'}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}  >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+</View>
+
+
+<View style={{flexDirection:'row'}}>
+
+
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+              
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+          
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                underlayColor={'black'}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}  >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+</View>
+
+
+<View style={{flexDirection:'row'}}>
+
+
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+              
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+          
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                underlayColor={'black'}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+            <View style={styles.danceBtn}>
+              <TouchableHighlight
+                style={{}}  >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                </View>
+              </TouchableHighlight>
+            </View>
+</View>
+
+
+</View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
             <View style={styles.roundBtn}>
               <TouchableHighlight
