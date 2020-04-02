@@ -76,6 +76,37 @@ export default {
     borderRightWidth: 1,
   },
 
+  MainContainer :{
+    
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: (Platform.OS == 'ios') ? 20 : 0
+    
+    },
+    
+    ModalInsideView:{
+    
+      justifyContent: 'center',
+      alignItems: 'center', 
+    
+      height: 150 ,
+      width: '90%',
+      borderRadius:10,
+      borderWidth: 1,
+      borderColor: '#fff'
+    
+    },
+    
+    TextStyle:{
+    
+      fontSize: 20, 
+      marginBottom: 20, 
+      color: "#fff",
+      padding: 20,
+      textAlign: 'center'
+    
+    },    
   danceBtn: {
     marginLeft:5,
     borderColor: 'white',

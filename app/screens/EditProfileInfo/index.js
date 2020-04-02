@@ -12,6 +12,7 @@ import {
   TextInput,
   Switch,
   TouchableHighlight,
+  Modal
 } from 'react-native';
 import {Icon} from 'react-native-elements';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
@@ -38,6 +39,16 @@ let sliderDes = [
   'I have competed locally or nationwide',
 ];
 export default class EditProfileInfo extends React.Component {
+   constructor(props) {
+
+    super(props);
+
+    this.state = { 
+        
+        ModalVisibleStatus: false 
+    };
+
+  }
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
     //onValueChange of the switch this function will be called
@@ -45,6 +56,13 @@ export default class EditProfileInfo extends React.Component {
     //state changes according to switch
     //which will result in re-render the text
   };
+
+  ShowModalFunction(visible) {
+
+    this.setState({ModalVisibleStatus: visible});
+    
+  }
+
   render() {
     return (
       <ScrollView>
@@ -52,6 +70,108 @@ export default class EditProfileInfo extends React.Component {
           <StatusBar
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
+
+<Modal
+          transparent={false}
+
+          animationType={"slide"}
+presentationStyle={'formSheet'}
+          visible={this.state.ModalVisibleStatus}
+
+          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
+
+
+            <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
+
+
+                <View style={styles.ModalInsideView}>
+
+
+                   <View style={{flexDirection:'row'}}>
+                   <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                
+                     
+                   </View>
+
+                   <View style={{flexDirection:'row'}}>
+                   <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                
+                     
+                   </View>
+
+                   <View style={{flexDirection:'row'}}>
+                   <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                <View style={styles.imageView}>
+                  <Image
+                    style={styles.imageStyle}
+                    source={require('../../../assests/images/testImage.jpg')}
+                  />
+                </View>
+                
+                     
+                   </View>
+
+                   
+
+                    <Button  title="Click Here To Hide Modal" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } />
+
+               
+
+
+                </View>
+
+            </View>
+
+
+        </Modal>
+
+
+
           <Card>
             <View style={{width: '100%', height: 60, backgroundColor: '#fff'}}>
               <Text style={styles.headerText}>Edit Profile</Text>
@@ -189,7 +309,7 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.roundBtn}>
                 <TouchableHighlight
                   style={{alignItems: 'center'}}
-                  onPress={() => navigation.navigate('EditProfile')}>
+                  onPress={() => { this.ShowModalFunction(true) }} >
                   <View>
                     <Text style={{color: 'white', fontSize: 16}}>
                       Add Media
@@ -249,66 +369,6 @@ export default class EditProfileInfo extends React.Component {
                 placeholder="Add City"></TextInput>
             </View>
           </View>
-          {/*<View style={styles.viewContainer}>
-            <Text style={styles.heading}>Show my Instagram Photos</Text>
-            <View style={{marginTop: 8, backgroundColor: 'white'}}>
-              <Text
-                style={[
-                  styles.heading,
-                  {color: '#C16574', height: 40, marginTop: 7},
-                ]}>
-                Connect Instagram
-              </Text>
-            </View>
-          </View>
-           <View style={styles.viewContainer}>
-            <Text style={styles.heading}>My Anthem</Text>
-            <View style={{marginTop: 8, backgroundColor: 'white'}}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Choose an anthem"></TextInput>
-            </View>
-          </View>
-          <View style={styles.viewContainer}>
-            <Text
-              style={[
-                styles.heading,
-                {color: '#ABABAB', fontSize: 16, padding: 12},
-              ]}>
-              Choose how you share your Spotify Anthem on Feed in Settings
-            </Text>
-          </View> */}
-          {/* <View style={[styles.viewContainer, {marginTop: 15}]}>
-            <Text style={styles.heading}>My Top Spotify Artists</Text>
-            <View
-              style={{
-                marginTop: 8,
-                backgroundColor: 'white',
-                alignItems: 'center',
-              }}>
-              <Text
-                style={[
-                  styles.heading,
-                  {
-                    color: '#C16574',
-                    height: 40,
-                    marginTop: 7,
-                    fontWeight: 'bold',
-                  },
-                ]}>
-                Add Spotify to Your Profile
-              </Text>
-            </View>
-          </View> */}
-          {/* <View style={styles.viewContainer}>
-            <Text
-              style={[
-                styles.heading,
-                {color: '#ABABAB', fontSize: 16, padding: 10},
-              ]}>
-              Choose how you share your Top Spotify Artists on Feed in Settings
-            </Text>
-          </View> */}
           <View style={[styles.viewContainer, {marginTop: 0}]}>
             <Text style={styles.heading}>I am</Text>
             <View style={{marginTop: 8, backgroundColor: 'white'}}>
@@ -382,184 +442,7 @@ export default class EditProfileInfo extends React.Component {
 
           <View style={[styles.viewContainer, {height: 50}]}>
             <Text style={styles.heading}>What are Your Skills</Text>
-
-            {/* <View
-              style={{
-                marginTop: 8,
-                backgroundColor: 'white',
-                width: '100%',
-                height: 200,
-              }}>
-              <View style={{flexDirection: 'row'}}>
-                <Text
-                  style={[
-                    styles.heading,
-                    {color: '#626262', height: 25, marginTop: 7},
-                  ]}>
-                  Beginner
-                </Text>
-
-                <View style={{alignItems: 'flex-end', marginTop: 5, flex: 1}}>
-                  <Switch
-                    trackColor={{true: 'red', false: 'grey'}}
-                    style={{marginTop: 0}}
-                    onValueChange={this.toggleSwitch}
-                    value={this.state.switchValue}
-                  />
-                </View>
-              </View>
-
-              <View style={{width: 350}}>
-                <Text style={styles.detailText}>
-                  I am new to playing tennis or have only played a couple of
-                  times before
-                </Text>
-              </View>
-
-              <View
-                style={{
-                  marginTop: 8,
-                  backgroundColor: 'white',
-                  width: '100%',
-                  height: 200,
-                }}>
-                <View style={{flexDirection: 'row'}}>
-                  <Text
-                    style={[
-                      styles.heading,
-                      {color: '#626262', height: 25, marginTop: 7},
-                    ]}>
-                    Improver
-                  </Text>
-
-                  <View style={{alignItems: 'flex-end', marginTop: 5, flex: 1}}>
-                    <Switch
-                      trackColor={{true: 'red', false: 'grey'}}
-                      style={{marginTop: 0}}
-                      onValueChange={this.toggleSwitch}
-                      value={this.state.switchValue}
-                    />
-                  </View>
-                </View>
-
-                <View style={{width: 350}}>
-                  <Text style={styles.detailText}>
-                    I know the basic techniques but still make quite a few
-                    mistakes
-                  </Text>
-                </View>
-
-                <View
-                  style={{
-                    marginTop: 8,
-                    backgroundColor: 'white',
-                    width: '100%',
-                    height: 200,
-                  }}>
-                  <View style={{flexDirection: 'row'}}>
-                    <Text
-                      style={[
-                        styles.heading,
-                        {color: '#626262', height: 25, marginTop: 7},
-                      ]}>
-                      Intermediate
-                    </Text>
-
-                    <View
-                      style={{alignItems: 'flex-end', marginTop: 5, flex: 1}}>
-                      <Switch
-                        trackColor={{true: 'red', false: 'grey'}}
-                        style={{marginTop: 0}}
-                        onValueChange={this.toggleSwitch}
-                        value={this.state.switchValue}
-                      />
-                    </View>
-                  </View>
-
-                  <View style={{width: 350}}>
-                    <Text style={styles.detailText}>
-                      I can rally comfortably but lack consistency in a match
-                      situation
-                    </Text>
-                  </View>
-
-                  <View
-                    style={{
-                      marginTop: 8,
-                      backgroundColor: 'white',
-                      width: '100%',
-                      height: 200,
-                    }}>
-                    <View style={{flexDirection: 'row'}}>
-                      <Text
-                        style={[
-                          styles.heading,
-                          {color: '#626262', height: 25, marginTop: 7},
-                        ]}>
-                        Advance
-                      </Text>
-
-                      <View
-                        style={{alignItems: 'flex-end', marginTop: 5, flex: 1}}>
-                        <Switch
-                          trackColor={{true: 'red', false: 'grey'}}
-                          style={{marginTop: 0}}
-                          onValueChange={this.toggleSwitch}
-                          value={this.state.switchValue}
-                        />
-                      </View>
-                    </View>
-
-                    <View style={{width: 350}}>
-                      <Text style={styles.detailText}>
-                        I am a good club player and can play with spin,placement
-                        and power
-                      </Text>
-                    </View>
-
-                    <View
-                      style={{
-                        marginTop: 8,
-                        backgroundColor: 'white',
-                        width: '100%',
-                        height: 200,
-                      }}>
-                      <View style={{flexDirection: 'row'}}>
-                        <Text
-                          style={[
-                            styles.heading,
-                            {color: '#626262', height: 25, marginTop: 7},
-                          ]}>
-                          Expert
-                        </Text>
-
-                        <View
-                          style={{
-                            alignItems: 'flex-end',
-                            marginTop: 5,
-                            flex: 1,
-                          }}>
-                          <Switch
-                            trackColor={{true: 'red', false: 'grey'}}
-                            style={{marginTop: 0}}
-                            onValueChange={this.toggleSwitch}
-                            value={this.state.switchValue}
-                          />
-                        </View>
-                      </View>
-
-                      <View style={{width: 350}}>
-                        <Text style={styles.detailText}>
-                          I play at a very high level and have competed
-                          reqionally or nationally
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View> */}
-          </View>
+</View>
           <View style={{backgroundColor: 'white'}}>
             <View
               style={{flexDirection: 'column', width: '90%', marginLeft: '5%'}}>
@@ -769,7 +652,7 @@ export default class EditProfileInfo extends React.Component {
 
 
 </View>
-s          <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
+   <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
             <View style={styles.roundBtn}>
               <TouchableHighlight
                 style={{alignItems: 'center'}}
