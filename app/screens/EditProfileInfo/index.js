@@ -769,7 +769,7 @@ export default class EditProfileInfo extends React.Component {
 
 
 </View>
-          <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
+s          <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
             <View style={styles.roundBtn}>
               <TouchableHighlight
                 style={{alignItems: 'center'}}
