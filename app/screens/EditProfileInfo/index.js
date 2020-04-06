@@ -12,8 +12,9 @@ import {
   TextInput,
   Switch,
   TouchableHighlight,
-  Modal
+  
 } from 'react-native';
+import Modal from 'react-native-modal';
 import {Icon} from 'react-native-elements';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
@@ -39,16 +40,14 @@ let sliderDes = [
   'I have competed locally or nationwide',
 ];
 export default class EditProfileInfo extends React.Component {
-   constructor(props) {
+  state = {
+    isModalVisible: false,
+  };
 
-    super(props);
-
-    this.state = { 
-        
-        ModalVisibleStatus: false 
-    };
-
-  }
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+  
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
     //onValueChange of the switch this function will be called
@@ -57,11 +56,7 @@ export default class EditProfileInfo extends React.Component {
     //which will result in re-render the text
   };
 
-  ShowModalFunction(visible) {
-
-    this.setState({ModalVisibleStatus: visible});
-    
-  }
+ 
 
   render() {
     return (
@@ -71,201 +66,191 @@ export default class EditProfileInfo extends React.Component {
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
 
-<Modal
-          transparent={false}
+<Modal isVisible={this.state.isModalVisible}
+propagateSwipe={true}
 
-          animationType={"slide"}
-presentationStyle={'formSheet'}
-swipeToClose={true}
-          swipeArea={100} // The height in pixels of the swipeable area, window height by default
-          swipeThreshold={150} // The threshold to reach in pixels to close the modal
-          isOpen={this.state.isOpen}
-          onClosed={this.closeModal}
-          backdropOpacity={0.1}
-          visible={this.state.ModalVisibleStatus}
+backdropOpacity={2}
+onSwipe={this.closeModal}
+onBackdropPress={this.closeModal}
+>
+
+  <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
+
+
+<View style={styles.ModalInsideView}>
+
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F1.jpg?alt=media&token=d554d673-c044-410a-8a21-b6b093299527"}}/>
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F2.jpg?alt=media&token=403dad12-51b2-47ea-942a-34d5881fa0b6'}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F3.jpg?alt=media&token=11269f00-b091-40dc-9d53-e962dca2740b'}}
+  />
+</View>
+
+     
+   </View>
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F4.jpg?alt=media&token=151f5340-bc49-4fe4-bee5-3ef8da291edf'}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F5.jpg?alt=media&token=c7d88a2b-a6f2-41b8-b037-e1d7f038b172"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F6.jpg?alt=media&token=b9750f33-9986-4163-a6cd-53850618146b'}}
+  />
+</View>
+
+     
+   </View>
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F7.jpg?alt=media&token=27060360-08fe-45db-b3e0-e1aed7c91f5e'}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F8.jpg?alt=media&token=6c097fb6-f733-43c9-8826-9e486aa85931"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F9.jpg?alt=media&token=d2133450-eb87-473b-9dfc-910d06262fb8"}}
+  />
+</View>
+
+     
+   </View>
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F11.jpg?alt=media&token=144c172a-73be-4678-9883-d4d5aded916e" }}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F12.jpg?alt=media&token=da1013ef-bd8e-4581-98b0-2b1cdc8ff8e3" }}
+  />
+</View>
+
+     
+   </View>
+
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F15.jpg?alt=media&token=17ba499b-ad69-4b24-885d-c3d64638d905"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F16.jpg?alt=media&token=75aadbbc-5517-41e1-a9fa-8ee5e081f8d8"}}
+  />
+</View>
+
+     
+   </View>
+
+
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F17.jpg?alt=media&token=eefd7136-bc0e-425d-8458-3ce90a8db2e3"}}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4" }}
+  />
+</View>
+<View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F19.jpg?alt=media&token=b1c5cc9a-1b6a-49dd-8653-229988549878" }}
+  />
+</View>
+
+     
+   </View>
+   
+   <View style={{flexDirection:'row'}}>
+   <View style={styles.imageView}>
+  <Image
+    style={styles.imageStyle}
+    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F20.jpg?alt=media&token=618db6e6-d986-46b7-a73a-b6f52e6093b8"}}
+  />
+</View>
+
+
+     
+   </View>
+
+
+
+
+   
+
+ 
+
+
+</View>
+
+</View>
+
+
+
+
+
+  </Modal>
+
+
           
-
-          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
-<ScrollView>
-  
-</ScrollView>
-
-            <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
-
-
-                <View style={styles.ModalInsideView}>
-
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F1.jpg?alt=media&token=d554d673-c044-410a-8a21-b6b093299527"}}/>
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F2.jpg?alt=media&token=403dad12-51b2-47ea-942a-34d5881fa0b6'}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F3.jpg?alt=media&token=11269f00-b091-40dc-9d53-e962dca2740b'}}
-                  />
-                </View>
-                
-                     
-                   </View>
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F4.jpg?alt=media&token=151f5340-bc49-4fe4-bee5-3ef8da291edf'}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F5.jpg?alt=media&token=c7d88a2b-a6f2-41b8-b037-e1d7f038b172"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F6.jpg?alt=media&token=b9750f33-9986-4163-a6cd-53850618146b'}}
-                  />
-                </View>
-                
-                     
-                   </View>
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F7.jpg?alt=media&token=27060360-08fe-45db-b3e0-e1aed7c91f5e'}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F8.jpg?alt=media&token=6c097fb6-f733-43c9-8826-9e486aa85931"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F9.jpg?alt=media&token=d2133450-eb87-473b-9dfc-910d06262fb8"}}
-                  />
-                </View>
-                
-                     
-                   </View>
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F11.jpg?alt=media&token=144c172a-73be-4678-9883-d4d5aded916e" }}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F12.jpg?alt=media&token=da1013ef-bd8e-4581-98b0-2b1cdc8ff8e3" }}
-                  />
-                </View>
-                
-                     
-                   </View>
-
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F15.jpg?alt=media&token=17ba499b-ad69-4b24-885d-c3d64638d905"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F16.jpg?alt=media&token=75aadbbc-5517-41e1-a9fa-8ee5e081f8d8"}}
-                  />
-                </View>
-                
-                     
-                   </View>
-
-
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F17.jpg?alt=media&token=eefd7136-bc0e-425d-8458-3ce90a8db2e3"}}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri : "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4" }}
-                  />
-                </View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F19.jpg?alt=media&token=b1c5cc9a-1b6a-49dd-8653-229988549878" }}
-                  />
-                </View>
-                
-                     
-                   </View>
-                   
-                   <View style={{flexDirection:'row'}}>
-                   <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{ uri :"https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F20.jpg?alt=media&token=618db6e6-d986-46b7-a73a-b6f52e6093b8"}}
-                  />
-                </View>
-                
-                
-                     
-                   </View>
-
-
-
-
-                   
-
-                    <Button  title="Click Here To Hide Modal" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } />
-
-               
-
-
-                </View>
-
-            </View>
-
-
-        </Modal>
-
-
-
           <Card>
             <View style={{width: '100%', height: 60, backgroundColor: '#fff'}}>
               <Text style={styles.headerText}>Edit Profile</Text>
@@ -403,7 +388,7 @@ swipeToClose={true}
               <View style={styles.roundBtn}>
                 <TouchableHighlight
                   style={{alignItems: 'center'}}
-                  onPress={() => { this.ShowModalFunction(true) }} >
+                  onPress={ this.toggleModal } >
                   <View>
                     <Text style={{color: 'white', fontSize: 16}}>
                       Add Media
