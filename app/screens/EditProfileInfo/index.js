@@ -12,9 +12,10 @@ import {
   TextInput,
   Switch,
   TouchableHighlight,
+  SafeAreaView,
+  Modal
   
 } from 'react-native';
-import Modal from 'react-native-modal';
 import {Icon} from 'react-native-elements';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
@@ -23,6 +24,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Card} from 'native-base';
 import {Slider, Block} from 'galio-framework';
+
 
 let sliderLevels = [
   'Beginner',
@@ -40,14 +42,16 @@ let sliderDes = [
   'I have competed locally or nationwide',
 ];
 export default class EditProfileInfo extends React.Component {
-  state = {
-    isModalVisible: false,
-  };
+   constructor(props) {
 
-  toggleModal = () => {
-    this.setState({isModalVisible: !this.state.isModalVisible});
-  };
-  
+    super(props);
+
+    this.state = { 
+        
+        ModalVisibleStatus: false 
+    };
+
+  }
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
     //onValueChange of the switch this function will be called
@@ -56,7 +60,11 @@ export default class EditProfileInfo extends React.Component {
     //which will result in re-render the text
   };
 
- 
+  ShowModalFunction(visible) {
+
+    this.setState({ModalVisibleStatus: visible});
+    
+  }
 
   render() {
     return (
@@ -66,14 +74,15 @@ export default class EditProfileInfo extends React.Component {
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
 
-<Modal isVisible={this.state.isModalVisible}
-propagateSwipe={true}
+<Modal
+          transparent={false}
 
-backdropOpacity={2}
-onSwipe={this.closeModal}
-onBackdropPress={this.closeModal}
->
+          animationType={"slide"}
+          visible={this.state.ModalVisibleStatus}
+          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
+<SafeAreaView>
 
+  <ScrollView>
   <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
 
 
@@ -236,7 +245,9 @@ onBackdropPress={this.closeModal}
 
    
 
- 
+    <Button  title="Hide" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } />
+
+
 
 
 </View>
@@ -245,12 +256,14 @@ onBackdropPress={this.closeModal}
 
 
 
+  </ScrollView>
+</SafeAreaView>
+
+    
+        </Modal>
 
 
-  </Modal>
 
-
-          
           <Card>
             <View style={{width: '100%', height: 60, backgroundColor: '#fff'}}>
               <Text style={styles.headerText}>Edit Profile</Text>
@@ -388,7 +401,7 @@ onBackdropPress={this.closeModal}
               <View style={styles.roundBtn}>
                 <TouchableHighlight
                   style={{alignItems: 'center'}}
-                  onPress={ this.toggleModal } >
+                  onPress={() => { this.ShowModalFunction(true) }} >
                   <View>
                     <Text style={{color: 'white', fontSize: 16}}>
                       Add Media
