@@ -1,10 +1,30 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   StyleSheet,
   View,
   Text,
   Image,
+  AsyncStorage,
+  StatusBar,
+  ScrollView,
+  Dimensions,
+  Button,
+  TextInput,
+  Switch,
+  TouchableHighlight,
+  SafeAreaView,
+  Modal
+  
 } from 'react-native';
+
+import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
+
+import styles from './style';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+
+import {Slider, Block} from 'galio-framework';
+
 
 import { size } from '../../helpers/devices.android';
 
@@ -19,6 +39,7 @@ import MapIcon  from '../../../assests/images/map.png';
 import Key  from '../../../assests/images/key.png';
 
 import { Container, Header,DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon } from 'native-base';
+
 const cards = [
   {
 
@@ -123,11 +144,115 @@ const cards = [
   },
 
   ];
-export default class ProfileSwiper extends Component {
-  render() {
 
-      return (
-        <View>
+export default class EditProfileInfo extends React.Component {
+   constructor(props) {
+
+    super(props);
+
+    this.state = { 
+        
+        ModalVisibleStatus: false 
+    };
+
+  }
+  state = {switchValue: false, sliderValue: 1};
+  toggleSwitch = value => {
+    //onValueChange of the switch this function will be called
+    this.setState({switchValue: value});
+    //state changes according to switch
+    //which will result in re-render the text
+  };
+
+  ShowModalFunction(visible) {
+
+    this.setState({ModalVisibleStatus: visible});
+    
+  }
+
+  render() {
+    return (
+      <ScrollView>
+        <View style={styles.mainContainer}>
+          <StatusBar
+            backgroundColor="#FF4A00FF"
+            barStyle="light-content"></StatusBar>
+
+<Modal
+          transparent={true}
+        
+          animationType={"slide"}
+          visible={this.state.ModalVisibleStatus}
+          onRequestClose={ () => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } >
+<SafeAreaView>
+
+  <ScrollView>
+  <View style={{  
+  backgroundColor : "#fff",   
+  height: 350 ,  
+  width: '100%',  
+  borderRadius:10,  
+  borderWidth: 1,  
+  borderColor: '#fff',    
+  marginTop: 400,  
+  marginLeft: 0,   }}>
+
+<View style={{marginTop:20,marginLeft:20}}>
+  <Text style={{fontSize:20}}>
+    Confirm you can play
+  </Text>
+</View>
+<View style={{height:1,width:'100%',backgroundColor:'#ABABAB', marginTop:20}}/>
+
+<View style={{marginTop:20,width:'90%',marginLeft:20}}>
+  <Text style={{fontSize:17}}>
+    If you have any question , please chat first.
+  </Text>
+</View>
+
+<View style={{width:'90%' , marginLeft:20,marginTop:20}}>
+  <Text style={{fontSize:17}}>
+    By clicking play , you are making a commitment to Us that you will turn up for this game on time.
+  </Text>
+</View>
+
+<View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',flex:1}}>
+
+<TouchableHighlight>
+  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#34b6c7', height:55,width:140,borderRadius:10}}>
+    <Text style={{color:'#fff',fontSize:16}}>
+Chat
+    </Text>
+  </View>
+</TouchableHighlight>
+
+<TouchableHighlight>
+  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#0bd67b', height:55,width:140,marginLeft:20,borderRadius:10}}>
+    <Text style={{color:'#fff',fontSize:16}}>
+Play
+    </Text>
+  </View>
+</TouchableHighlight>
+   
+</View>
+
+    {/* <Button  title="Hide" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } /> */}
+
+
+
+
+
+
+</View>
+
+
+
+  </ScrollView>
+</SafeAreaView>
+
+    
+        </Modal>
+
         <DeckSwiper
           dataSource={cards}
           renderItem={item =>
@@ -186,6 +311,8 @@ export default class ProfileSwiper extends Component {
           </View>
         
         </View>
+        <TouchableHighlight  onPress={() => { this.ShowModalFunction(true) }} >
+
         <View style={styles.slide}>
           <View style={styles.title_container}>
             <Image source={Like} style={styles.icon_style}/>
@@ -193,49 +320,14 @@ export default class ProfileSwiper extends Component {
           </View>
         
         </View>
+        </TouchableHighlight>
+ 
 </View>
-      </View>
-          
-       
-      );
-    } 
   
-}
 
-const styles = StyleSheet.create({
-  wrapper: {
-    height: 100
-  },
-  title_container: { 
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  title_text: {
-    fontSize: size(22),
-    fontWeight: '700',
-    color: '#363636',
-  },
-  icon_style: {
-    width: size(35),
-    height: size(35),
-    resizeMode: 'contain',
-  
-    alignItems: 'center',
-    padding: 15,
-    borderRadius: 30,
-  },
-  slide: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:30,
-    height:50,width:50,
-    backgroundColor:'white',
-    margin:10
-  },
-  text: {
-    marginTop: size(10),
-    color: '#363636',
-    fontSize: size(16),
+
+        </View>
+      </ScrollView>
+    );
   }
-});
+}
