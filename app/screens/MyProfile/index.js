@@ -14,8 +14,9 @@ import {
 
 
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
+
+
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class Profile extends Component {

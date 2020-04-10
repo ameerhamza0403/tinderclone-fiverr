@@ -4,10 +4,10 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 import { StyleSheet, View, Text, Image,AsyncStorage, StatusBar,ScrollView,Dimensions,Button,TextInput,TouchableHighlight} from 'react-native';
 
 import styles from './style'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import DatePicker from 'react-native-datepicker';
-import EditProfileInfo from '../SwipeProfileScreen/index.js'
+import EditProfileInfo from '../ItsAMatchScreen/index'
 
 
 
@@ -188,7 +188,7 @@ function GenderComponent({navigation}) {
   );
 }
 
-function InterestedComponent({navigation}) {
+function InterestComponent({navigation}) {
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
@@ -338,30 +338,78 @@ function PhoneComponent({navigation}) {
     </ScrollView>
   );
 }
-const Stack = createStackNavigator();
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        <Stack.Screen name="Home" component={EmailComponent} />
 
-        <Stack.Screen name="Birthday" component={BirthdayComponent} />
 
-        <Stack.Screen name="Gender" component={GenderComponent} />
 
-        <Stack.Screen name="Name" component={NameComponent} />
-        <Stack.Screen name="School" component={SchoolComponent} />
-        <Stack.Screen name="Phone" component={PhoneComponent} />
-        <Stack.Screen name="Interest" component={InterestedComponent} />
-        <Stack.Screen name="EditProfile" component={EditProfileInfo} />
 
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
 
-export default App;
+
+
+const LoginStack = createStackNavigator({
+
+  Home: {
+    screen: EmailComponent,
+    navigationOptions: {
+      header: null,
+     
+    },
+   
+  },
+  Birthday: {
+    screen: BirthdayComponent,
+    navigationOptions: {
+      header: null,
+     
+    },
+  },
+  Gender: {
+    screen: GenderComponent,
+    navigationOptions: {
+      header: null,
+      
+    },
+  },
+  
+  Name: {
+    screen:  NameComponent,
+    navigationOptions: {
+      header: null,
+    },
+  },
+
+  School: {
+    screen: SchoolComponent,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  Phone: {
+    screen: PhoneComponent,
+    navigationOptions: {
+      header: null,
+    },
+  },
+
+Interest: {
+      screen: InterestComponent,
+      navigationOptions: {
+        header: null,
+      },
+
+          },
+                EditProfile: {
+        screen: EditProfileInfo,
+        navigationOptions: {
+          header: null,
+        },
+  },
+
+
+
+});
+
+
+  export default createAppContainer(LoginStack);
+
+

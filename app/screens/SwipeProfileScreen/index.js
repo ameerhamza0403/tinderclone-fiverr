@@ -20,8 +20,7 @@ import {
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+
 
 import {Slider, Block} from 'galio-framework';
 
@@ -39,6 +38,8 @@ import MapIcon  from '../../../assests/images/map.png';
 import Key  from '../../../assests/images/key.png';
 
 import { Container, Header,DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon } from 'native-base';
+//import ChatScreen from '../ChatScreen/index.js'
+import MatchScreen from '../ItsAMatchScreen/index'
 
 const cards = [
   {
@@ -145,7 +146,7 @@ const cards = [
 
   ];
 
-export default class EditProfileInfo extends React.Component {
+ export default class EditProfileInfo extends React.Component {
    constructor(props) {
 
     super(props);
@@ -218,18 +219,19 @@ export default class EditProfileInfo extends React.Component {
 
 <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',flex:1}}>
 
-<TouchableHighlight>
-  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#34b6c7', height:55,width:140,borderRadius:10}}>
+<TouchableHighlight   onPress={() => navigation.navigate('MatchScreen')}>
+  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#0bd67b', height:55,width:140,borderRadius:10}}>
     <Text style={{color:'#fff',fontSize:16}}>
-Chat
+Accept
     </Text>
   </View>
 </TouchableHighlight>
+{/* onPress={() => navigation.navigate('ChatScreen')} */}
 
-<TouchableHighlight>
-  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#0bd67b', height:55,width:140,marginLeft:20,borderRadius:10}}>
+<TouchableHighlight  >
+  <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#34b6c7', height:55,width:140,marginLeft:20,borderRadius:10}}>
     <Text style={{color:'#fff',fontSize:16}}>
-Play
+Chat
     </Text>
   </View>
 </TouchableHighlight>
@@ -331,3 +333,26 @@ Play
     );
   }
 }
+
+// const Stack = createStackNavigator();
+
+// function App() {
+//   return (
+   
+//       <Stack.Navigator
+//         screenOptions={{
+//           headerShown: false,
+//         }}>
+//         <Stack.Screen name="Home" component={EditProfileInfo} />
+
+//     {/* <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
+//         <Stack.Screen name="MatchScreen" component={MatchScreen} />
+
+       
+
+//       </Stack.Navigator>
+   
+//   );
+// }
+
+// export default App;

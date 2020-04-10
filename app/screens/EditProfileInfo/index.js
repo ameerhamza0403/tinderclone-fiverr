@@ -20,8 +20,7 @@ import {Icon} from 'react-native-elements';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+
 import {Card} from 'native-base';
 import {Slider, Block} from 'galio-framework';
 
