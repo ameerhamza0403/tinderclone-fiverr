@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   Image,
   Platform,
-  ScrollView
+  ScrollView,
+  Share
 } from 'react-native';
 
 
@@ -20,6 +21,28 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons'
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class Profile extends Component {
+  constructor()
+  {
+      super();
+
+      this.state = 
+        { 
+
+          text: 'ProfileLink......'
+
+        }
+  }
+
+  ShareMessage=()=>
+  {
+          Share.share(
+          {
+              
+            message: this.state.text.toString()
+          
+          }).then(result => console.log(result)).catch(errorMsg => console.log(errorMsg));
+  }
+
 
 
 
@@ -61,6 +84,7 @@ export default class Profile extends Component {
 <View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:20}}>
 
 </View>
+<TouchableOpacity  onPress={ this.ShareMessage }>
 
 <View style={{alignItems:'center',width:'100%'}}>
 
@@ -68,6 +92,8 @@ export default class Profile extends Component {
 <Text style={styles.shareL2}>SEE WHAT A FRIEND THIINKS</Text>
 
 </View>
+</TouchableOpacity>
+
 
 <View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:10}}></View>
 

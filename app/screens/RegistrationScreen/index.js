@@ -1,13 +1,17 @@
 import * as React from 'react';
 
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { StyleSheet, View, Text, Image,AsyncStorage, StatusBar,ScrollView,Dimensions,Button,TextInput,TouchableHighlight} from 'react-native';
+import { StyleSheet,
+   View, 
+   Text,
+    Image,
+    AsyncStorage, StatusBar,ScrollView,Dimensions,Button,TextInput,TouchableHighlight} from 'react-native';
 
 import styles from './style'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import DatePicker from 'react-native-datepicker';
-import EditProfileInfo from '../ItsAMatchScreen/index'
+import EditProfileInfo from '../MyProfile/index'
 
 
 
