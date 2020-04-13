@@ -9,15 +9,7 @@ import {
   ScrollView,
   Share
 } from 'react-native';
-
-
-
-
-
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
-
-
-
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class Profile extends Component {
