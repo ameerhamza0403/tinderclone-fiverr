@@ -13,6 +13,7 @@ import { StyleSheet,
     TouchableHighlight} from 'react-native';
     import * as firebase from "firebase";
     import DialogProgress from 'react-native-dialog-progress'
+    import LoginScreen from '../LoginScreen/index'
 
 
 import styles from './style'
@@ -731,7 +732,7 @@ class PhoneComponent extends React.Component {
               }).then((data)=>{
                 DialogProgress.hide();
                  Alert.alert("Registration SuccessFull, You Can Now Login!")
-                
+                 this.props.navigation.navigate('Login')
               }).catch((error)=>{
       
                 DialogProgress.hide();
@@ -870,6 +871,14 @@ const LoginStack = createStackNavigator({
       header: null,
     },
   }, 
+
+  Login:{
+    screen: LoginScreen,
+    navigationOptions:{
+      header:null
+    }
+
+  },
   Name: {
     screen:  NameComponent,
     navigationOptions: {
