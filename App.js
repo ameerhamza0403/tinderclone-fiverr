@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import SplashScreen from './app/screens/SplashScreen/index.js'
-import Login from './app/screens/LoginScreen/index.js';
+import Login from './app/screens/MyProfileScreen/index.js';
 
 import React, { Component } from 'react';
 import {
