@@ -21,7 +21,7 @@ import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
 
-
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import {Slider, Block} from 'galio-framework';
 
 
@@ -37,7 +37,7 @@ import MapIcon  from '../../../assests/images/map.png';
 
 import Key  from '../../../assests/images/key.png';
 
-import { Container, Header,DeckSwiper, Card, CardItem, Thumbnail,  Left, Body, Icon } from 'native-base';
+import { Container, Header,DeckSwiper, Card, CardItem, Thumbnail,  Left, Body } from 'native-base';
 //import ChatScreen from '../ChatScreen/index.js'
 import MatchScreen from '../ItsAMatchScreen/index'
 
@@ -254,11 +254,12 @@ Chat
 
     
         </Modal>
-
-        <DeckSwiper
+<View style={{marginLeft:28,width:'70%'}}>
+  
+<DeckSwiper
           dataSource={cards}
           renderItem={item =>
-            <Card style={{ elevation: 3,marginTop:0,height:'80%' }}>
+            <Card style={{ elevation: 3,marginTop:0,width:350 }}>
               <CardItem>
                 <Left>
                   <Thumbnail source={item.image}  />
@@ -269,7 +270,7 @@ Chat
                 </Left>
               </CardItem>
               <CardItem cardBody>
-                <Image style={{ height: 500, flex: 1 }} source={item.image} />
+                <Image style={{ height: 400, flex: 1 }} source={item.image} />
               </CardItem>
               <CardItem>
               
@@ -279,9 +280,10 @@ Chat
           }
         />
 
+</View>
         
 
-<View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:620}}>
+<View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:600}}>
 
         
 
@@ -356,3 +358,12 @@ Chat
 // }
 
 // export default App;
+EditProfileInfo.navigationOptions={  
+  tabBarIcon:({tintColor, focused})=>(  
+      <Icon  
+          name={focused ? 'book-open' : 'book-open'}  
+          color={tintColor}  
+          size={25}  
+      />  
+  )  
+}  

@@ -16,7 +16,7 @@ import {
   Modal
   
 } from 'react-native';
-import {Icon} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';  
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
@@ -263,11 +263,7 @@ export default class EditProfileInfo extends React.Component {
 
 
 
-          <Card>
-            <View style={{width: '100%', height: 60, backgroundColor: '#fff'}}>
-              <Text style={styles.headerText}>Edit Profile</Text>
-            </View>
-          </Card>
+      
 
           <View style={{width: '100%'}}>
             <View style={{flexDirection: 'row'}}>
@@ -759,3 +755,12 @@ export default class EditProfileInfo extends React.Component {
     );
   }
 }
+EditProfileInfo.navigationOptions={  
+  tabBarIcon:({tintColor, focused})=>(  
+      <Icon  
+          name={focused ? 'wrench' : 'wrench'}  
+          color={tintColor}  
+          size={25}  
+      />  
+  )  
+}  

@@ -23,9 +23,9 @@ export default class Profile extends Component {
   renderProfilePicContainer() {
     return (
       <View style={styles.profile_pic_container}>
-        <Image source={{uri: 'https://avatars0.githubusercontent.com/u/7205900?s=400&v=4'}} style={styles.profile_pic_style} />
-        <Text style={styles.profile_name_style}>Ebiggs, 35</Text>
-        <Text style={styles.description}>Latin And Ballroom Instructor at Fred Astaire Dance </Text>
+        <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4'}} style={styles.profile_pic_style} />
+        <Text style={styles.profile_name_style}>Salsa/Bachata</Text>
+        <Text style={styles.description}>A time to dance studio </Text>
       </View>
     )
   }
@@ -55,7 +55,7 @@ export default class Profile extends Component {
             <Image source={Edit} style={styles.button_style} /> 
           </TouchableOpacity>
           <Text style={styles.button_text_style}>
-              Edit
+          Media
           </Text>
         </View>
   <View style={styles.seperator_style} />

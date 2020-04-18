@@ -16,11 +16,11 @@ export default {
   },
   profile_pic_style: {
     width: '100%',
-    height: 250,
+    height: 360,
   
   },
   profile_name_style: {
-    fontSize: 35,
+    fontSize: 20,
     fontWeight:'bold',
     color:'#595858',
 
@@ -35,7 +35,7 @@ export default {
     marginLeft:10
   },
   details:{ 
-    fontSize: 19,
+    fontSize: 17,
     marginLeft:10,
 
     color:'#969695'

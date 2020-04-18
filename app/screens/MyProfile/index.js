@@ -45,30 +45,26 @@ export default class Profile extends Component {
         <View>
 
         <View style={styles.profile_pic_container}>
-        <Image source={{uri: 'https://avatars0.githubusercontent.com/u/7205900?s=400&v=4'}} 
+        <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc'}} 
         style={styles.profile_pic_style} />
         <View style={{flexDirection:'row'}}>
 
-        <Text style={styles.profile_name_style}>Shayna,</Text>
-        <Text style={styles.profile_age}>25</Text>
+        <Text style={styles.profile_name_style}>StarLight Dance Studio</Text>
+
         </View>
 
-        <View style={{}}>
+        <View style={{marginTop:10}}>
+          
+
           <View style={{flexDirection:'row',width:'100%'}}>
-            <Icon name={'graduation'} size={18} style={styles.detailsIcon}/>
-          <Text style={styles.details}>University of California , San Diego</Text>
+            <Icon name={'event'} size={18} style={styles.detailsIcon}/>
+          <Text style={styles.details}>Every Tuesday | 7:00PM</Text>
 
           </View>
 
-          <View style={{flexDirection:'row',width:'100%'}}>
-            <Icon name={'user-female'} size={18} style={styles.detailsIcon}/>
-          <Text style={styles.details}>Woman</Text>
-
-          </View>
-
-          <View style={{flexDirection:'row',width:'100%'}}>
+          <View style={{flexDirection:'row',width:'75%'}}>
             <Icon name={'location-pin'} size={18} style={styles.detailsIcon}/>
-          <Text style={styles.details}>24 miles away</Text>
+          <Text style={styles.details}>6506 EL CAJON BLVD # H,SAN DIEGO , CA 92115 </Text>
 
           </View>
           
@@ -80,7 +76,7 @@ export default class Profile extends Component {
 
 <View style={{alignItems:'center',width:'100%'}}>
 
-<Text style={styles.share}>SHARE SHAYNA'S PROFILE</Text>
+<Text style={styles.share}>SHARE THIS</Text>
 <Text style={styles.shareL2}>SEE WHAT A FRIEND THIINKS</Text>
 
 </View>
@@ -95,13 +91,13 @@ export default class Profile extends Component {
         
       <View style={styles.tinder_plus_button_container}>
             <TouchableOpacity style={styles.tinder_plus_button_style}>
-              <Text style={styles.tinder_button_text_style}>REPORT SHAYNA</Text>
+              <Text style={styles.tinder_button_text_style}>REPORT </Text>
             </TouchableOpacity>
           </View>          
   
         </View>  
         <View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:0}}></View>
-        <View style={{flex:1, justifyContent: 'flex-end',  marginBottom: 20,marginTop:50}}>
+        <View style={{flex:1, justifyContent: 'flex-end',  marginBottom: 20,marginTop:10}}>
 
         <View style={styles.navigation_container}>
          <View style={styles.navigation_inner_container}>
@@ -148,3 +144,12 @@ export default class Profile extends Component {
 
 
 
+Profile.navigationOptions={  
+  tabBarIcon:({tintColor, focused})=>(  
+      <Icon  
+          name={focused ? 'user' : 'user'}  
+          color={tintColor}  
+          size={25}  
+      />  
+  )  
+}  
