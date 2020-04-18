@@ -3,13 +3,13 @@ import {createAppContainer} from 'react-navigation';
 import {createMaterialTopTabNavigator} from 'react-navigation-tabs';  
 import HomeScreen from "../MyProfile/index";  
 import ProfileScreen from "../SwipeProfileScreen/index";  
-import SettingScreen from "../EditProfileInfo/index";  
+import MyMessages from '../MyMessagesScreen/index' 
   
 const AppNavigator = createMaterialTopTabNavigator(  
     {  
         Home: HomeScreen,  
         Profile: ProfileScreen,  
-        Settings: SettingScreen,  
+            Messages: MyMessages,  
     },  
     {  
         tabBarOptions: {  

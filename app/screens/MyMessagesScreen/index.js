@@ -10,12 +10,13 @@ import {
   Dimensions,
   TextInput
 } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5'
 
 
 
 
 
-import Icon from 'react-native-vector-icons/MaterialIcons'
+
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class MessagesScreen extends Component {
@@ -92,3 +93,12 @@ export default class MessagesScreen extends Component {
 
 
 
+MessagesScreen.navigationOptions={  
+  tabBarIcon:({tintColor, focused})=>(  
+      <Icon  
+          name={focused ? 'rocketchat' : 'rocketchat'}  
+          color={tintColor}  
+          size={20}  
+      />  
+  )  
+}  

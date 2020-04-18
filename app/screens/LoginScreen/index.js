@@ -91,6 +91,7 @@ const options = {
     }
   };
   _storeData = async () =>{
+    
     DialogProgress.show(options);
     firebase
     .auth()
@@ -109,6 +110,9 @@ const options = {
         Alert.alert("Error Occured ! ")
        
       }
+    }).catch(function(error) {
+      DialogProgress.hide();
+Alert.alert('Invalid Email / Password , Please Try Again')
     })
   }
 
