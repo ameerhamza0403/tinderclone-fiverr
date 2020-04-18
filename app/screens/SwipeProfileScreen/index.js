@@ -21,7 +21,7 @@ import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
 
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Slider, Block} from 'galio-framework';
 
 
@@ -361,7 +361,7 @@ Chat
 EditProfileInfo.navigationOptions={  
   tabBarIcon:({tintColor, focused})=>(  
       <Icon  
-          name={focused ? 'book-open' : 'book-open'}  
+          name={focused ? 'whatshot' : 'whatshot'}  
           color={tintColor}  
           size={25}  
       />  

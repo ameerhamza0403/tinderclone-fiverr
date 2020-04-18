@@ -14,15 +14,19 @@ import { StyleSheet,
   import DialogProgress from 'react-native-dialog-progress'
 import styles from './style'
 import * as firebase from "firebase";
+import RegisterScreen from '../RegistrationScreen/index'
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import HomeScreen from '../HomeScreen/index'
 
 
 const options = {
-  title:"Loading.....",
+  title:"Signing in .....",
   message:"Please Wait",
   isCancelable:false
 }
 
-export default  class LoginScreen extends React.Component {
+ class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
     this.unsubscribe = null;
@@ -97,8 +101,8 @@ export default  class LoginScreen extends React.Component {
     .then(res => {
       try {
        AsyncStorage.setItem('Id', res.user.uid);
-       Alert.alert('Login Success')
-      
+       DialogProgress.hide();
+       this.props.navigation.navigate('HomeScreen')
 
       } catch (error) {
         DialogProgress.hide();
@@ -226,7 +230,7 @@ Sign-in
     </View>
     
 <View style={{flex:2,marginTop:50,alignItems:'center'}}>
-  <TouchableHighlight onPress={()=>  Alert.alert('Hy')}>
+  <TouchableHighlight onPress={()=>  this.props.navigation.navigate('Register')}>
   <Text style={styles.registerText}>
 
 Trouble Logging in ? Want to Register?
@@ -250,33 +254,33 @@ Trouble Logging in ? Want to Register?
     }
 }
 
-// const myStack = createStackNavigator({
+const myStack = createStackNavigator({
 
-//     Home: {
-//       screen: LoginScreen,
-//       navigationOptions: {
-//         header: null,
+    Home: {
+      screen: LoginScreen,
+      navigationOptions: {
+        header: null,
        
-//       },
+      },
      
-//     },
-//     Register: {
-//       screen: RegisterScreen,
-//       navigationOptions: {
-//         header: null,
+    },
+    Register: {
+      screen: RegisterScreen,
+      navigationOptions: {
+        header: null,
        
-//       },
-//     },
-//     HomeScreen:{
-//       screen:SwipeScreen,
-//       navigationOptions:{
-//         header:null
-//       }
-//     }
+      },
+    },
+    HomeScreen:{
+      screen:HomeScreen,
+      navigationOptions:{
+        header:null
+      }
+    }
     
-//   });
+  });
   
   
-//     export default createAppContainer(myStack);
+    export default createAppContainer(myStack);
   
   

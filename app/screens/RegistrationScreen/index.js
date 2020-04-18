@@ -872,13 +872,7 @@ const LoginStack = createStackNavigator({
     },
   }, 
 
-  Login:{
-    screen: LoginScreen,
-    navigationOptions:{
-      header:null
-    }
 
-  },
   Name: {
     screen:  NameComponent,
     navigationOptions: {

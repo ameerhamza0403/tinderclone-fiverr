@@ -16,7 +16,7 @@ import {
   Modal
   
 } from 'react-native';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';  
+import Icon from 'react-native-vector-icons/MaterialIcons';  
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
@@ -758,7 +758,7 @@ export default class EditProfileInfo extends React.Component {
 EditProfileInfo.navigationOptions={  
   tabBarIcon:({tintColor, focused})=>(  
       <Icon  
-          name={focused ? 'wrench' : 'wrench'}  
+          name={focused ? 'settings' : 'settings'}  
           color={tintColor}  
           size={25}  
       />  

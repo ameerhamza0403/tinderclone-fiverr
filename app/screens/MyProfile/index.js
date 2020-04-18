@@ -9,7 +9,7 @@ import {
   ScrollView,
   Share
 } from 'react-native';
-import Icon from 'react-native-vector-icons/SimpleLineIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 export default class Profile extends Component {
@@ -63,7 +63,7 @@ export default class Profile extends Component {
           </View>
 
           <View style={{flexDirection:'row',width:'75%'}}>
-            <Icon name={'location-pin'} size={18} style={styles.detailsIcon}/>
+            <Icon name={'location-on'} size={18} style={styles.detailsIcon}/>
           <Text style={styles.details}>6506 EL CAJON BLVD # H,SAN DIEGO , CA 92115 </Text>
 
           </View>
@@ -147,7 +147,7 @@ export default class Profile extends Component {
 Profile.navigationOptions={  
   tabBarIcon:({tintColor, focused})=>(  
       <Icon  
-          name={focused ? 'user' : 'user'}  
+          name={focused ? 'account-circle' : 'account-circle'}  
           color={tintColor}  
           size={25}  
       />  
