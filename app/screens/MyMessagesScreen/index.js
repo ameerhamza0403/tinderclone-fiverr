@@ -10,8 +10,10 @@ import {
   Dimensions,
   TextInput
 } from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/FontAwesome5'
-
+//import Chat from '../ChatScreen/index'
 
 
 
@@ -40,7 +42,7 @@ export default class MessagesScreen extends Component {
            <TextInput
            placeholder='Search Matches'
            placeholderTextColor='#d1cfcf'
-           style={{width:'60%',height:40,color:'white',}}/>
+           style={{width:'60%',height:40,color:'#ABABAB',}}/>
          
 <View style={{marginLeft:110,marginTop:8}}>
   
@@ -64,15 +66,18 @@ export default class MessagesScreen extends Component {
   </Text>
 </View>
 
+<TouchableOpacity onPress={()=> this.props.navigation.navigate('Chat')}>
 <View style={{marginTop:50,width:60,height:50,alignItems:'center',justifyContent:'center',marginLeft:30}}>
 
 
-    <Image style={{height:90,width:90,borderRadius:60}}
+    <Image style={{height:80,width:80,borderRadius:60}}
     source={{uri: "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508"}}/>
-    <Text style={{fontWeight:'bold',fontSize:15,}}>
-      Shauna
+    <Text style={{width:75,fontWeight:'bold',fontSize:14,}}>
+     Queen Bees
     </Text>
   </View>
+</TouchableOpacity>
+
 
 
   <View style={{position:'relative',marginTop:50,marginLeft:18}}>
@@ -102,3 +107,29 @@ MessagesScreen.navigationOptions={
       />  
   )  
 }  
+
+
+// const myStack = createStackNavigator({
+
+//   Home: {
+//     screen: MessagesScreen,
+//     navigationOptions: {
+//       header: null,
+     
+//     },
+   
+//   },
+//   Chat: {
+//     screen: Chat,
+//     navigationOptions: {
+//       header: null,
+     
+//     },
+//   },
+ 
+  
+// });
+
+
+//   export default createAppContainer(myStack);
+

@@ -7,11 +7,14 @@ import {
   Image,
   Platform,
   ScrollView,
+  StatusBar,ActivityIndicator,
+  AsyncStorage,
   Share
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
+import * as firebase from "firebase";
 export default class Profile extends Component {
   constructor()
   {
@@ -20,10 +23,87 @@ export default class Profile extends Component {
       this.state = 
         { 
 
-          text: 'ProfileLink......'
+          text: 'ProfileLink......',
+          dataSource:[],
+          isLoading:true,
+          userId:'',
+          config : {
+            apiKey: "AIzaSyCnmF9FHph6in4RJDGN-tcTu-y0Tn9Pks0",
+            authDomain: "ebigs-tinder.firebaseapp.com",
+            databaseURL: "https://ebigs-tinder.firebaseio.com",
+            projectId: "ebigs-tinder",
+            storageBucket: "ebigs-tinder.appspot.com",
+            messagingSenderId: "15088750172",
+            appId: "1:15088750172:web:a2ed0b7e6b8c844fc6e099",
+            measurementId: "G-QJBDNXPC1Q"
+          }
+          
+           
+          
+              }  ;
+            
+              if (!firebase.apps.length) {
+                firebase.initializeApp(this.state.config);
+              }
 
         }
-  }
+
+
+
+        async componentDidMount (){
+          const id = await AsyncStorage.getItem('Id' , 0)
+          console.log(id)
+      
+          try {
+      
+            const mylist = [];
+          this.setState({
+            userId:id
+          })
+      
+      firebase.database().ref('/Users/' + id).on('value', querySnapShot => {
+      
+      
+      
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let list = {...data};
+        const { Id, Name,Occupation,Gender,Phone,DOB,Email}= list;
+        mylist.push({
+          Id: Id,
+          Name: Name,
+          Gender:Gender,
+          Occupation:Occupation,
+          Phone:Phone,
+          DOB:DOB,
+          Email:Email
+     
+          
+      
+      });
+      
+        this.setState({
+          dataSource: mylist,
+          isLoading:false,
+       
+        });
+      
+        console.log(this.state.dataSource)
+      });
+       
+      
+      
+      
+          }catch(error){
+            Alert.alert(error.toString())
+          }
+        }
+      
+
+
+
+
+        
+  
 
   ShareMessage=()=>
   {
@@ -39,8 +119,24 @@ export default class Profile extends Component {
 
 
   render() {
+
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <StatusBar backgroundColor="#29AB87" barStyle="light-content"></StatusBar>
+
+          <ActivityIndicator color="#29AB87" size="large" style={{ marginTop: 10 }}></ActivityIndicator>
+        </View>
+
+      )
+    }
     return (
-      <ScrollView>
+
+     
+     
+     <ScrollView>
+     
+     {this.state.dataSource.map((item, key) => (
       <View style={styles.container}>
         <View>
 
@@ -49,7 +145,7 @@ export default class Profile extends Component {
         style={styles.profile_pic_style} />
         <View style={{flexDirection:'row'}}>
 
-        <Text style={styles.profile_name_style}>StarLight Dance Studio</Text>
+     <Text style={styles.profile_name_style}>{item.Name}</Text>
 
         </View>
 
@@ -57,14 +153,18 @@ export default class Profile extends Component {
           
 
           <View style={{flexDirection:'row',width:'100%'}}>
-            <Icon name={'event'} size={18} style={styles.detailsIcon}/>
-          <Text style={styles.details}>Every Tuesday | 7:00PM</Text>
+            <Icon name={'work'} size={18} style={styles.detailsIcon}/>
+     <Text style={styles.details}>{item.Occupation} </Text>
 
           </View>
-
           <View style={{flexDirection:'row',width:'75%'}}>
-            <Icon name={'location-on'} size={18} style={styles.detailsIcon}/>
-          <Text style={styles.details}>6506 EL CAJON BLVD # H,SAN DIEGO , CA 92115 </Text>
+            <Icon name={'person-outline'} size={18} style={styles.detailsIcon}/>
+     <Text style={styles.details}>{item.Gender}  | {item.DOB} </Text>
+
+          </View>
+          <View style={{flexDirection:'row',width:'75%'}}>
+            <Icon name={'contact-phone'} size={18} style={styles.detailsIcon}/>
+     <Text style={styles.details}>{item.Phone} | {item.Email}</Text>
 
           </View>
           
@@ -136,6 +236,7 @@ export default class Profile extends Component {
 
         
       </View>
+       ))}
       </ScrollView>
     );
   }
