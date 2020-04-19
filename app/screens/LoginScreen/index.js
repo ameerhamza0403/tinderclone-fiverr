@@ -53,7 +53,7 @@ const options = {
           if (!firebase.apps.length) {
             firebase.initializeApp(this.state.config);
           }
-  }
+        }
 
 
 
@@ -86,11 +86,11 @@ const options = {
      
     
     else {
-      this._storeData();
+      this._login();
     
     }
   };
-  _storeData = async () =>{
+  _login = async () =>{
     
     DialogProgress.show(options);
     firebase

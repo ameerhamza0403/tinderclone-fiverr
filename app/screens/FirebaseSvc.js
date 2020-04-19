@@ -2,14 +2,14 @@ import firebase from 'firebase';
 import uuid from 'uuid';
 
 const config = {
-    apiKey: "AIzaSyC-Jhv1x-7dy_RO6J1P_vBsleffHvmkAng",
-    authDomain: "seanmrn-deliveryapp.firebaseapp.com",
-    databaseURL: "https://seanmrn-deliveryapp.firebaseio.com",
-    projectId: "seanmrn-deliveryapp",
-    storageBucket: "seanmrn-deliveryapp.appspot.com",
-    messagingSenderId: "666905430549",
-    appId: "1:666905430549:web:124b45f33d6ba048dddc1c",
-    measurementId: "G-RMLZ5NZE21"
+  apiKey: "AIzaSyCnmF9FHph6in4RJDGN-tcTu-y0Tn9Pks0",
+  authDomain: "ebigs-tinder.firebaseapp.com",
+  databaseURL: "https://ebigs-tinder.firebaseio.com",
+  projectId: "ebigs-tinder",
+  storageBucket: "ebigs-tinder.appspot.com",
+  messagingSenderId: "15088750172",
+  appId: "1:15088750172:web:a2ed0b7e6b8c844fc6e099",
+  measurementId: "G-QJBDNXPC1Q"
 }
 
 class FirebaseSvc {
@@ -42,68 +42,68 @@ class FirebaseSvc {
     }
   };
 
-  // createAccount = async (user) => {
-  //   firebase.auth()
-  //     .createUserWithEmailAndPassword(user.email, user.password)
-  //     .then(function() {
-  //       console.log("created user successfully. User email:" + user.email + " name:" + user.name);
-  //       var userf = firebase.auth().currentUser;
-  //       userf.updateProfile({ displayName: user.name})
-  //       .then(function() {
-  //         console.log("Updated displayName successfully. name:" + user.name);
-  //         alert("User " + user.name + " was created successfully. Please login.");
-  //       }, function(error) {
-  //         console.warn("Error update displayName.");
-  //       });
-  //     }, function(error) {
-  //       console.error("got error:" + typeof(error) + " string:" + error.message);
-  //       alert("Create account failed. Error: "+error.message);
-  //     });
-  // }
+  createAccount = async (user) => {
+    firebase.auth()
+      .createUserWithEmailAndPassword(user.email, user.password)
+      .then(function() {
+        console.log("created user successfully. User email:" + user.email + " name:" + user.name);
+        var userf = firebase.auth().currentUser;
+        userf.updateProfile({ displayName: user.name})
+        .then(function() {
+          console.log("Updated displayName successfully. name:" + user.name);
+          alert("User " + user.name + " was created successfully. Please login.");
+        }, function(error) {
+          console.warn("Error update displayName.");
+        });
+      }, function(error) {
+        console.error("got error:" + typeof(error) + " string:" + error.message);
+        alert("Create account failed. Error: "+error.message);
+      });
+  }
 
-  // uploadImage = async uri => {
-  //   console.log('got image to upload. uri:' + uri);
-  //   try {
-  //     const response = await fetch(uri);
-  //     const blob = await response.blob();
-  //     const ref = firebase
-  //       .storage()
-  //       .ref('avatar')
-  //       .child(uuid.v4());
-  //     const task = ref.put(blob);
+  uploadImage = async uri => {
+    console.log('got image to upload. uri:' + uri);
+    try {
+      const response = await fetch(uri);
+      const blob = await response.blob();
+      const ref = firebase
+        .storage()
+        .ref('avatar')
+        .child(uuid.v4());
+      const task = ref.put(blob);
     
-  //     return new Promise((resolve, reject) => {
-  //       task.on(
-  //         'state_changed',
-  //         () => {
-  //             /* noop but you can track the progress here */
-  //         },
-  //         reject /* this is where you would put an error callback! */,
-  //         () => resolve(task.snapshot.downloadURL)
-  //       );
-  //     });
-  //   } catch (err) {
-  //     console.log('uploadImage try/catch error: ' + err.message); //Cannot load an empty url
-  //   }
-  // }
+      return new Promise((resolve, reject) => {
+        task.on(
+          'state_changed',
+          () => {
+              /* noop but you can track the progress here */
+          },
+          reject /* this is where you would put an error callback! */,
+          () => resolve(task.snapshot.downloadURL)
+        );
+      });
+    } catch (err) {
+      console.log('uploadImage try/catch error: ' + err.message); //Cannot load an empty url
+    }
+  }
 
-  // updateAvatar = (url) => {
-  //   //await this.setState({ avatar: url });
-  //   var userf = firebase.auth().currentUser;
-  //   if (userf != null) {
-  //     userf.updateProfile({ avatar: url})
-  //     .then(function() {
-  //       console.log("Updated avatar successfully. url:" + url);
-  //       alert("Avatar image is saved successfully.");
-  //     }, function(error) {
-  //       console.warn("Error update avatar.");
-  //       alert("Error update avatar. Error:" + error.message);
-  //     });
-  //   } else {
-  //     console.log("can't update avatar, user is not login.");
-  //     alert("Unable to update avatar. You must login first.");
-  //   }
-  // }
+  updateAvatar = (url) => {
+    //await this.setState({ avatar: url });
+    var userf = firebase.auth().currentUser;
+    if (userf != null) {
+      userf.updateProfile({ avatar: url})
+      .then(function() {
+        console.log("Updated avatar successfully. url:" + url);
+        alert("Avatar image is saved successfully.");
+      }, function(error) {
+        console.warn("Error update avatar.");
+        alert("Error update avatar. Error:" + error.message);
+      });
+    } else {
+      console.log("can't update avatar, user is not login.");
+      alert("Unable to update avatar. You must login first.");
+    }
+  }
      
   onLogout = user => {
     firebase.auth().signOut().then(function() {
