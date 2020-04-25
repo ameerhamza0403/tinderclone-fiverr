@@ -17,7 +17,10 @@ import {
   
 } from 'react-native';
 
+import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
+
+
 
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
@@ -27,7 +30,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Slider, Block} from 'galio-framework';
 
 
-import { size } from '../../helpers/devices.android';
+
 
 import Rewind  from '../../../assests/images/rewind.png';
 import Like from '../../../assests/images/heart.png';

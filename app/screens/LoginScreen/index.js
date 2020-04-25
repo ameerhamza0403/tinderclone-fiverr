@@ -18,10 +18,8 @@ import RegisterScreen from '../RegistrationScreen/index'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../HomeScreen/index'
-
 import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
-
 
 const options = {
   title:"Signing in .....",

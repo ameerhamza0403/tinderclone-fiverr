@@ -23,7 +23,6 @@ import DatePicker from 'react-native-datepicker';
 import EditProfileInfo from '../MyProfile/index'
 import { Alert } from 'react-native';
 
-
 import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 
