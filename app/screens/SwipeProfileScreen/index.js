@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 import {
   StyleSheet,
   View,
@@ -43,7 +45,8 @@ import MapIcon  from '../../../assests/images/map.png';
 import Key  from '../../../assests/images/key.png';
 
 import { Container, Header,DeckSwiper, Card, CardItem, Thumbnail,  Left, Body } from 'native-base';
-//import ChatScreen from '../ChatScreen/index.js'
+//import ChatScreen from '../ChatScreen/index'
+
 import MatchScreen from '../ItsAMatchScreen/index'
 
 const cards = [
@@ -150,8 +153,7 @@ const cards = [
   },
 
   ];
-
- export default class EditProfileInfo extends React.Component {
+ class SwipeProfile extends React.Component {
    constructor(props) {
 
     super(props);
@@ -160,6 +162,15 @@ const cards = [
         
         ModalVisibleStatus: false 
     };
+
+  }
+
+  gotoMessages =()=>{
+    this.setState({
+    ModalVisibleStatus:false
+    })
+
+    this.props.navigation.navigate('MatchScreen')
 
   }
   state = {switchValue: false, sliderValue: 1};
@@ -174,6 +185,12 @@ const cards = [
 
     this.setState({ModalVisibleStatus: visible});
     
+    
+  }
+
+  componentDidMount(){
+
+    console.disableYellowBox=true
   }
 
   render() {
@@ -224,14 +241,20 @@ const cards = [
 
 <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',flex:1}}>
 
-<TouchableHighlight   onPress={() => navigation.navigate('MatchScreen')}>
+<TouchableHighlight 
+
+
+onPress={() =>  this.gotoMessages()}
+
+
+>
   <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#0bd67b', height:55,width:140,borderRadius:10}}>
     <Text style={{color:'#fff',fontSize:16}}>
 Accept
     </Text>
   </View>
 </TouchableHighlight>
-{/* onPress={() => navigation.navigate('ChatScreen')} */}
+ {/* onPress={() => navigation.navigate('ChatScreen')} */}
 
 <TouchableHighlight  >
   <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#34b6c7', height:55,width:140,marginLeft:20,borderRadius:10}}>
@@ -263,6 +286,7 @@ Chat
   
 <DeckSwiper
           dataSource={cards}
+          onSwipeRight={()=>this.ShowModalFunction(true)}
           renderItem={item =>
             <Card style={{ elevation: 0,marginTop:0,width:Statics.DEVICE_WIDTH/1.2,height:Statics.DEVICE_HEIGHT/1.5 }}>
               <CardItem>
@@ -320,7 +344,7 @@ Chat
           </View>
         
         </View>
-        <TouchableHighlight  onPress={() => { this.ShowModalFunction(true) }} >
+        <TouchableHighlight >
 
         <View style={styles.slide}>
           <View style={styles.title_container}>
@@ -341,29 +365,42 @@ Chat
   }
 }
 
-// const Stack = createStackNavigator();
 
-// function App() {
-//   return (
+const stack = createStackNavigator({
+
+  Home: {
+    screen: SwipeProfile,
+    navigationOptions: {
+      header: null,
+     
+    },
    
-//       <Stack.Navigator
-//         screenOptions={{
-//           headerShown: false,
-//         }}>
-//         <Stack.Screen name="Home" component={EditProfileInfo} />
+  },
+  MatchScreen: {
+    screen: MatchScreen,
+    navigationOptions: {
+      header: null,
+     
+    },
+  },
+  // ChatScreen: {
+  //   screen: ChatScreen,
+  //   navigationOptions: {
+  //     header: null,
+      
+  //   },
+  // },
+  
+  
 
-//     {/* <Stack.Screen name="ChatScreen" component={ChatScreen} /> */}
-//         <Stack.Screen name="MatchScreen" component={MatchScreen} />
 
-       
 
-//       </Stack.Navigator>
-   
-//   );
-// }
+});
 
-// export default App;
-EditProfileInfo.navigationOptions={  
+export default stack;
+
+
+SwipeProfile.navigationOptions={  
   tabBarIcon:({tintColor, focused})=>(  
       <Icon  
           name={focused ? 'whatshot' : 'whatshot'}  

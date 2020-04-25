@@ -57,7 +57,10 @@ const options = {
         }
 
 
+        componentDidMount(){
 
+          console.disableYellowBox=true
+        }
 
 
 

@@ -146,6 +146,11 @@ export default class Profile extends Component {
         <View style={styles.profile_pic_container}>
         <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc'}} 
         style={styles.profile_pic_style} />
+
+<Image source={require('../../../assests/images/download.png')} 
+        style={{position:'absolute',width:Statics.DEVICE_WIDTH/6,height:Statics.DEVICE_HEIGHT/10,left: size(320), top: size(330)}} />
+
+
         <View style={{flexDirection:'row'}}>
 
      <Text style={styles.profile_name_style}>{item.Name}</Text>

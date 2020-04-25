@@ -10,6 +10,9 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons'
 
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
+
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 import MessagesScreen from '../MyMessagesScreen/index'
@@ -22,50 +25,22 @@ export default class MatchScreen extends React.Component {
     return (
       <ScrollView>
       <View style={styles.container}>
-        <View style={{flexDirection:'row'}}>
-          <TouchableOpacity>
+      
 
-          <View style={{marginTop:70 , width:210,height:60,borderColor:'#d1cfcf',borderWidth:2,alignItems:'center',justifyContent:'center'}}>
-<View>
-
-  <Text style={{fontSize:18,color:'#d1cfcf'}}>
-    Messages
-  </Text>
-</View>
-
-
-
-        </View>         
-          </TouchableOpacity>
-   
-        <View style={{marginTop:70 , width:210,height:60,borderColor:'#d1cfcf',borderWidth:2,alignItems:'center',justifyContent:'center'}}>
-<View>
-
-  <Text style={{fontSize:18,color:'#d1cfcf'}}>
-    Feed
-  </Text>
-</View>
-
-
-
-        </View>
-        </View>
-
-
-        <View>
+        <View style={{marginTop:size(5)}}>
 
         <View style={styles.profile_pic_container}>
-        <Image source={{uri: 'https://avatars0.githubusercontent.com/u/7205900?s=400&v=4'}} 
+        <Image source={{uri: "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F20.jpg?alt=media&token=618db6e6-d986-46b7-a73a-b6f52e6093b8" }} 
         style={styles.profile_pic_style} />
 
 
-<View style={{position: 'absolute', left: 60, top: 250,height:200,width:300,alignContent:'center',justifyContent:'center',alignItems:'center'}}>
-                  <Text style={{color:'#FF4A00FF',fontSize:40}}>
+<View style={{position: 'absolute', left: 60, top: 300,height:200,backgroundColor:'rgb(0,0,0.5)',width:300,height:100,alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+                  <Text style={{color:'#FF4A00FF',fontSize:20}}>
 Its a 
 
                   </Text>
 
-                  <Text style={{fontSize:60,color:'#FF4A00FF',fontWeight:'bold'}}>
+                  <Text style={{fontSize:30,color:'#FF4A00FF',fontWeight:'bold'}}>
 Match
                   </Text>
                 </View>
@@ -80,7 +55,7 @@ Match
                 <View style={{position: 'absolute', left: 330, top: 430,backgroundColor:'#fff',borderRadius:60,height:65,width:65,alignContent:'center',justifyContent:'center',alignItems:'center'}}>
                   <Image
                     style={styles.iconStyle}
-                    source={require('../../../assests/images/heart.png')}
+                    source={require('../../../assests/images/dislike.png')}
                   />
                 </View>
         <View style={{marginTop:10}}>
@@ -156,23 +131,3 @@ Match
 
 
 
-// const messages = createStackNavigator();
-
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator
-//         screenOptions={{
-//           headerShown: false,
-//         }}>
-//         <Stack.Screen name="Home" component={MatchScreen} />
-
-//         <Stack.Screen name="Messages" component={MessagesScreen} />
-
-
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// export default messages;

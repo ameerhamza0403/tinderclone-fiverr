@@ -18,6 +18,12 @@ import {
 
 
 export default class SplashScreen extends Component {
+
+
+  componentDidMount(){
+
+    console.disableYellowBox=true
+  }
     render (){
 
     return (
@@ -45,4 +51,6 @@ export default class SplashScreen extends Component {
       );
   
     }
+
+
 }

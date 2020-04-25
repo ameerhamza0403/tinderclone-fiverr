@@ -1,5 +1,7 @@
 
-import { size } from '../../helpers/devices.android';
+
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
 export default {
 
 
@@ -16,8 +18,8 @@ export default {
   
   },
   iconStyle: {
-    width:45,
-    height: 40,
+    width:size(45),
+    height: size(43),
   },
   profile_pic_style: {
     width: '100%',
