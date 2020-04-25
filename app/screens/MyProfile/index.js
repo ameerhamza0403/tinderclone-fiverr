@@ -11,10 +11,13 @@ import {
   AsyncStorage,
   Share
 } from 'react-native';
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 import * as firebase from "firebase";
+
 export default class Profile extends Component {
   constructor()
   {
@@ -138,7 +141,7 @@ export default class Profile extends Component {
      
      {this.state.dataSource.map((item, key) => (
       <View style={styles.container}>
-        <View>
+        <View style={{flex:2}}>
 
         <View style={styles.profile_pic_container}>
         <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc'}} 
@@ -149,15 +152,15 @@ export default class Profile extends Component {
 
         </View>
 
-        <View style={{marginTop:10}}>
+        <View style={{marginTop:size(10)}}>
           
 
-          <View style={{flexDirection:'row',width:'100%'}}>
+          <View style={{flexDirection:'row',width:Statics.DEVICE_WIDTH}}>
             <Icon name={'work'} size={18} style={styles.detailsIcon}/>
      <Text style={styles.details}>{item.Occupation} </Text>
 
           </View>
-          <View style={{flexDirection:'row',width:'75%'}}>
+          <View style={{flexDirection:'row',width:Statics.DEVICE_WIDTH/1.5}}>
             <Icon name={'person-outline'} size={18} style={styles.detailsIcon}/>
      <Text style={styles.details}>{item.Gender}  | {item.DOB} </Text>
 
@@ -169,12 +172,19 @@ export default class Profile extends Component {
           </View>
           
 </View>
-<View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:20}}>
+<View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:size(20)}}>
 
 </View>
+
+   
+<View style={styles.tinder_plus_button_container}>
+            <TouchableOpacity style={styles.tinder_plus_button_style}>
+              <Text style={styles.tinder_button_text_style}>REPORT </Text>
+            </TouchableOpacity>
+          </View>   
 <TouchableOpacity  onPress={ this.ShareMessage }>
 
-<View style={{alignItems:'center',width:'100%'}}>
+<View style={{alignItems:'center',width:Statics.DEVICE_WIDTH}}>
 
 <Text style={styles.share}>SHARE THIS</Text>
 <Text style={styles.shareL2}>SEE WHAT A FRIEND THIINKS</Text>
@@ -188,16 +198,13 @@ export default class Profile extends Component {
 
         
       </View>
-        
-      <View style={styles.tinder_plus_button_container}>
-            <TouchableOpacity style={styles.tinder_plus_button_style}>
-              <Text style={styles.tinder_button_text_style}>REPORT </Text>
-            </TouchableOpacity>
-          </View>          
+            
   
         </View>  
+
+        <View style={{flex:2}}>
         <View style={{height:1,width:'100%',backgroundColor:'#ebebe8',marginTop:0}}></View>
-        <View style={{flex:1, justifyContent: 'flex-end',  marginBottom: 20,marginTop:10}}>
+        <View style={{flex:5, justifyContent: 'flex-end',  marginBottom: size(20),marginTop:size(250)}}>
 
         <View style={styles.navigation_container}>
          <View style={styles.navigation_inner_container}>
@@ -231,6 +238,8 @@ export default class Profile extends Component {
        </View>
         </View>
 
+        </View>
+        
        
 
 

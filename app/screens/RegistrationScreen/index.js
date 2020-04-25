@@ -24,6 +24,10 @@ import EditProfileInfo from '../MyProfile/index'
 import { Alert } from 'react-native';
 
 
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
+
+
 class EmailComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -69,17 +73,17 @@ try {
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+        <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>My</Text>
           <Text style={styles.textStyle}>email is</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 1,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <TextInput
             style={styles.textInput}
@@ -90,7 +94,7 @@ try {
           
             ></TextInput>
         </View>
-        <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
+        <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
             <TouchableHighlight
               style={{alignItems: 'center'}}
@@ -152,17 +156,17 @@ try {
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>Set </Text>
           <Text style={styles.textStyle}>My Password</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 1,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <TextInput
             style={styles.textInput}
@@ -173,13 +177,13 @@ try {
           
             ></TextInput>
         </View>
-        <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
+        <View style={{alignItems: 'center', marginTop: size(0), flex: 1}}>
           <View style={styles.roundBtn}>
             <TouchableHighlight
               style={{alignItems: 'center'}}
               onPress={() =>this.saveData()}>
               <View>
-                <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
+                <Text style={{color: 'white', fontSize:size(16)}}>Continue</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -230,17 +234,17 @@ textInput_Name:'',
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>My first</Text>
           <Text style={styles.textStyle}>name is</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 1,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <TextInput
             style={styles.textInput}
@@ -252,7 +256,7 @@ textInput_Name:'',
           
             ></TextInput>
         </View>
-        <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
+        <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
             <TouchableHighlight
               style={{alignItems: 'center'}}
@@ -310,17 +314,17 @@ input_birthday:'',
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>My</Text>
           <Text style={styles.textStyle}>birthday is</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 1,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
       <DatePicker
         style={{width: 300}}
@@ -347,7 +351,7 @@ input_birthday:'',
         onDateChange={(date) => {this.setState({input_birthday: date})}}
       />
         </View>
-        <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
+        <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
             <TouchableHighlight
               style={{alignItems: 'center'}}  //this.props.navigation.navigate('Gender')}
@@ -414,23 +418,23 @@ input_gender:'',
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>I am a</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 5,
+            width: Statics.DEVICE_WIDTH/1.5,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
             <TouchableHighlight 
               onPress={() => this.saveFeMale()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Woman</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Woman</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -441,7 +445,7 @@ input_gender:'',
             
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Man</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -520,16 +524,16 @@ input_interest:'',
   render (){  return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>I am Interested in</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 4,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
             <TouchableHighlight 
@@ -537,7 +541,7 @@ input_interest:'',
             onPress={() => this.womanInterested()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Woman</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Woman</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -548,7 +552,7 @@ input_interest:'',
             onPress={() => this.manInterested()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Man</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -558,7 +562,7 @@ input_interest:'',
               onPress={() => this.mixInterested()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Both</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Both</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -621,17 +625,17 @@ textInput_School:'',
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>My</Text>
           <Text style={styles.textStyle}>occupation is</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 4,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 40,
+            marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
             <TouchableHighlight
@@ -639,7 +643,7 @@ textInput_School:'',
             onPress={() => this.student()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Student</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Student</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -649,7 +653,7 @@ textInput_School:'',
              onPress={() => this.employee()}
             style={{alignItems: 'center'}}>
               <View>
-                <Text style={{color: 'black', fontSize: 17}}>Employed</Text>
+                <Text style={{color: 'black', fontSize: size(17)}}>Employed</Text>
               </View>
             </TouchableHighlight>
           </View>
@@ -798,16 +802,16 @@ config : {
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        <View style={{margin: 50, flex: 2}}>
+      <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
           <Text style={styles.textStyle}>My number is</Text>
         </View>
         <View
           style={{
-            flex: 2,
-            width: '80%',
+            flex: 1,
+            width: Statics.DEVICE_WIDTH/1.2,
             alignItems: 'center',
             alignSelf: 'center',
-            marginTop: 10,
+            marginTop: 0,
           }}>
           <TextInput
             style={styles.textInput}

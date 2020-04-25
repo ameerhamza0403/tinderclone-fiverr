@@ -17,6 +17,8 @@ import {
   
 } from 'react-native';
 
+import * as Statics from '../../helpers/statics';
+
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
@@ -174,7 +176,7 @@ const cards = [
   render() {
     return (
       <ScrollView>
-        <View style={styles.mainContainer}>
+        <View style={styles.Container}>
           <StatusBar
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
@@ -190,29 +192,29 @@ const cards = [
   <ScrollView>
   <View style={{  
   backgroundColor : "#fff",   
-  height: 350 ,  
-  width: '100%',  
-  borderRadius:10,  
-  borderWidth: 1,  
+  height: Statics.DEVICE_HEIGHT/2,  
+  width: Statics.DEVICE_WIDTH,  
+  borderRadius:size(10),  
+  borderWidth: size(1),  
   borderColor: '#fff',    
-  marginTop: 400,  
+  marginTop: size(400),  
   marginLeft: 0,   }}>
 
-<View style={{marginTop:20,marginLeft:20}}>
-  <Text style={{fontSize:20}}>
+<View style={{marginTop:size(20),marginLeft:size(20)}}>
+  <Text style={{fontSize:size(20)}}>
     Confirm you can play
   </Text>
 </View>
-<View style={{height:1,width:'100%',backgroundColor:'#ABABAB', marginTop:20}}/>
+<View style={{height:1,width:Statics.DEVICE_WIDTH,backgroundColor:'#ABABAB', marginTop:size(20)}}/>
 
-<View style={{marginTop:20,width:'90%',marginLeft:20}}>
-  <Text style={{fontSize:17}}>
+<View style={{marginTop:size(20),width:Statics.DEVICE_WIDTH/1.2,marginLeft:size(20)}}>
+  <Text style={{fontSize:size(17)}}>
     If you have any question , please chat first.
   </Text>
 </View>
 
-<View style={{width:'90%' , marginLeft:20,marginTop:20}}>
-  <Text style={{fontSize:17}}>
+<View style={{width:Statics.DEVICE_WIDTH/1.2 , marginLeft:size(20),marginTop:size(20)}}>
+  <Text style={{fontSize:size(17)}}>
     By clicking play , you are making a commitment to Us that you will turn up for this game on time.
   </Text>
 </View>
@@ -254,12 +256,12 @@ Chat
 
     
         </Modal>
-<View style={{marginLeft:28,width:'70%'}}>
+<View style={{marginLeft:size(32),width:Statics.DEVICE_WIDTH}}>
   
 <DeckSwiper
           dataSource={cards}
           renderItem={item =>
-            <Card style={{ elevation: 3,marginTop:0,width:350 }}>
+            <Card style={{ elevation: 0,marginTop:0,width:Statics.DEVICE_WIDTH/1.2,height:Statics.DEVICE_HEIGHT/1.5 }}>
               <CardItem>
                 <Left>
                   <Thumbnail source={item.image}  />
@@ -270,7 +272,7 @@ Chat
                 </Left>
               </CardItem>
               <CardItem cardBody>
-                <Image style={{ height: 400, flex: 1 }} source={item.image} />
+                <Image style={{ height: Statics.DEVICE_WIDTH/1.2, flex: 1 }} source={item.image} />
               </CardItem>
               <CardItem>
               
@@ -283,7 +285,7 @@ Chat
 </View>
         
 
-<View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:600}}>
+<View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginTop:size(550),}}>
 
         
 

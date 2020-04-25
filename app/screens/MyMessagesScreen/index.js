@@ -13,6 +13,8 @@ import {
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/FontAwesome5'
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
 //import Chat from '../ChatScreen/index'
 
 
@@ -30,23 +32,21 @@ export default class MessagesScreen extends Component {
       <ScrollView>
       <View style={styles.container}>
 
-      <View style={[styles.MainContainer,{width:'100%',
-        height:Dimensions.get('window').height}]}>
+     
           
-          
-          <View style={{flexDirection:'row',width:'100%',height:50}}>
-          <View style={{width:'80%',marginTop:0,height:40,marginLeft:3,marginBottom:0,flexDirection:'row',marginTop:10}}>
+          <View style={{flexDirection:'row',width:Statics.DEVICE_WIDTH,height:Statics.DEVICE_HEIGHT/15}}>
+          <View style={{flex:2,width:Statics.DEVICE_WIDTH/1.2,marginTop:0,height:Statics.DEVICE_HEIGHT/10,marginLeft:size(3),marginBottom:0,flexDirection:'row',marginTop:size(10)}}>
          <Icon name="search" size={28} color="#FF4A00FF"  style={{marginRight:3,marginTop:5}} />
           
 
            <TextInput
            placeholder='Search Matches'
            placeholderTextColor='#d1cfcf'
-           style={{width:'60%',height:40,color:'#ABABAB',}}/>
+           style={{width:Statics.DEVICE_WIDTH/2,height:Statics.DEVICE_HEIGHT/18,color:'#ABABAB',}}/>
          
-<View style={{marginLeft:110,marginTop:8}}>
+<View style={{marginLeft:size(110),marginTop:size(8)}}>
   
-<Text style={{ fontSize: 15, fontWeight: 'bold', color: '#d1cfcf' }}>
+<Text style={{ fontSize: size(15), fontWeight: 'bold', color: '#d1cfcf' }}>
   Search
 </Text>
 </View>
@@ -56,9 +56,9 @@ export default class MessagesScreen extends Component {
 
 
 </View>
-<View style={{marginTop:30,marginLeft:15,flexDirection:'row'}}>
+<View style={{marginTop:size(30),marginLeft:size(15),flexDirection:'row',width:Statics.DEVICE_WIDTH,height:Statics.DEVICE_HEIGHT/28}}>
 
-  <Text style={{color:'red',fontSize:16}}>
+  <Text style={{color:'red',fontSize:size(16)}}>
     New Matches 
   </Text>
   <Text style={{backgroundColor:'red',color:'white',width:20,height:20,textAlign:'center',borderRadius:30,marginLeft:3,marginTop:2}}>
@@ -70,9 +70,9 @@ export default class MessagesScreen extends Component {
 <View style={{marginTop:50,width:60,height:50,alignItems:'center',justifyContent:'center',marginLeft:30}}>
 
 
-    <Image style={{height:80,width:80,borderRadius:60}}
+    <Image style={{height:Statics.DEVICE_HEIGHT/9,width:Statics.DEVICE_WIDTH/5,borderRadius:size(60)}}
     source={{uri: "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508"}}/>
-    <Text style={{width:75,fontWeight:'bold',fontSize:14,}}>
+    <Text style={{width:Statics.DEVICE_WIDTH/5,fontWeight:'bold',fontSize:size(14),}}>
      Queen Bees
     </Text>
   </View>
@@ -80,8 +80,8 @@ export default class MessagesScreen extends Component {
 
 
 
-  <View style={{position:'relative',marginTop:50,marginLeft:18}}>
-  <Text style={{fontSize:17,color:'red',fontWeight:'bold'}}>
+  <View style={{position:'relative',marginTop:size(50),marginLeft:size(18)}}>
+  <Text style={{fontSize:size(17),color:'red',fontWeight:'bold'}}>
     Messages
   </Text>
 </View>
@@ -89,7 +89,7 @@ export default class MessagesScreen extends Component {
 </View>
 
         
-      </View>
+
       </ScrollView>
     );
   }

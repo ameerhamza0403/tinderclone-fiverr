@@ -1,5 +1,6 @@
 
-import { size } from '../../helpers/devices.android';
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
 export default {
 
 
@@ -11,60 +12,65 @@ export default {
   },
   //-----------------PROFILE PICTURE CONTAINER--------------//
   profile_pic_container: {
+width:Statics.DEVICE_WIDTH,
+height:Statics.DEVICE_HEIGHT/3
    
   
   },
   profile_pic_style: {
-    width: '100%',
-    height: 360,
+    width: Statics.DEVICE_WIDTH,
+    height: Statics.DEVICE_HEIGHT/2,
   
   },
   profile_name_style: {
-    fontSize: 20,
+    fontSize: size(20),
     fontWeight:'bold',
     color:'#595858',
 
-    marginTop:10,marginLeft:20
+    marginTop:size(10),marginLeft:size(20)
   },
   profile_age: {
-    fontSize: 35,
+    fontSize: size(35),
     fontWeight:'900',
     color:'#61615f',
 
-    marginTop:10,
-    marginLeft:10
+    marginTop:size(10),
+    marginLeft:size(10)
   },
   details:{ 
-    fontSize: 17,
-    marginLeft:10,
+    fontSize: size(17),
+    marginLeft:size(10),
 
     color:'#969695'
   },
   detailsIcon:{ 
 
-    marginLeft:25,
+    marginLeft:size(25),
     color:'#969695',
-    marginTop:3
+    marginTop:size(3)
   },
   share:{
-    marginTop:10,
-    fontSize:18,
+    marginTop:size(10),
+    fontSize:size(18),
 color:'red',
 fontWeight:'900'
   },
   shareL2:{
-    marginTop:5,
-    fontSize:16,
+    marginTop:size(5),
+    fontSize:size(16),
 color:'red'
   },
   //------------------NAVIGATION CONTAINER----------------//
   navigation_container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginHorizontal: 80,
-    marginVertical:40,
+    marginHorizontal: size(80),
+    marginVertical:size(40),
   },
   navigation_inner_container: {
+    
+    marginTop:size(100),
+    position:'relative',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius:30,
@@ -73,8 +79,8 @@ color:'red'
   
   button_container: {
     alignItems: 'center',
-    padding: 15,
-    borderRadius: 30,
+    padding: size(15),
+    borderRadius: size(30),
 
   },
   button_style: {
@@ -91,7 +97,7 @@ color:'red'
   },
 
   tinder_plus_button_container: {
-    width: '100%', 
+    width: Statics.DEVICE_WIDTH, 
     justifyContent: 'center', 
     alignItems: 'center',
 
@@ -110,7 +116,7 @@ color:'red'
   },
   tinder_button_text_style: {
     color: '#ABABAB',
-    fontSize: 20,
+    fontSize: size(20),
     fontWeight: '600',
   },
 }

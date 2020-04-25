@@ -7,7 +7,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import { size } from '../../helpers/devices.android';
+import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 import Setting from '../../../assests/images/setting.png';
 

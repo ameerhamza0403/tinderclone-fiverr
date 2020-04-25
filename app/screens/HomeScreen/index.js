@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View,StatusBar} from 'react-native';  
 import {createAppContainer} from 'react-navigation';   
 import Icon from 'react-native-vector-icons/Ionicons';  
+
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
   
 import AppNavigator from '../TabsRoutes/routes';  
 const AppIndex = createAppContainer(AppNavigator)  
@@ -9,7 +12,7 @@ const AppIndex = createAppContainer(AppNavigator)
 export default class App extends Component{  
     render(){  
         return(  
-            <View style={{flex:1}} >  
+            <View style={{width:Statics.DEVICE_WIDTH,height:Statics.DEVICE_HEIGHT}} >  
                 <StatusBar  
                     backgroundColor='#FF4A00FF'  
                     barStyle='light-content'  
@@ -29,7 +32,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',  
         justifyContent: 'space-between',  
         backgroundColor: 'red',  
-        paddingHorizontal: 18,  
-        paddingTop: 5,  
+        paddingHorizontal: size(18),  
+        paddingTop: size(5),  
     }  
 });

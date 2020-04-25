@@ -19,6 +19,9 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../HomeScreen/index'
 
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
+
 
 const options = {
   title:"Signing in .....",
@@ -125,12 +128,12 @@ Alert.alert('Invalid Email / Password , Please Try Again')
             barStyle="light-content"></StatusBar>
           <View style={styles.mainContainer}>
 <View
-style={{flexDirection:'column',width:'100%',backgroundColor:'#FF4A00FF', height:Dimensions.get('window').height,flex: 1,resizeMode: 'stretch'}}
+style={{flexDirection:'column',width:Statics.DEVICE_WIDTH,backgroundColor:'#FF4A00FF', height:Statics.DEVICE_HEIGHT,flex: 1,resizeMode: 'stretch'}}
 
 
 >
 
-    <View style={{flexDirection:'row' ,alignItems:'center',alignSelf:'center',justifyContent:'center',flex:3}}>
+    <View style={{flexDirection:'row' ,alignItems:'center',alignSelf:'center',justifyContent:'center',flex:1,marginTop:size(30)}}>
         <Image
         style={styles.fireImage}
         source={require ('../../../assests/images/fireicon.png')}
@@ -143,14 +146,15 @@ style={{flexDirection:'column',width:'100%',backgroundColor:'#FF4A00FF', height:
 
     </View>
 
-    <View style={{ width:'80%',alignSelf:'center',alignContent:'center',alignItems:'center',justifyContent:'center',height:40,marginTop:0}}>
+    <View style={{ flex:2,width:Statics.DEVICE_WIDTH/1.2,marginLeft:size(40),alignSelf:'center',alignContent:'center',alignItems:'center',justifyContent:'center',height:40,marginTop:0}}>
 
         <Text style={styles.bottomText}>
 
             By tapping Log in , you agree with our Terms of Service and Privacy Policy
         </Text>
     </View>
-    <View>
+
+    <View style={{flex:4,width:Statics.DEVICE_WIDTH,}}>
     <View style={{width:'100%',flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
 <TextInput
                   clearButtonMode="always" 
