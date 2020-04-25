@@ -70,7 +70,7 @@ export default class MessagesScreen extends Component {
 <View style={{marginTop:50,width:60,height:50,alignItems:'center',justifyContent:'center',marginLeft:30}}>
 
 
-    <Image style={{height:Statics.DEVICE_HEIGHT/8,width:Statics.DEVICE_WIDTH/5,borderRadius:size(60)}}
+    <Image style={{height:Statics.DEVICE_HEIGHT/9,width:Statics.DEVICE_WIDTH/5,borderRadius:size(60)}}
     source={{uri: "https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508"}}/>
     <Text style={{width:Statics.DEVICE_WIDTH/5,fontWeight:'bold',fontSize:size(14),}}>
      Queen Bees
