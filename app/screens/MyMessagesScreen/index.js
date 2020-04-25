@@ -98,15 +98,15 @@ export default class MessagesScreen extends Component {
 
 
 
-MessagesScreen.navigationOptions={  
-  tabBarIcon:({tintColor, focused})=>(  
-      <Icon  
-          name={focused ? 'rocketchat' : 'rocketchat'}  
-          color={tintColor}  
-          size={20}  
-      />  
-  )  
-}  
+// MessagesScreen.navigationOptions={  
+//   tabBarIcon:({tintColor, focused})=>(  
+//       <Icon  
+//           name={focused ? 'rocketchat' : 'rocketchat'}  
+//           color={tintColor}  
+//           size={20}  
+//       />  
+//   )  
+// }  
 
 
 // const myStack = createStackNavigator({

@@ -153,7 +153,7 @@ const cards = [
   },
 
   ];
- class SwipeProfile extends React.Component {
+class SwipeProfile extends React.Component {
    constructor(props) {
 
     super(props);
@@ -400,12 +400,12 @@ const stack = createStackNavigator({
 export default stack;
 
 
-SwipeProfile.navigationOptions={  
-  tabBarIcon:({tintColor, focused})=>(  
-      <Icon  
-          name={focused ? 'whatshot' : 'whatshot'}  
-          color={tintColor}  
-          size={25}  
-      />  
-  )  
-}  
+// SwipeProfile.navigationOptions={  
+//   tabBarIcon:({tintColor, focused})=>(  
+//       <Icon  
+//           name={focused ? 'whatshot' : 'whatshot'}  
+//           color={tintColor}  
+//           size={25}  
+//       />  
+//   )  
+// }  

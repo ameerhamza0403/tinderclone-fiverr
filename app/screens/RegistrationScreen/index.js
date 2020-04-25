@@ -13,7 +13,7 @@ import { StyleSheet,
     TouchableHighlight} from 'react-native';
     import * as firebase from "firebase";
     import DialogProgress from 'react-native-dialog-progress'
-    import LoginScreen from '../LoginScreen/index'
+    import HomeScreen from '../HomeScreen/index'
 
 
 import styles from './style'
@@ -22,6 +22,7 @@ import {createStackNavigator} from 'react-navigation-stack';
 import DatePicker from 'react-native-datepicker';
 import EditProfileInfo from '../MyProfile/index'
 import { Alert } from 'react-native';
+
 
 import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
@@ -50,7 +51,7 @@ textInput_Email:'',
 const email=this.state.textInput_Email;
 if (email == '' || reg.test(email)=== false)
 {
-  Alert.alert('Enter Email')
+  Alert.alert(' Please enter email in proper format!')
 }
 else {
 try {
@@ -131,9 +132,9 @@ textInput_Password:'',
 
     saveData= async() =>{
 const password=this.state.textInput_Password;
-if (password == '')
+if (password == '' || password.length<6)
 {
-  Alert.alert('Enter Password')
+  Alert.alert('Please enter password more than 6 characters!')
 }
 else {
 try {
@@ -170,6 +171,7 @@ try {
           <TextInput
             style={styles.textInput}
             placeholder="Password"
+            secureTextEntry={true}  
             onChangeText={TextInputValue =>
               this.setState({textInput_Password: TextInputValue})
             }
@@ -215,7 +217,7 @@ textInput_Name:'',
       const name=this.state.textInput_Name;
       if (name == '')
       {
-        Alert.alert('Enter Name')
+        Alert.alert('Please enter full name!')
       }
       else {
       try {
@@ -295,7 +297,7 @@ input_birthday:'',
       const birthday=this.state.input_birthday;
       if (birthday == '')
       {
-        Alert.alert('Enter Birthday')
+        Alert.alert('Please pick your Date of Birthday!')
       }
       else {
       try {
@@ -693,7 +695,7 @@ class PhoneComponent extends React.Component {
     const phone=this.state.textInput_MobileNo;
     if (phone == '')
     {
-      Alert.alert('Enter Phone')
+      Alert.alert('Please enter phone number with country code! ')
     }
     else {
     try {
@@ -735,7 +737,7 @@ class PhoneComponent extends React.Component {
               }).then((data)=>{
                 DialogProgress.hide();
                  Alert.alert("Registration SuccessFull, You Can Now Login!")
-                 this.props.navigation.navigate('Login')
+                //  this.props.navigation.navigate('Home')
               }).catch((error)=>{
       
                 DialogProgress.hide();
@@ -903,12 +905,20 @@ Interest: {
       },
 
           },
-                EditProfile: {
+                
+          
+          EditProfile: {
         screen: EditProfileInfo,
         navigationOptions: {
           header: null,
         },
-  },
+      },
+  // Home:{
+  //   screen:HomeScreen,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // }
 
 
 

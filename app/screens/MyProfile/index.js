@@ -259,12 +259,12 @@ export default class Profile extends Component {
 
 
 
-Profile.navigationOptions={  
-  tabBarIcon:({tintColor, focused})=>(  
-      <Icon  
-          name={focused ? 'account-circle' : 'account-circle'}  
-          color={tintColor}  
-          size={25}  
-      />  
-  )  
-}  
+// Profile.navigationOptions={  
+//   tabBarIcon:({tintColor, focused})=>(  
+//       <Icon  
+//           name={focused ? 'account-circle' : 'account-circle'}  
+//           color={tintColor}  
+//           size={25}  
+//       />  
+//   )  
+// }  

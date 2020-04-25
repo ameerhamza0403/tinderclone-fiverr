@@ -173,6 +173,7 @@ style={{flexDirection:'column',width:Statics.DEVICE_WIDTH,backgroundColor:'#FF4A
 <TextInput
                   clearButtonMode="always" 
                     placeholder="Password"
+                    secureTextEntry={true}  
                     placeholderTextColor = "#fff"
                     style={styles.textInput}
                     onChangeText={TextInputValue =>

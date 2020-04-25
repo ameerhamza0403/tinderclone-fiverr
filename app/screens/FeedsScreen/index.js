@@ -34,13 +34,13 @@ export default class MatchScreen extends React.Component {
         style={styles.profile_pic_style} />
 
 
-<View style={{position: 'absolute', left: 60, top: 300,height:200,backgroundColor:'rgb(0,0,0.5)',width:300,height:100,alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+<View style={{position: 'absolute', left: 0, top: 220,height:200,backgroundColor:'rgba(52, 52, 52, 0.8)',width:'100%',height:80,alignContent:'center',justifyContent:'center',alignItems:'center'}}>
                   <Text style={{color:'#FF4A00FF',fontSize:20}}>
 Its a 
 
                   </Text>
 
-                  <Text style={{fontSize:30,color:'#FF4A00FF',fontWeight:'bold'}}>
+                  <Text style={{fontSize:35,color:'#FF4A00FF',fontWeight:'bold'}}>
 Match
                   </Text>
                 </View>
