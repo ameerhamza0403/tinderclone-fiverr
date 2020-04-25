@@ -1,76 +1,77 @@
+
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
+
 export default {
     mainContainer: {
      
-      
+      width:Statics.DEVICE_WIDTH,
+      height:Statics.DEVICE_HEIGHT,
         flex: 1,
       
       },
       textStyle :{
 
-fontSize:27
+fontSize:size(27)
       },
       roundBtnTrans:{
 
         borderColor:'black',
-        borderRadius:30,
-        width:'85%',
-        marginTop:20,
-        height:40,
+        borderRadius:size(30),
+        width:Statics.DEVICE_WIDTH/1.2,
+        marginTop:size(20),
+        height:Statics.DEVICE_HEIGHT/13,
        
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        borderBottomWidth:1,
-        borderTopWidth:1,
-        borderLeftWidth:1,
-        borderRightWidth:1
+        borderBottomWidth:size(1),
+        borderTopWidth:size(1),
+        borderLeftWidth:size(1),
+        borderRightWidth:size(1)
       },
       roundBtn:{
 
         borderColor:'white',
-        borderRadius:30,
-        width:'85%',
-        marginTop:20,
-        height:50,
+        borderRadius:size(30),
+        width:Statics.DEVICE_WIDTH/1.2,
+        marginTop:size(20),
+        height:Statics.DEVICE_HEIGHT/14,
         backgroundColor:'#FF4A00FF',
         flexDirection:'row',
         alignItems:'center',
         justifyContent:'center',
-        borderBottomWidth:1,
-        borderTopWidth:1,
-        borderLeftWidth:1,
-        borderRightWidth:1
+        borderBottomWidth:size(1),
+        borderTopWidth:size(1),
+        borderLeftWidth:size(1),
+        borderRightWidth:size(1)
       },
       textInput: {
         alignSelf: 'stretch',
        
-        margin:5,
-      fontSize:17,
+        margin:0,
+      fontSize:size(17),
     
         borderBottomColor: '#000', // Add this to specify bottom border color
-        borderBottomWidth: 1,
+        borderBottomWidth: size(1),
             // Add this to specify bottom border thickness
     },
       BottomContainer: {
-       width:20,
-       height:20,
+       width:Statics.DEVICE_WIDTH/2,
+       height:Statics.DEVICE_HEIGHT/5,
        
        backgroundColor: '#FF655B',
         alignItems: 'center',
       },
-      logo: {
-        
-        width: 150,
-        height: 200,
-      },
+   
       textCon: {
         marginTop:0
       },
       text: {
         color: 'white',
-        fontSize: 35,
+        fontSize: size(35),
         fontWeight: 'bold',
-        marginBottom: 150,
+        marginBottom:size(20),
       },
     
     }
