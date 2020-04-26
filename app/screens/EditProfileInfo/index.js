@@ -22,7 +22,7 @@ import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 import styles from './style';
 
 import {Card} from 'native-base';
-import {Slider, Block} from 'galio-framework';
+import Slider from '@react-native-community/slider';
 
 
 let sliderLevels = [
@@ -563,7 +563,9 @@ export default class EditProfileInfo extends React.Component {
                 <Slider
                   maximumValue={5}
                   minimumValue={1}
-                  activeColor={'#FF4A00FF'}
+                  activeColor={'#FB6C57'}
+                  thumbImage={require('../../../assests/images/dance.png')}
+                  thumbStyle={{height:10,width:10}}
                   step={1}
                   value={this.state.sliderValue}
                   onValueChange={value => {

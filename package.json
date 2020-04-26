@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.7",
+    "@react-native-community/slider": "^2.0.9",
     "@react-native-community/viewpager": "^3.3.0",
     "firebase": "^7.13.2",
     "galio-framework": "^0.6.3",

@@ -12,6 +12,8 @@ import * as Statics from '../../helpers/statics';
 import Setting from '../../../assests/images/setting.png';
 
 import Edit from '../../../assests/images/edit.png';
+
+import Camera from '../../../assests/images/camera.png';
 import ProfileSwiper from '../MyProfileScreen/profile_swiper.js';
 
 
@@ -24,8 +26,8 @@ export default class Profile extends Component {
     return (
       <View style={styles.profile_pic_container}>
         <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4'}} style={styles.profile_pic_style} />
-        <Text style={styles.profile_name_style}>Salsa/Bachata</Text>
-        <Text style={styles.description}>A time to dance studio </Text>
+        <Text style={styles.profile_name_style}>Ebigs </Text>
+        <Text style={styles.description}>Salsa dance instructor at Studio Xyz ,  </Text>
       </View>
     )
   }
@@ -52,7 +54,7 @@ export default class Profile extends Component {
             style={styles.button_container}
             onPress={() => this.pushToScreen('Edit')}
           >
-            <Image source={Edit} style={styles.button_style} /> 
+            <Image source={Camera} style={styles.button} /> 
           </TouchableOpacity>
           <Text style={styles.button_text_style}>
           Media
@@ -148,9 +150,16 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     backgroundColor: '#f4f6fb',
   },
+
+  button: {
+    width: size(35),
+    height: size(35),
+    resizeMode: 'contain',
+
+  },
   button_style: {
-    width: size(25),
-    height: size(25),
+    width: size(30),
+    height: size(30),
     resizeMode: 'contain',
     tintColor: '#d4d6db',
   },
