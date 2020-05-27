@@ -148,7 +148,7 @@ export default class Profile extends Component {
         style={styles.profile_pic_style} />
 
 <Image source={require('../../../assests/images/download.png')} 
-        style={{position:'absolute',width:Statics.DEVICE_WIDTH/6,height:Statics.DEVICE_HEIGHT/10,left: size(320), top: size(330)}} />
+        style={{position:'absolute',width:Statics.DEVICE_WIDTH/6,height:Statics.DEVICE_HEIGHT/11,left: size(320), top: size(330)}} />
 
 
         <View style={{flexDirection:'row'}}>

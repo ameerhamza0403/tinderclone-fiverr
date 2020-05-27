@@ -6,7 +6,7 @@ export default {
   viewContainer: {
     marginTop: 5,
     width: '100%',
-    height: 80,
+  
     padding: 2,
   },
   input: {
@@ -177,4 +177,8 @@ export default {
     fontWeight: 'bold',
     marginBottom: 150,
   },
+  des:{
+    color:'#ABABAB',
+    marginLeft:5
+  }
 };
