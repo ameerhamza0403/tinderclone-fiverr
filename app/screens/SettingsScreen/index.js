@@ -27,7 +27,7 @@ import Slider from '@react-native-community/slider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 
-export default class EditProfileInfo extends React.Component {
+export default class SettingsScreen extends React.Component {
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
     //onValueChange of the switch this function will be called

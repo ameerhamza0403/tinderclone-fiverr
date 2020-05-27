@@ -9,7 +9,7 @@ import * as Statics from '../../helpers/statics';
 import AppNavigator from '../TabsRoutes/routes';  
 const AppIndex = createAppContainer(AppNavigator)  
   
-export default class App extends Component{  
+export default class HomeScreen extends Component{  
     render(){  
         return(  
             <View style={{width:Statics.DEVICE_WIDTH,height:Statics.DEVICE_HEIGHT}} >  

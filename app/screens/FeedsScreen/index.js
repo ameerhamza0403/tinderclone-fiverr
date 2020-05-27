@@ -17,7 +17,7 @@ import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
 import MessagesScreen from '../MyMessagesScreen/index'
 // onPress={this.props.navigation.navigate('Messages')}
-export default class MatchScreen extends React.Component {
+export default class FeedsScreen extends React.Component {
 
 
 

@@ -19,7 +19,7 @@ import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
 import * as firebase from 'firebase';
 
-export default class Profile extends Component {
+export default class MyProfile extends Component {
   constructor() {
     super();
 
