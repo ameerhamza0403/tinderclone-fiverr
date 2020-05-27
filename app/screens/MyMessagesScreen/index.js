@@ -23,7 +23,7 @@ import * as Statics from '../../helpers/statics';
 
 import EditProfile from '../EditProfileInfo/index'
 import styles from './styles'
-export default class MessagesScreen extends Component {
+export default class MyMessagesScreen extends Component {
 
 
 
