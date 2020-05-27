@@ -7,7 +7,7 @@ import { StyleSheet,
     StatusBar,
     ScrollView,
     Dimensions,
-    TouchableHighlight,
+    TouchableOpacity,
     TextInput,
     Alert
   } from 'react-native';
@@ -185,7 +185,7 @@ style={{flexDirection:'column',width:Statics.DEVICE_WIDTH,backgroundColor:'#FF4A
 <View style={{alignItems:'center',justifyContent:'center'}}> 
 <View   style={{alignItems:'center',justifyContent:'center',borderRadius:10,width:'50%',marginTop:40,height:50,flexDirection:'row',backgroundColor:'#fff',alignItems:'center',justifyContent:'center'}} >
           
-<TouchableHighlight  onPress={() =>   this._ValidateFunction()}
+<TouchableOpacity  onPress={() =>   this._ValidateFunction()}
 
 
 style={{alignItems:'center', width:'100%' }}  >
@@ -198,7 +198,7 @@ Sign-in
            
 
   
-</TouchableHighlight>
+</TouchableOpacity>
 </View>
 </View>
 
@@ -208,21 +208,21 @@ Sign-in
         
 <View   style={styles.roundBtn} >
           
-          <TouchableHighlight style={{alignItems:'center', }}>
+          <TouchableOpacity style={{alignItems:'center', }}>
             <View >
             <Text style={{color:'white' , fontSize:17,}}>
         Login with Facebook
           </Text>
             </View>
       
-          </TouchableHighlight>
+          </TouchableOpacity>
                         
                        </View>
 
 
                        <View   style={styles.roundBtn} >
           
-          <TouchableHighlight style={{alignItems:'center', }}>
+          <TouchableOpacity style={{alignItems:'center', }}>
             <View >
             <Text style={{color:'white' , fontSize:16,}}>
         Login with Phone Number
@@ -232,7 +232,7 @@ Sign-in
                      
           
             
-          </TouchableHighlight>
+          </TouchableOpacity>
                         
                        </View>
 
@@ -240,13 +240,13 @@ Sign-in
     </View>
     
 <View style={{flex:2,marginTop:50,alignItems:'center'}}>
-  <TouchableHighlight onPress={()=>  this.props.navigation.navigate('Register')}>
+  <TouchableOpacity onPress={()=>  this.props.navigation.navigate('Register')}>
   <Text style={styles.registerText}>
 
 Trouble Logging in ? Want to Register?
 </Text>
 
-  </TouchableHighlight>
+  </TouchableOpacity>
  
 </View>
                             

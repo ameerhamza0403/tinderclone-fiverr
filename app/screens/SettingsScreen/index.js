@@ -11,9 +11,11 @@ import {
   Button,
   TextInput,
   Switch,
-  TouchableHighlight,
+  TouchableOpacity,
   SafeAreaView,
   Modal,
+  Share,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
@@ -24,6 +26,7 @@ import {Card} from 'native-base';
 import Slider from '@react-native-community/slider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
+
 export default class EditProfileInfo extends React.Component {
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
@@ -32,6 +35,15 @@ export default class EditProfileInfo extends React.Component {
     //state changes according to switch
     //which will result in re-render the text
   };
+  
+  ShareMessage = () => {
+    Share.share({
+      message: 'Test App Link',
+    })
+      .then(result => console.log(result))
+      .catch(errorMsg => console.log(errorMsg));
+  };
+
 
   render() {
     return (
@@ -92,7 +104,7 @@ export default class EditProfileInfo extends React.Component {
                     <Text
                       style={{
                         fontSize: 20,
-                        fontWeight: 'bold',
+                       
                       }}>
                       Help and Support
                     </Text>
@@ -136,6 +148,25 @@ export default class EditProfileInfo extends React.Component {
                 </View>
               </View>
 
+              <TouchableOpacity onPress={()=> this.ShareMessage()}>
+              <View style={{flex: 1}}>
+              
+            
+              <View
+              style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                    }}>
+                   Share Hobby Finder
+                  </Text>
+                </View>
+             
+          
+           
+              </View>
+              </TouchableOpacity>
               <View style={{flex: 1}}>
                 <View
                   style={styles.itemsContainer}>
@@ -190,13 +221,13 @@ export default class EditProfileInfo extends React.Component {
 
           <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
             <View style={styles.roundBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{alignItems: 'center'}}
-                onPress={() => navigation.navigate('School')}>
+              >
                 <View>
                   <Text style={{color: '#000', fontSize: 16}}>Logout</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
