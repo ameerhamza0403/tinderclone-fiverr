@@ -13,7 +13,7 @@ import {
   Button,
   TextInput,
   Switch,
-  TouchableHighlight,
+  TouchableOpacity,
   SafeAreaView,
   Modal
   
@@ -241,7 +241,7 @@ class SwipeProfile extends React.Component {
 
 <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',flex:1}}>
 
-<TouchableHighlight 
+<TouchableOpacity 
 
 
 onPress={() =>  this.gotoMessages()}
@@ -253,16 +253,16 @@ onPress={() =>  this.gotoMessages()}
 Accept
     </Text>
   </View>
-</TouchableHighlight>
+</TouchableOpacity>
  {/* onPress={() => navigation.navigate('ChatScreen')} */}
 
-<TouchableHighlight  >
+<TouchableOpacity  >
   <View style={{alignItems:'center',justifyContent:'center',backgroundColor:'#34b6c7', height:55,width:140,marginLeft:20,borderRadius:10}}>
     <Text style={{color:'#fff',fontSize:16}}>
 Chat
     </Text>
   </View>
-</TouchableHighlight>
+</TouchableOpacity>
    
 </View>
 
@@ -344,7 +344,7 @@ Chat
           </View>
         
         </View>
-        <TouchableHighlight >
+        <TouchableOpacity >
 
         <View style={styles.slide}>
           <View style={styles.title_container}>
@@ -353,7 +353,7 @@ Chat
           </View>
         
         </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
  
 </View>
   

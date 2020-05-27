@@ -10,7 +10,7 @@ import { StyleSheet,
     Dimensions,
     Button,
     TextInput,
-    TouchableHighlight} from 'react-native';
+    TouchableOpacity} from 'react-native';
     import * as firebase from "firebase";
     import DialogProgress from 'react-native-dialog-progress'
     import HomeScreen from '../HomeScreen/index'
@@ -96,13 +96,13 @@ try {
         </View>
         <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
-            <TouchableHighlight
+            <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() =>this.saveData()}>
               <View>
                 <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -180,13 +180,13 @@ try {
         </View>
         <View style={{alignItems: 'center', marginTop: size(0), flex: 1}}>
           <View style={styles.roundBtn}>
-            <TouchableHighlight
+            <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() =>this.saveData()}>
               <View>
                 <Text style={{color: 'white', fontSize:size(16)}}>Continue</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -236,8 +236,8 @@ textInput_Name:'',
     <ScrollView>
       <View style={styles.mainContainer}>
       <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
-          <Text style={styles.textStyle}>My first</Text>
-          <Text style={styles.textStyle}>name is</Text>
+          <Text style={styles.textStyle}>My Full</Text>
+          <Text style={styles.textStyle}>Name is</Text>
         </View>
         <View
           style={{
@@ -259,13 +259,13 @@ textInput_Name:'',
         </View>
         <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
-            <TouchableHighlight
+            <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => this.saveData()}>
               <View>
                 <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -354,13 +354,13 @@ input_birthday:'',
         </View>
         <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
           <View style={styles.roundBtn}>
-            <TouchableHighlight
+            <TouchableOpacity
               style={{alignItems: 'center'}}  //this.props.navigation.navigate('Gender')}
               onPress={() =>this.saveData()}>
               <View>
                 <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -431,24 +431,24 @@ input_gender:'',
             marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight 
+            <TouchableOpacity 
               onPress={() => this.saveFeMale()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Woman</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight 
+            <TouchableOpacity 
             onPress={() => this.saveMale()}
             
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -537,35 +537,35 @@ input_interest:'',
             marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight 
+            <TouchableOpacity 
             
             onPress={() => this.womanInterested()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Woman</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight 
+            <TouchableOpacity 
             
             onPress={() => this.manInterested()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight
+            <TouchableOpacity
               onPress={() => this.mixInterested()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Both</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -639,24 +639,24 @@ textInput_School:'',
             marginTop: 0,
           }}>
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight
+            <TouchableOpacity
             
             onPress={() => this.student()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Student</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
 
           <View style={styles.roundBtnTrans}>
-            <TouchableHighlight 
+            <TouchableOpacity 
              onPress={() => this.employee()}
             style={{alignItems: 'center'}}>
               <View>
                 <Text style={{color: 'black', fontSize: size(17)}}>Employed</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
         {/* <View
@@ -825,13 +825,13 @@ config : {
         </View>
         <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
           <View style={styles.roundBtn}>
-            <TouchableHighlight
+            <TouchableOpacity
               style={{alignItems: 'center'}}
               onPress={() => this.saveData()}>
               <View>
                 <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
       </View>

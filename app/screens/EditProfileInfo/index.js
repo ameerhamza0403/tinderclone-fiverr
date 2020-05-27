@@ -11,7 +11,7 @@ import {
   Button,
   TextInput,
   Switch,
-  TouchableHighlight,
+  TouchableOpacity,
   SafeAreaView,
   Modal
   
@@ -393,7 +393,7 @@ export default class EditProfileInfo extends React.Component {
 
             <View style={{alignItems: 'center', marginTop: 20, flex: 2}}>
               <View style={styles.roundBtn}>
-                <TouchableHighlight
+                <TouchableOpacity
                   style={{alignItems: 'center'}}
                   onPress={() => { this.ShowModalFunction(true) }} >
                   <View>
@@ -401,7 +401,7 @@ export default class EditProfileInfo extends React.Component {
                       Add Media
                     </Text>
                   </View>
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
             </View>
             <View style={styles.viewContainer}>
@@ -700,41 +700,41 @@ export default class EditProfileInfo extends React.Component {
 
 
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
               
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 underlayColor={'black'}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Club</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}  >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
 </View>
 
@@ -743,41 +743,41 @@ export default class EditProfileInfo extends React.Component {
 
 
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
               
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 underlayColor={'black'}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Club</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}  >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
 </View>
 
@@ -786,41 +786,41 @@ export default class EditProfileInfo extends React.Component {
 
 
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
               
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 underlayColor={'black'}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Club</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}
                >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={styles.danceBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{}}  >
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
 </View>
 
@@ -1053,13 +1053,13 @@ export default class EditProfileInfo extends React.Component {
 
    <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
             <View style={styles.roundBtn}>
-              <TouchableHighlight
+              <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => navigation.navigate('School')}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Save</Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
