@@ -6,8 +6,7 @@ export default {
   viewContainer: {
     marginTop: 5,
     width: '100%',
-  
-    padding: 2,
+  marginLeft:'3%',   
     flex:6
   },
   itemsContainer:{
@@ -16,6 +15,18 @@ export default {
     marginBottom: 5,
     ali: 'center',
     justifyContent: 'center',
+  },
+  danceBtn: {
+    marginLeft:20,
+    borderColor: 'white',
+    borderRadius: 15,
+    width: '30%',
+    marginTop: 20,
+    height: 45,
+    backgroundColor: '#FF4A00FF',
+    alignItems: 'center',
+    justifyContent: 'center',
+
   },
   roundBtn: {
     borderColor: 'white',

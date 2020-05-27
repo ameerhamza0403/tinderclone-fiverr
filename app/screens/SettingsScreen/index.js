@@ -52,6 +52,56 @@ export default class EditProfileInfo extends React.Component {
           <StatusBar backgroundColor="#FF4A00FF" barStyle="light-content" />
 
           <View style={styles.viewContainer}>
+
+          <View style={{flex: 1}}>
+                <View
+                  style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: '#FF4A00FF',
+                    }}>
+                  Notifications
+                  </Text>
+                </View>
+
+                <View
+                style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: '#ABABAB',
+                    }}>
+                  Email
+                  </Text>
+                </View>
+
+                <View
+               style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: '#ABABAB',
+                    }}>
+                   Push Notifications
+                  </Text>
+                </View>
+
+                <View
+                style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: '#ABABAB',
+                    }}>
+                    Team Tinder
+                  </Text>
+                </View>
+              </View>
             <View
               style={{
                 flex: 6,
@@ -62,6 +112,59 @@ export default class EditProfileInfo extends React.Component {
                 width: '90%',
                 marginLeft: '1%',
               }}>
+
+
+<View style={{flex: 1}}>
+  <View style={{flexDirection:'row'}}>
+  <View 
+               style={[styles.itemsContainer,{flex:6}]}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                    }}>
+                    Show Distance in
+                  </Text>
+                </View>
+
+                <View style={{ marginTop: 30}}>
+                
+
+                <View style={{flex: 3}}>
+                  
+               <Text style={{fontSize:22,color:'#FF4A00FF'}}>
+                 Miles
+               </Text>
+                </View>
+              </View>
+  </View>
+
+  <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center'}}>
+  <View style={styles.danceBtn}>
+              <TouchableOpacity
+                style={{}}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Miles</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <View style={styles.danceBtn}>
+              <TouchableOpacity
+                style={{}}
+               >
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Kms</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+  </View>
+            
+                
+             
+              </View>
               <View style={{flex: 1}}>
                 <View
                style={styles.itemsContainer}>
@@ -69,6 +172,7 @@ export default class EditProfileInfo extends React.Component {
                     style={{
                       fontSize: 20,
                       fontWeight: 'bold',
+                      color:''
                     }}>
                     Payment Account
                   </Text>
