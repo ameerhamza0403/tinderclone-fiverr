@@ -51,5 +51,7 @@ export default {
     color: '#363636',
  
     fontSize: size(16),
-  }
+  },
+
+  
     }
