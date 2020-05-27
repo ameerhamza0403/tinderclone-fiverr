@@ -191,6 +191,11 @@ export default class Profile extends Component {
                   </View>
                 </TouchableOpacity>
 
+
+
+
+
+
                 <View
                   style={{
                     height: 1,

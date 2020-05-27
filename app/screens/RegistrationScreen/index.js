@@ -236,8 +236,8 @@ textInput_Name:'',
     <ScrollView>
       <View style={styles.mainContainer}>
       <View style={{marginTop:size(50),marginLeft:size(50), flex: 1}}>
-          <Text style={styles.textStyle}>My first</Text>
-          <Text style={styles.textStyle}>name is</Text>
+          <Text style={styles.textStyle}>My Full</Text>
+          <Text style={styles.textStyle}>Name is</Text>
         </View>
         <View
           style={{
