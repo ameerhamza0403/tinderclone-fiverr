@@ -32,17 +32,14 @@ export default class SplashScreen extends Component {
           <StatusBar
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
-          <View style={{marginTop:0,width:150 ,height:200}}>
-            <Image  style={styles.logo} source={require('../../../assests/images/fireicon.png')}/>
+          <View style={{flex:4,alignItems:'center',justifyContent:'center'}}>
+            <Image  style={styles.logo} source={require('../../../assests/images/logo.png')}/>
           </View>
   
-          <View style={styles.textCon}>
-            <Text style={styles.text}> HobbyFinder  </Text>
-          </View>
-  
+          
       
             <View style={styles.BottomContainer}>
-             <SkypeIndicator color="white"/>
+             <SkypeIndicator color="#FF4A00FF"/>
             </View>
           
         </View>

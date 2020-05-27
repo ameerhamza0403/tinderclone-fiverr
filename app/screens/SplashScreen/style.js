@@ -2,30 +2,33 @@ import { Dimensions } from "react-native";
 
 export default {
     SplashContaner: {
-      width:Dimensions.get('window').width,
+      width:'100%',
       height:Dimensions.get('window').height,
+  
+        flex: 1,
+        backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
-        flex: 1,
-        backgroundColor: '#FF4A00FF',
       },
       BottomContainer: {
+        flex:1,
        width:20,
        height:20,
        
-       backgroundColor: '#FF4A00FF',
-        alignItems: 'center',
+       backgroundColor: '#fff',
+
+    
       },
       logo: {
         
-        width: 150,
-        height: 200,
+        width: 240,
+        height: 180,
       },
       textCon: {
         marginTop:0
       },
       text: {
-        color: 'white',
+        color: '#FF4A00FF',
         fontSize: 35,
         fontWeight: 'bold',
         marginBottom: 150,

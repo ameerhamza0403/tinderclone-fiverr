@@ -8,6 +8,7 @@ export default {
     width: '100%',
   
     padding: 2,
+    flex:6
   },
   input: {
     width: 300,
@@ -102,7 +103,7 @@ export default {
     width: '100%',
     marginTop: 20,
     height: 50,
-    backgroundColor: '#FF4A00FF',
+    backgroundColor: '#FFF',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
