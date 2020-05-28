@@ -43,6 +43,15 @@ export default {
     borderLeftWidth: 1,
     borderRightWidth: 1,
   },
+  heading: {
+    fontSize: 18,
+    color: '#3F3F3F',
+    marginLeft: 7,
+  },
+  des:{
+    color:'#ABABAB',
+    marginLeft:5
+  }
 
   
 };

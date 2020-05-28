@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "15088750172",
+    "firebase_url": "https://ebigs-tinder.firebaseio.com",
+    "project_id": "ebigs-tinder",
+    "storage_bucket": "ebigs-tinder.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15088750172:android:f933a979318a4f7ac6e099",
+        "android_client_info": {
+          "package_name": "com.hobbyfinder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "15088750172-135jcq2luhfn1jl86slfnjrs4hcer9da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjeX8q4DEr93HLzRXcmSmlUYhbuZAgXjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15088750172-135jcq2luhfn1jl86slfnjrs4hcer9da.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

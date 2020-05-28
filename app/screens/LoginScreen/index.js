@@ -13,13 +13,15 @@ import { StyleSheet,
   } from 'react-native';
   import DialogProgress from 'react-native-dialog-progress'
 import styles from './style'
-import * as firebase from "firebase";
+
 import RegisterScreen from '../RegistrationScreen/index'
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import HomeScreen from '../HomeScreen/index'
 import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
 
 const options = {
   title:"Signing in .....",
@@ -36,24 +38,12 @@ const options = {
       passwordInput : '',
       isLoading : false,
       userType:'',
-      config : {
-        apiKey: "AIzaSyCnmF9FHph6in4RJDGN-tcTu-y0Tn9Pks0",
-        authDomain: "ebigs-tinder.firebaseapp.com",
-        databaseURL: "https://ebigs-tinder.firebaseio.com",
-        projectId: "ebigs-tinder",
-        storageBucket: "ebigs-tinder.appspot.com",
-        messagingSenderId: "15088750172",
-        appId: "1:15088750172:web:a2ed0b7e6b8c844fc6e099",
-        measurementId: "G-QJBDNXPC1Q"
-      }
+  
       
        
       
           }  ;
         
-          if (!firebase.apps.length) {
-            firebase.initializeApp(this.state.config);
-          }
         }
 
 
@@ -97,8 +87,7 @@ const options = {
   _login = async () =>{
     
     DialogProgress.show(options);
-    firebase
-    .auth()
+    auth()
     .signInWithEmailAndPassword(
       this.state.emailInput,
       this.state.passwordInput
