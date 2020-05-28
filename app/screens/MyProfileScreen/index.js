@@ -15,9 +15,14 @@ import Edit from '../../../assests/images/edit.png';
 
 import Camera from '../../../assests/images/camera.png';
 import ProfileSwiper from '../MyProfileScreen/profile_swiper.js';
+import SettingsScreen from '../SettingsScreen/index'
+import EditProfile from '../EditProfileInfo/index'
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
 
-export default class Profile extends Component {
+
+class Profile extends Component {
 
 
 
@@ -40,7 +45,7 @@ export default class Profile extends Component {
         <View style={styles.navigation_inner_container}>
           <TouchableOpacity 
             style={styles.button_container}
-            onPress={() => this.pushToScreen('Settings')}
+            onPress={() => this.props.navigation.navigate('Settings')}
           >
             <Image source={Setting} style={styles.button_style}/>
           </TouchableOpacity>
@@ -52,7 +57,7 @@ export default class Profile extends Component {
         <View style={styles.navigation_inner_container}>
           <TouchableOpacity 
             style={styles.button_container}
-            onPress={() => this.pushToScreen('Edit')}
+           
           >
             <Image source={Camera} style={styles.button} /> 
           </TouchableOpacity>
@@ -65,7 +70,7 @@ export default class Profile extends Component {
         <View style={styles.navigation_inner_container}>
           <TouchableOpacity 
             style={styles.button_container}
-            onPress={() => this.pushToScreen('Edit')}
+            onPress={() => this.props.navigation.navigate('EditProfile')}
           >
             <Image source={Edit} style={styles.button_style} /> 
           </TouchableOpacity>
@@ -230,3 +235,35 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+
+
+
+const myStack = createStackNavigator({
+
+  Home: {
+    screen: Profile,
+    navigationOptions: {
+      header: null,
+     
+    },
+   
+  },
+ Settings: {
+    screen: SettingsScreen,
+    navigationOptions: {
+      header: null,
+     
+    },
+  },
+EditProfile:{
+    screen:EditProfile,
+    navigationOptions:{
+      header:null
+    }
+  }
+  
+});
+
+
+  export default createAppContainer(myStack);
