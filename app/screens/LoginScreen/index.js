@@ -253,7 +253,7 @@ Trouble Logging in ? Want to Register?
     }
 }
 
-const myStack = createStackNavigator({
+const loginStack = createStackNavigator({
 
     Home: {
       screen: LoginScreen,
@@ -280,6 +280,6 @@ const myStack = createStackNavigator({
   });
   
   
-    export default createAppContainer(myStack);
+    export default createAppContainer(loginStack);
   
   

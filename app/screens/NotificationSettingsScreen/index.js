@@ -60,7 +60,7 @@ export default class NotificationSettings extends React.Component {
                     styles.des,
                     {color: '#626262', height: 40, marginTop: 7},
                   ]}>
-                  You just got new matches !
+                  You just got new matches
                 </Text>
               </View>
 
@@ -144,75 +144,8 @@ export default class NotificationSettings extends React.Component {
               </View>
             </View>
 
-            <View
-              style={{
-                marginTop: 8,
-                backgroundColor: 'white',
-                flexDirection: 'row',
-                width: '100%',
-              }}>
-              <View style={{flexDirection: 'column'}}>
-                <Text
-                  style={[
-                    styles.heading,
-                    {color: '#626262', height: 20, marginTop: 7},
-                  ]}>
-                  Super Likes
-                </Text>
 
-                <Text
-                  style={[
-                    styles.des,
-                    {color: '#626262', height: 40, marginTop: 7},
-                  ]}>
-                  You have been Super Liked! Swipe to know by whom
-                </Text>
-              </View>
-
-              <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
-                <Switch
-                  trackColor={{true: 'red', false: 'grey'}}
-                  style={{marginTop: 0}}
-                  onValueChange={this.toggleSwitch}
-                  value={this.state.switchValue}
-                />
-              </View>
-            </View>
-
-            <View
-              style={{
-                marginTop: 8,
-                backgroundColor: 'white',
-                flexDirection: 'row',
-                width: '100%',
-              }}>
-              <View style={{flexDirection: 'column'}}>
-                <Text
-                  style={[
-                    styles.heading,
-                    {color: '#626262', height: 20, marginTop: 7},
-                  ]}>
-                  Top Picks
-                </Text>
-
-                <Text
-                  style={[
-                    styles.des,
-                    {color: '#626262', height: 40, marginTop: 7},
-                  ]}>
-                  Your daily top picks are ready
-                </Text>
-              </View>
-
-              <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
-                <Switch
-                  trackColor={{true: 'red', false: 'grey'}}
-                  style={{marginTop: 0}}
-                  onValueChange={this.toggleSwitch}
-                  value={this.state.switchValue}
-                />
-              </View>
-            </View>
+  
           </View>
         </View>
       </ScrollView>
