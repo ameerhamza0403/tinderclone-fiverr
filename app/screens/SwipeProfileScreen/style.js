@@ -6,15 +6,15 @@ export default {
     Container: {
       width:Statics.DEVICE_WIDTH,
       height:Statics.DEVICE_HEIGHT,
-    
-        flex: 1,
+      flex: 1,
+        backgroundColor:'#fff'
   
       },
       BottomContainer: {
        width:size(20),
        height:size(20),
        
-       backgroundColor: '#FF4A00FF',
+      
         alignItems: 'center',
       },
      
@@ -46,12 +46,30 @@ export default {
   
   },
   
-  text: {
-    marginTop: size(10),
-    color: '#363636',
  
-    fontSize: size(16),
+ container: {
+    flex: 1,
+   
   },
+  card: {
+    flex: 1,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: '#E8E8E8',
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 25,
+    fontWeight:'bold',
+    backgroundColor: 'transparent'
+  },
+  done: {
+    textAlign: 'center',
+    fontSize: 30,
+    color: 'white',
+    backgroundColor: 'transparent'
+  }
 
-  
     }
