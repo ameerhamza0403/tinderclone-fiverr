@@ -339,7 +339,7 @@ export default class SettingsScreen extends React.Component {
     );
   }
 }
-EditProfileInfo.navigationOptions = {
+SettingsScreen.navigationOptions = {
   tabBarIcon: ({tintColor, focused}) => (
     <Icon
       name={focused ? 'settings' : 'settings'}

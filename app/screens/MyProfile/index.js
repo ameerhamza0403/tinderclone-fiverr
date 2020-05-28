@@ -17,7 +17,7 @@ import * as Statics from '../../helpers/statics';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
-import * as firebase from 'firebase';
+import database from '@react-native-firebase/database';
 
 export default class MyProfile extends Component {
   constructor() {
@@ -28,21 +28,10 @@ export default class MyProfile extends Component {
       dataSource: [],
       isLoading: true,
       userId: '',
-      config: {
-        apiKey: 'AIzaSyCnmF9FHph6in4RJDGN-tcTu-y0Tn9Pks0',
-        authDomain: 'ebigs-tinder.firebaseapp.com',
-        databaseURL: 'https://ebigs-tinder.firebaseio.com',
-        projectId: 'ebigs-tinder',
-        storageBucket: 'ebigs-tinder.appspot.com',
-        messagingSenderId: '15088750172',
-        appId: '1:15088750172:web:a2ed0b7e6b8c844fc6e099',
-        measurementId: 'G-QJBDNXPC1Q',
-      },
+  
     };
 
-    if (!firebase.apps.length) {
-      firebase.initializeApp(this.state.config);
-    }
+   
   }
 
   async componentDidMount() {
@@ -55,8 +44,7 @@ export default class MyProfile extends Component {
         userId: id,
       });
 
-      firebase
-        .database()
+     database()
         .ref('/Users/' + id)
         .on('value', querySnapShot => {
           let data = querySnapShot.val() ? querySnapShot.val() : {};

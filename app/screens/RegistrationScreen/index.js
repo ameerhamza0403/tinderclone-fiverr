@@ -11,9 +11,11 @@ import { StyleSheet,
     Button,
     TextInput,
     TouchableOpacity} from 'react-native';
-    import * as firebase from "firebase";
+  
     import DialogProgress from 'react-native-dialog-progress'
     import HomeScreen from '../HomeScreen/index'
+    import auth from '@react-native-firebase/auth';
+    import database from '@react-native-firebase/database';
 
 
 import styles from './style'
@@ -709,8 +711,7 @@ class PhoneComponent extends React.Component {
       const password= await AsyncStorage.getItem('password')
       const occupation=await AsyncStorage.getItem('occupation')
       DialogProgress.show(options);
-      firebase
-        .auth()
+    auth()
         .createUserWithEmailAndPassword(
          email,
          password
@@ -723,7 +724,7 @@ class PhoneComponent extends React.Component {
 
 
           try {
-            firebase.database().ref('Users').child(this.state.userId).set({
+            database().ref('Users').child(this.state.userId).set({
                  Name: name,
                 Gender:gender,
                 Email:email,
@@ -780,24 +781,8 @@ class PhoneComponent extends React.Component {
 
 textInput_MobileNo:'',
 userId:'',
-config : {
-  apiKey: "AIzaSyCnmF9FHph6in4RJDGN-tcTu-y0Tn9Pks0",
-  authDomain: "ebigs-tinder.firebaseapp.com",
-  databaseURL: "https://ebigs-tinder.firebaseio.com",
-  projectId: "ebigs-tinder",
-  storageBucket: "ebigs-tinder.appspot.com",
-  messagingSenderId: "15088750172",
-  appId: "1:15088750172:web:a2ed0b7e6b8c844fc6e099",
-  measurementId: "G-QJBDNXPC1Q"
-}
-
- 
-
-    }  ;
-  
-    if (!firebase.apps.length) {
-      firebase.initializeApp(this.state.config);
     }
+
   }
   render (){
   return (
