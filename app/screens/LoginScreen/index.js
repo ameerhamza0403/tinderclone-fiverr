@@ -22,7 +22,7 @@ import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { LoginButton, AccessToken,LoginManager } from 'react-native-fbsdk';
 
 const options = {
   title:"Signing in .....",
@@ -51,6 +51,38 @@ const options = {
         componentDidMount(){
 
           console.disableYellowBox=true
+
+          auth().onAuthStateChanged((user) =>{
+
+            if (user != null){
+              console.log(user)
+            }
+          })
+        }
+
+        async onFacebookButtonPress() {
+ // Attempt login with permissions
+ const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+ console.log('///' ,result.token)
+
+ if (result.isCancelled) {
+   throw 'User cancelled the login process';
+ }
+
+ // Once signed in, get the users AccesToken
+ const data = await AccessToken.getCurrentAccessToken();
+
+ if (!data) {
+   throw 'Something went wrong obtaining access token';
+ }
+
+ // Create a Firebase credential with the AccessToken
+ const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+ console.log('//' , facebookCredential.token)
+
+ // Sign-in the user with the credential
+ return auth().signInWithCredential(facebookCredential);
+         
         }
 
 
@@ -110,20 +142,6 @@ Alert.alert('Invalid Email / Password , Please Try Again')
     })
   }
 
-  loginWithFaceBook=()=>{
-    AccessToken.getCurrentAccessToken().then(
-      (data) => {
-        console.log(data.accessToken.toString())
-        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken.toString());
-        console.log(facebookCredential)
-        this.props.navigation.navigate('HomeScreen')
-
-      }
-    )
-
-    
-
-  }
 
     render (){
 
@@ -213,7 +231,7 @@ Sign-in
         
 <View   style={styles.roundBtn} >
           
-          <TouchableOpacity style={{alignItems:'center', }}>
+          <TouchableOpacity style={{alignItems:'center', }} onPress={()=>this.onFacebookButtonPress()}> 
             <View >
             <Text style={{color:'white' , fontSize:17,}}>
         Login with Facebook
@@ -240,22 +258,7 @@ Sign-in
           </TouchableOpacity>
                         
                        </View>
-                       <View>
-        <LoginButton
-          onLoginFinished={
-            (error, result) => {
-              if (error) {
-                console.log("login has error: " + result.error);
-              } else if (result.isCancelled) {
-                console.log("login is cancelled.");
-              } else {
-               this.loginWithFaceBook()
-              }
-            }
-          }
-          onLogoutFinished={() => console.log("logout.")}/>
-      </View>
-
+   
     </View>
     
 <View style={{flex:2,marginTop:50,alignItems:'center'}}>
