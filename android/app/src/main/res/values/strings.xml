@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HobbyFinder</string>
+    <string name="facebook_app_id">665703354213882</string>
+
 </resources>

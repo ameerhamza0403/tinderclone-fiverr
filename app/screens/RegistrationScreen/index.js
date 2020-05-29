@@ -251,7 +251,7 @@ textInput_Name:'',
           }}>
           <TextInput
             style={styles.textInput}
-            placeholder="First Name"
+            placeholder="Full Name"
             
             onChangeText={TextInputValue =>
               this.setState({textInput_Name: TextInputValue})
