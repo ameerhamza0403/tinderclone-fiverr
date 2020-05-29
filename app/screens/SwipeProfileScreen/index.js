@@ -246,14 +246,14 @@ function* range(start, end) {
   
     return (
       <View style={styles.card}>
-        <View style={{flex:5}}>
+        <View style={{flex:4}}>
         <Image
         style={{width:'100%',height:530}}
         source={cards.image}
         />
         </View>
        
-        <View style={{marginTop:50,flex:1}}>
+        <View style={{marginTop:0,flex:1}}>
         <Text style={styles.text}>{cards.text}</Text>
         </View>
        
@@ -384,7 +384,7 @@ function* range(start, end) {
           
           cards={this.state.cards}
          
-          cardVerticalMargin={80}
+          cardVerticalMargin={10}
           backgroundColor={'tranparent'}
           renderCard={this.renderCard}
           onSwipedAll={this.onSwipedAllCards}

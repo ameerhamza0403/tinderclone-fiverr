@@ -22,6 +22,7 @@ import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 const options = {
   title:"Signing in .....",
@@ -107,6 +108,21 @@ const options = {
       DialogProgress.hide();
 Alert.alert('Invalid Email / Password , Please Try Again')
     })
+  }
+
+  loginWithFaceBook=()=>{
+    AccessToken.getCurrentAccessToken().then(
+      (data) => {
+        console.log(data.accessToken.toString())
+        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken.toString());
+        console.log(facebookCredential)
+        this.props.navigation.navigate('HomeScreen')
+
+      }
+    )
+
+    
+
   }
 
     render (){
@@ -224,7 +240,21 @@ Sign-in
           </TouchableOpacity>
                         
                        </View>
-
+                       <View>
+        <LoginButton
+          onLoginFinished={
+            (error, result) => {
+              if (error) {
+                console.log("login has error: " + result.error);
+              } else if (result.isCancelled) {
+                console.log("login is cancelled.");
+              } else {
+               this.loginWithFaceBook()
+              }
+            }
+          }
+          onLogoutFinished={() => console.log("logout.")}/>
+      </View>
 
     </View>
     
@@ -238,6 +268,8 @@ Trouble Logging in ? Want to Register?
   </TouchableOpacity>
  
 </View>
+
+
                             
                          
               
