@@ -22,12 +22,15 @@ import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
 
+
 import {Card} from 'native-base';
 import Slider from '@react-native-community/slider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import NotificationScreen from '../NotificationSettingsScreen/index'
+import auth from '@react-native-firebase/auth';
+import LoginScreen from '../LoginScreen/index'
 
 class SettingsScreen extends React.Component {
   state = {switchValue: false, sliderValue: 1};
@@ -45,7 +48,22 @@ class SettingsScreen extends React.Component {
       .then(result => console.log(result))
       .catch(errorMsg => console.log(errorMsg));
   };
+  logout =()=>{
+    try {
+      auth()
+      .signOut().then(() => console.log('User signed out!'));
+      this.props.navigation.navigate('Login')
 
+    }
+    catch (error){
+
+      console.log(error)
+
+
+    }
+
+  
+  }
   render() {
     return (
       <ScrollView>
@@ -561,7 +579,7 @@ class SettingsScreen extends React.Component {
 
           <View style={{alignItems: 'center', marginTop: 0, flex: 2,marginBottom:30}}>
             <View style={styles.roundBtn}>
-              <TouchableOpacity style={{alignItems: 'center'}}>
+              <TouchableOpacity style={{alignItems: 'center'}} onPress={()=> this.logout()}>
                 <View>
                   <Text style={{color: '#000', fontSize: 16}}>Logout</Text>
                 </View>
@@ -594,9 +612,17 @@ const notificationStack = createStackNavigator({
      
     },
   },
-
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
   
 });
 
 
-  export default createAppContainer(notificationStack);
+
+
+export default createAppContainer(notificationStack);
+
