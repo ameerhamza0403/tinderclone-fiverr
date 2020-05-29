@@ -375,6 +375,7 @@ function* range(start, end) {
           </SafeAreaView>
         </Modal>
         <Swiper
+
           ref={swiper => {
             this.swiper = swiper;
           }}
@@ -384,6 +385,7 @@ function* range(start, end) {
           cards={this.state.cards}
          
           cardVerticalMargin={80}
+          backgroundColor={'tranparent'}
           renderCard={this.renderCard}
           onSwipedAll={this.onSwipedAllCards}
           stackSize={3}
