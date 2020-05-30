@@ -342,7 +342,7 @@ class GenderComponent extends React.Component {
     }
   };
 
-  saveFeMale = async () => {
+  saveFemale = async () => {
     const gender = 'Woman';
 
     try {
@@ -371,7 +371,7 @@ class GenderComponent extends React.Component {
             }}>
             <View style={styles.roundBtnTrans}>
               <TouchableOpacity
-                onPress={() => this.saveFeMale()}
+                onPress={() => this.saveFemale()}
                 style={{alignItems: 'center'}}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
@@ -622,15 +622,15 @@ class PhoneComponent extends React.Component {
                 .ref('Users')
                 .child(this.state.userId)
                 .set({
-                  Name: name,
-                  Gender: gender,
-                  Email: email,
-                  Password: password,
-                  Interest: interest,
-                  Occupation: occupation,
-                  Phone: phonee,
-                  AccType: 'Trial',
-                  DOB: birthday,
+                  name: name,
+                  gender: gender,
+                  email: email,
+                  password: password,
+                  interest: interest,
+                  occupation: occupation,
+                  phone: phonee,
+                  accType: 'Trial',
+                  dob: birthday,
                 })
                 .then(data => {
                   DialogProgress.hide();
@@ -707,7 +707,7 @@ class PhoneComponent extends React.Component {
   }
 }
 
-const LoginStack = createStackNavigator({
+const loginStack = createStackNavigator({
   Home: {
     screen: EmailComponent,
     navigationOptions: {
@@ -774,4 +774,4 @@ const LoginStack = createStackNavigator({
   // }
 });
 
-export default createAppContainer(LoginStack);
+export default createAppContainer(loginStack);

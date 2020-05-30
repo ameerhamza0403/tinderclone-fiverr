@@ -41,12 +41,7 @@ import MatchScreen from '../ItsAMatchScreen/index';
 import Swiper from 'react-native-deck-swiper';
 
 
-// demo purposes only
-function* range(start, end) {
-  for (let i = start; i <= end; i++) {
-    yield i;
-  }
-}
+
 
  class SwipeCards extends React.Component {
   constructor(props) {
@@ -218,7 +213,7 @@ function* range(start, end) {
     };
   }
 
-  gotoMessages = () => {
+  goToMessages = () => {
     this.setState({
       ModalVisibleStatus: false,
     });
@@ -233,7 +228,7 @@ function* range(start, end) {
     //which will result in re-render the text
   };
 
-  ShowModalFunction(visible) {
+  showModalFunction(visible) {
     this.onSwiped('top');
 
     this.setState({ModalVisibleStatus: visible});
@@ -338,7 +333,7 @@ function* range(start, end) {
                     justifyContent: 'center',
                     flex: 1,
                   }}>
-                  <TouchableOpacity onPress={() => this.gotoMessages()}>
+                  <TouchableOpacity onPress={() => this.goToMessages()}>
                     <View
                       style={{
                         alignItems: 'center',
@@ -379,7 +374,7 @@ function* range(start, end) {
           ref={swiper => {
             this.swiper = swiper;
           }}
-          onSwipedTop={() => this.ShowModalFunction(true)}
+          onSwipedTop={() => this.showModalFunction(true)}
           onSwipedBottom={() => this.onSwiped('bottom')}
           
           cards={this.state.cards}

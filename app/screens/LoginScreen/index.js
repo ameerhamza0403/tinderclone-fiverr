@@ -185,10 +185,7 @@ class LoginScreen extends React.Component {
                 flex: 1,
                 marginTop: size(30),
               }}>
-              <Image
-                style={styles.fireImage}
-                source={require('../../../assests/images/fireicon.png')}
-              />
+              
 
               <Text style={styles.logoText}>HobbyFinder</Text>
             </View>

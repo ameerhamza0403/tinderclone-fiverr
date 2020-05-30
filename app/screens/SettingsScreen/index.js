@@ -41,7 +41,7 @@ class SettingsScreen extends React.Component {
     //which will result in re-render the text
   };
 
-  ShareMessage = () => {
+  shareMessage = () => {
     Share.share({
       message: 'Test App Link',
     })
@@ -516,7 +516,7 @@ class SettingsScreen extends React.Component {
                 </View>
               </View>
 
-              <TouchableOpacity onPress={() => this.ShareMessage()}>
+              <TouchableOpacity onPress={() => this.shareMessage()}>
                 <View style={{flex: 1}}>
                   <View style={styles.itemsContainer}>
                     <Text
@@ -612,12 +612,12 @@ const notificationStack = createStackNavigator({
      
     },
   },
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: {
-      header: null,
-    },
-  },
+  // Login: {
+  //   screen: LoginScreen,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // },
   
 });
 

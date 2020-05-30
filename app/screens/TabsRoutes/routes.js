@@ -8,7 +8,7 @@ import MyMessages from '../MyMessagesScreen/index'
   
 const AppNavigator = createMaterialTopTabNavigator(  
     {  
-        Home: {
+        Profile: {
            screen:HomeScreen,
         
            navigationOptions: {
@@ -24,7 +24,7 @@ const AppNavigator = createMaterialTopTabNavigator(
         },
             
             
-        Profile:{ 
+       Home:{ 
             
             
             screen:ProfileScreen,

@@ -72,7 +72,7 @@ export default class MyProfile extends Component {
     }
   }
 
-  ShareMessage = () => {
+  shareMessage = () => {
     Share.share({
       message: this.state.text.toString(),
     })
