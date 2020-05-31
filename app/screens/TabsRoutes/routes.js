@@ -5,26 +5,27 @@ import HomeScreen from "../MyProfileScreen/index";
 import Icon from 'react-native-vector-icons/FontAwesome5'
 import ProfileScreen from "../SwipeProfileScreen/index";  
 import MyMessages from '../MyMessagesScreen/index' 
+import {Image} from 'react-native'
   
 const AppNavigator = createMaterialTopTabNavigator(  
     {  
-        Profile: {
+        Home: {
            screen:HomeScreen,
         
            navigationOptions: {
             tabBarLabel: ({focused, tintColor}) => (
-                <Icon  
-                         name={focused ? 'user-circle' : 'user-circle'}  
-                          color={tintColor}  
-                         size={25}  
-                   /> 
+                <Image
+                style={{height:30,width:30}}
+                source={require ('../../../assests/images/user.png')}
+                
+                />
             )
          }
         
         },
             
             
-       Home:{ 
+        Profile:{ 
             
             
             screen:ProfileScreen,
@@ -33,11 +34,11 @@ const AppNavigator = createMaterialTopTabNavigator(
 
             navigationOptions: {
                 tabBarLabel: ({focused, tintColor}) => (
-                    <Icon  
-                             name={focused ? 'hotjar' : 'hotjar'}  
-                              color={tintColor}  
-                             size={25}  
-                       /> 
+                    <Image
+               style={{height:40,width:60}}
+               source={require ('../../../assests/images/logo.png')}
+               
+               />
                 )
              }
         },Messages: {
@@ -47,11 +48,11 @@ const AppNavigator = createMaterialTopTabNavigator(
         
             navigationOptions: {
                 tabBarLabel: ({focused, tintColor}) => (
-                    <Icon  
-                             name={focused ? 'rocketchat' : 'rocketchat'}  
-                              color={tintColor}  
-                             size={25}  
-                       /> 
+                    <Image
+                    style={{height:30,width:30}}
+                    source={require ('../../../assests/images/message.png')}
+                    
+                    />
                 )
              }},  
     },  
