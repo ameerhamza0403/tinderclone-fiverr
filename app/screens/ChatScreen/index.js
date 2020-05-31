@@ -1,15 +1,12 @@
 import React from 'react';
-import { GiftedChat } from 'react-native-gifted-chat';
+import {GiftedChat} from 'react-native-gifted-chat';
 import firebaseSvc from '../FirebaseSvc.js';
 
-
-
 export default class Chat extends React.Component {
-
   constructor(props) {
     super(props);
   }
-  static navigationOptions = ({ navigation }) => ({
+  static navigationOptions = ({navigation}) => ({
     title: (navigation.state.params || {}).name || 'Scv Chat!',
   });
 
@@ -18,12 +15,13 @@ export default class Chat extends React.Component {
   };
 
   get user() {
-    const {navigation}= this.props;
-    const posetedby=navigation.getParam('postedby' , 0);
+    const {navigation} = this.props;
+    const posetedby = navigation.getParam('postedby', 0);
     return {
       name: 'Test',
       email: 'Test',
-      avatar: 'https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg',
+      avatar:
+        'https://www.dailymoss.com/wp-content/uploads/2019/08/funny-profile-pic59.jpg',
       _id: posetedby,
     };
   }
@@ -42,7 +40,7 @@ export default class Chat extends React.Component {
     firebaseSvc.refOn(message =>
       this.setState(previousState => ({
         messages: GiftedChat.append(previousState.messages, message),
-      }))
+      })),
     );
   }
   componentWillUnmount() {

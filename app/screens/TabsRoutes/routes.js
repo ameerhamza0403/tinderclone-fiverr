@@ -1,71 +1,64 @@
-import React from 'react';  
-import {createAppContainer} from 'react-navigation';  
-import {createMaterialTopTabNavigator} from 'react-navigation-tabs';  
-import HomeScreen from "../MyProfileScreen/index";  
-import Icon from 'react-native-vector-icons/FontAwesome5'
-import ProfileScreen from "../SwipeProfileScreen/index";  
-import MyMessages from '../MyMessagesScreen/index' 
-  
-const AppNavigator = createMaterialTopTabNavigator(  
-    {  
-        Profile: {
-           screen:HomeScreen,
-        
-           navigationOptions: {
-            tabBarLabel: ({focused, tintColor}) => (
-                <Icon  
-                         name={focused ? 'user-circle' : 'user-circle'}  
-                          color={tintColor}  
-                         size={25}  
-                   /> 
-            )
-         }
-        
-        },
-            
-            
-       Home:{ 
-            
-            
-            screen:ProfileScreen,
-            
-            
+import React from 'react';
+import {createAppContainer} from 'react-navigation';
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
+import SwipeProfile from '../SwipeProfileScreen/index';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import ProfileScreen from '../MyProfileScreen/index';
+import MyMessages from '../MyMessagesScreen/index';
+import {Image} from 'react-native';
 
-            navigationOptions: {
-                tabBarLabel: ({focused, tintColor}) => (
-                    <Icon  
-                             name={focused ? 'hotjar' : 'hotjar'}  
-                              color={tintColor}  
-                             size={25}  
-                       /> 
-                )
-             }
-        },Messages: {
-            
-            
-            screen:MyMessages,
-        
-            navigationOptions: {
-                tabBarLabel: ({focused, tintColor}) => (
-                    <Icon  
-                             name={focused ? 'rocketchat' : 'rocketchat'}  
-                              color={tintColor}  
-                             size={25}  
-                       /> 
-                )
-             }},  
-    },  
-    {  
-        tabBarOptions: {  
-            activeTintColor: '#FF4A00FF',
-            inactiveTintColor:'#ABABAB',  
-            showIcon: false,  
-            showLabel:true,
-              
-            style: {  
-                backgroundColor:'#fff'  
-            }  
-        },  
-    }  
-)  
+const AppNavigator = createMaterialTopTabNavigator(
+  {
+    Home: {
+      screen: SwipeProfile,
+
+      navigationOptions: {
+        tabBarLabel: ({focused, tintColor}) => (
+          <Image
+            style={{height: 40, width: 60}}
+            source={require('../../../assests/images/logo.png')}
+          />
+        ),
+      },
+    },
+
+    Profile: {
+      screen: ProfileScreen,
+
+      navigationOptions: {
+        tabBarLabel: ({focused, tintColor}) => (
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('../../../assests/images/user.png')}
+          />
+        ),
+      },
+    },
+
+    Messages: {
+      screen: MyMessages,
+
+      navigationOptions: {
+        tabBarLabel: ({focused, tintColor}) => (
+          <Image
+            style={{height: 30, width: 30}}
+            source={require('../../../assests/images/message.png')}
+          />
+        ),
+      },
+    },
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: '#FF4A00FF',
+      inactiveTintColor: '#ABABAB',
+      showIcon: false,
+      showLabel: true,
+
+      style: {
+        backgroundColor: '#fff',
+      },
+    },
+  },
+);
 export default createAppContainer(AppNavigator);
