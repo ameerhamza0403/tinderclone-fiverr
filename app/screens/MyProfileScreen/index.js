@@ -19,11 +19,13 @@ import SettingsScreen from '../SettingsScreen/index';
 import EditProfile from '../EditProfileInfo/index';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
+import { ScrollView } from 'react-native-gesture-handler';
 
 class Profile extends Component {
   renderProfilePicContainer() {
     return (
       <View style={styles.profile_pic_container}>
+       
         <Image
           source={{
             uri:
@@ -35,6 +37,8 @@ class Profile extends Component {
         <Text style={styles.description}>
           Salsa dance instructor at Studio Xyz ,{' '}
         </Text>
+       
+   
       </View>
     );
   }
@@ -73,6 +77,7 @@ class Profile extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ScrollView>
         <View style={{marginTop: 20}}>
           <View style={styles.bottom_rounded_border_style} />
           <View style={styles.profile_container}>
@@ -90,6 +95,8 @@ class Profile extends Component {
             </TouchableOpacity>
           </View>
         </View>
+        </ScrollView>
+      
       </View>
     );
   }
@@ -164,7 +171,7 @@ const styles = StyleSheet.create({
   },
   //-----------------PROFILE CONTAINER-------------------//
   profile_container: {
-    width: Statics.DEVICE_WIDTH,
+    width: '100%',
     height: Statics.DEVICE_WIDTH / 1.2,
     backgroundColor: 'white',
   },

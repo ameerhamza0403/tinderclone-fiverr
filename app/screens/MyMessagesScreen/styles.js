@@ -7,7 +7,7 @@ export default {
   container: {
     flex: 1,
     backgroundColor: 'rgb(244,246,251)',
-    width:Statics.DEVICE_WIDTH,
+    width:'100%',
     height:Statics.DEVICE_HEIGHT
   },
  
