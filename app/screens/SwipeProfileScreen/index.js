@@ -276,7 +276,7 @@ import Swiper from 'react-native-deck-swiper';
           animationType={'slide'}
           visible={this.state.ModalVisibleStatus}
           onRequestClose={() => {
-            this.ShowModalFunction(!this.state.ModalVisibleStatus);
+            this.showModalFunction(!this.state.ModalVisibleStatus);
           }}>
           <SafeAreaView>
             <ScrollView>
