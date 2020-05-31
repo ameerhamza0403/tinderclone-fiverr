@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -7,7 +7,7 @@ import {
   Image,
   Platform,
 } from 'react-native';
-import { size } from '../../helpers/devices';
+import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 import Setting from '../../../assests/images/setting.png';
 
@@ -15,86 +15,75 @@ import Edit from '../../../assests/images/edit.png';
 
 import Camera from '../../../assests/images/camera.png';
 import ProfileSwiper from '../MyProfileScreen/profile_swiper.js';
-import SettingsScreen from '../SettingsScreen/index'
-import EditProfile from '../EditProfileInfo/index'
+import SettingsScreen from '../SettingsScreen/index';
+import EditProfile from '../EditProfileInfo/index';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 
-
-
 class Profile extends Component {
-
-
-
-  
   renderProfilePicContainer() {
     return (
       <View style={styles.profile_pic_container}>
-        <Image source={{uri: 'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4'}} style={styles.profile_pic_style} />
+        <Image
+          source={{
+            uri:
+              'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F18.jpg?alt=media&token=53ca5d9c-0c62-48bf-b167-681d0de05bd4',
+          }}
+          style={styles.profile_pic_style}
+        />
         <Text style={styles.profile_name_style}>Ebigs </Text>
-        <Text style={styles.description}>Salsa dance instructor at Studio Xyz ,  </Text>
+        <Text style={styles.description}>
+          Salsa dance instructor at Studio Xyz ,{' '}
+        </Text>
       </View>
-    )
+    );
   }
-
-
 
   renderNavigationContainer() {
     return (
       <View style={styles.navigation_container}>
         <View style={styles.navigation_inner_container}>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.button_container}
-            onPress={() => this.props.navigation.navigate('Settings')}
-          >
-            <Image source={Setting} style={styles.button_style}/>
+            onPress={() => this.props.navigation.navigate('Settings')}>
+            <Image source={Setting} style={styles.button_style} />
           </TouchableOpacity>
-          <Text style={styles.button_text_style}>
-              Settings
-          </Text>
+          <Text style={styles.button_text_style}>Settings</Text>
         </View>
         <View style={styles.seperator_style} />
         <View style={styles.navigation_inner_container}>
-          <TouchableOpacity 
-            style={styles.button_container}
-           
-          >
-            <Image source={Camera} style={styles.button} /> 
+          <TouchableOpacity style={styles.button_container}>
+            <Image source={Camera} style={styles.button} />
           </TouchableOpacity>
-          <Text style={styles.button_text_style}>
-          Media
-          </Text>
+          <Text style={styles.button_text_style}>Media</Text>
         </View>
-  <View style={styles.seperator_style} />
+        <View style={styles.seperator_style} />
 
         <View style={styles.navigation_inner_container}>
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.button_container}
-            onPress={() => this.props.navigation.navigate('EditProfile')}
-          >
-            <Image source={Edit} style={styles.button_style} /> 
+            onPress={() => this.props.navigation.navigate('EditProfile')}>
+            <Image source={Edit} style={styles.button_style} />
           </TouchableOpacity>
-          <Text style={styles.button_text_style}>
-              Edit
-          </Text>
+          <Text style={styles.button_text_style}>Edit</Text>
         </View>
       </View>
-    )
+    );
   }
   render() {
     return (
       <View style={styles.container}>
-        <View style={{marginTop:20}}>
+        <View style={{marginTop: 20}}>
           <View style={styles.bottom_rounded_border_style} />
           <View style={styles.profile_container}>
             {this.renderProfilePicContainer()}
             {this.renderNavigationContainer()}
           </View>
           <View style={styles.bottom_rounded_style} />
-        </View>  
+        </View>
         <View style={styles.footer}>
-        <ProfileSwiper /> 
-          
+          <ProfileSwiper />
+
           <View style={styles.tinder_plus_button_container}>
             <TouchableOpacity style={styles.tinder_plus_button_style}>
               <Text style={styles.tinder_button_text_style}>Hobby Finder</Text>
@@ -160,7 +149,6 @@ const styles = StyleSheet.create({
     width: size(35),
     height: size(35),
     resizeMode: 'contain',
-
   },
   button_style: {
     width: size(30),
@@ -188,10 +176,7 @@ const styles = StyleSheet.create({
     bottom: -50,
     left: 160,
     borderRadius: 35,
-    transform: [
-      {scaleX: 6},
-      {scaleY: 2}
-    ],
+    transform: [{scaleX: 6}, {scaleY: 2}],
   },
   bottom_rounded_border_style: {
     width: 74,
@@ -201,19 +186,16 @@ const styles = StyleSheet.create({
     bottom: -51,
     left: 160,
     borderRadius: 35,
-    transform: [
-      {scaleX: 6},
-      {scaleY: 2}
-    ],
+    transform: [{scaleX: 6}, {scaleY: 2}],
   },
   //--------------------------Footer----------------------//
   footer: {
-    marginTop: size(100), 
+    marginTop: size(100),
     height: size(200),
   },
   tinder_plus_button_container: {
-    width: Statics.DEVICE_WIDTH, 
-    justifyContent: 'center', 
+    width: Statics.DEVICE_WIDTH,
+    justifyContent: 'center',
     alignItems: 'center',
   },
   tinder_plus_button_style: {
@@ -221,10 +203,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: size(13),
-    backgroundColor: 'white', 
+    backgroundColor: 'white',
     borderRadius: 25,
     shadowColor: '#ddd',
-    shadowOffset: { width: 0, height: 5 },
+    shadowOffset: {width: 0, height: 5},
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 1,
@@ -236,34 +218,25 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-
 const myStack = createStackNavigator({
-
   Home: {
     screen: Profile,
     navigationOptions: {
       header: null,
-     
     },
-   
   },
- Settings: {
+  Settings: {
     screen: SettingsScreen,
     navigationOptions: {
       header: null,
-     
     },
   },
-EditProfile:{
-    screen:EditProfile,
-    navigationOptions:{
-      header:null
-    }
-  }
-  
+  EditProfile: {
+    screen: EditProfile,
+    navigationOptions: {
+      header: null,
+    },
+  },
 });
 
-
-  export default createAppContainer(myStack);
+export default createAppContainer(myStack);

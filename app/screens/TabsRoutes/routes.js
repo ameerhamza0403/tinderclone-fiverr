@@ -14,7 +14,7 @@ const AppNavigator = createMaterialTopTabNavigator(
 
       navigationOptions: {
         tabBarLabel: ({focused, tintColor}) => (
-            <Image
+          <Image
             style={{height: 40, width: 60}}
             source={require('../../../assests/images/logo.png')}
           />
@@ -27,11 +27,10 @@ const AppNavigator = createMaterialTopTabNavigator(
 
       navigationOptions: {
         tabBarLabel: ({focused, tintColor}) => (
-            <Image
+          <Image
             style={{height: 30, width: 30}}
             source={require('../../../assests/images/user.png')}
           />
-          
         ),
       },
     },

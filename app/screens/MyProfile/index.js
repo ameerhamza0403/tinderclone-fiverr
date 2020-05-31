@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
   AsyncStorage,
   Share,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
@@ -28,10 +28,7 @@ export default class MyProfile extends Component {
       dataSource: [],
       isLoading: true,
       userId: '',
-  
     };
-
-   
   }
 
   async componentDidMount() {
@@ -44,7 +41,7 @@ export default class MyProfile extends Component {
         userId: id,
       });
 
-     database()
+      database()
         .ref('/Users/' + id)
         .on('value', querySnapShot => {
           let data = querySnapShot.val() ? querySnapShot.val() : {};
@@ -164,8 +161,7 @@ export default class MyProfile extends Component {
                 />
 
                 <View style={styles.tinder_plus_button_container}>
-                  <TouchableOpacity
-                    style={styles.tinder_plus_button_style}>
+                  <TouchableOpacity style={styles.tinder_plus_button_style}>
                     <Text style={styles.tinder_button_text_style}>REPORT </Text>
                   </TouchableOpacity>
                 </View>
@@ -178,11 +174,6 @@ export default class MyProfile extends Component {
                     </Text>
                   </View>
                 </TouchableOpacity>
-
-
-
-
-
 
                 <View
                   style={{

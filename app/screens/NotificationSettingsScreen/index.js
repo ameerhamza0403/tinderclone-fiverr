@@ -16,9 +16,7 @@ import {
   Modal,
 } from 'react-native';
 
-
 import styles from './style';
-
 
 export default class NotificationSettings extends React.Component {
   constructor(props) {
@@ -143,9 +141,6 @@ export default class NotificationSettings extends React.Component {
                 />
               </View>
             </View>
-
-
-  
           </View>
         </View>
       </ScrollView>

@@ -22,15 +22,14 @@ import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
 
 import styles from './style';
 
-
 import {Card} from 'native-base';
 import Slider from '@react-native-community/slider';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import NotificationScreen from '../NotificationSettingsScreen/index'
+import NotificationScreen from '../NotificationSettingsScreen/index';
 import auth from '@react-native-firebase/auth';
-import LoginScreen from '../LoginScreen/index'
+import LoginScreen from '../LoginScreen/index';
 
 class SettingsScreen extends React.Component {
   state = {switchValue: false, sliderValue: 1};
@@ -48,22 +47,16 @@ class SettingsScreen extends React.Component {
       .then(result => console.log(result))
       .catch(errorMsg => console.log(errorMsg));
   };
-  logout =()=>{
+  logout = () => {
     try {
       auth()
-      .signOut().then(() => console.log('User signed out!'));
-      this.props.navigation.navigate('Login')
-
+        .signOut()
+        .then(() => console.log('User signed out!'));
+      this.props.navigation.navigate('Login');
+    } catch (error) {
+      console.log(error);
     }
-    catch (error){
-
-      console.log(error)
-
-
-    }
-
-  
-  }
+  };
   render() {
     return (
       <ScrollView>
@@ -360,22 +353,19 @@ class SettingsScreen extends React.Component {
                 </Text>
               </View>
 
-          
-
-              <TouchableOpacity onPress={()=> this.props.navigation.navigate('Notifications')}>
-              <View style={styles.itemsContainer}>
-                <Text
-                  style={{
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    color: '#ABABAB',
-                  }}>
-                  Push Notifications
-                </Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Notifications')}>
+                <View style={styles.itemsContainer}>
+                  <Text
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      color: '#ABABAB',
+                    }}>
+                    Push Notifications
+                  </Text>
+                </View>
               </TouchableOpacity>
-
-         
             </View>
             <View
               style={{
@@ -577,9 +567,17 @@ class SettingsScreen extends React.Component {
             </View>
           </View>
 
-          <View style={{alignItems: 'center', marginTop: 0, flex: 2,marginBottom:30}}>
+          <View
+            style={{
+              alignItems: 'center',
+              marginTop: 0,
+              flex: 2,
+              marginBottom: 30,
+            }}>
             <View style={styles.roundBtn}>
-              <TouchableOpacity style={{alignItems: 'center'}} onPress={()=> this.logout()}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => this.logout()}>
                 <View>
                   <Text style={{color: '#000', fontSize: 16}}>Logout</Text>
                 </View>
@@ -592,24 +590,17 @@ class SettingsScreen extends React.Component {
   }
 }
 
-
-
-
 const notificationStack = createStackNavigator({
-
   Home: {
     screen: SettingsScreen,
     navigationOptions: {
       header: null,
-     
     },
-   
   },
- Notifications: {
+  Notifications: {
     screen: NotificationScreen,
     navigationOptions: {
       header: null,
-     
     },
   },
   // Login: {
@@ -618,11 +609,6 @@ const notificationStack = createStackNavigator({
   //     header: null,
   //   },
   // },
-  
 });
 
-
-
-
 export default createAppContainer(notificationStack);
-

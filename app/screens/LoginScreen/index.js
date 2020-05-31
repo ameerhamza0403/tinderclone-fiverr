@@ -34,7 +34,7 @@ const options = {
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
-    loggedIn:false
+    loggedIn: false;
     this.unsubscribe = null;
     this.state = {
       emailInput: '',
@@ -48,11 +48,11 @@ class LoginScreen extends React.Component {
     console.disableYellowBox = true;
 
     this.setState({
-      loggedIn:true
-    })
+      loggedIn: true,
+    });
 
     auth().onAuthStateChanged(user => {
-      if (user != null && this.state.loggedIn == false ) {
+      if (user != null && this.state.loggedIn == false) {
         console.log(user.uid);
 
         try {
@@ -72,7 +72,7 @@ class LoginScreen extends React.Component {
             })
             .then(data => {
               DialogProgress.hide();
-             
+
               //Alert.alert('Registration SuccessFull, You Can Now Login!');
               this.props.navigation.navigate('HomeScreen');
             })
@@ -84,9 +84,7 @@ class LoginScreen extends React.Component {
           DialogProgress.hide();
           Alert.alert(error.toString());
         }
-      }
-
-      else if ( this.state.loggedIn == true){
+      } else if (this.state.loggedIn == true) {
         this.props.navigation.navigate('HomeScreen');
       }
     });
@@ -118,10 +116,10 @@ class LoginScreen extends React.Component {
     console.log('//', facebookCredential.token);
 
     // Sign-in the user with the credential
-  auth().signInWithCredential(facebookCredential);
+    auth().signInWithCredential(facebookCredential);
   }
 
-  _ValidateFunction = async () => {
+  _validateFunction = async () => {
     DialogProgress.show(options);
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
@@ -185,8 +183,6 @@ class LoginScreen extends React.Component {
                 flex: 1,
                 marginTop: size(30),
               }}>
-              
-
               <Text style={styles.logoText}>HobbyFinder</Text>
             </View>
 
@@ -260,7 +256,7 @@ class LoginScreen extends React.Component {
                     justifyContent: 'center',
                   }}>
                   <TouchableOpacity
-                    onPress={() => this._ValidateFunction()}
+                    onPress={() => this._validateFunction()}
                     style={{alignItems: 'center', width: '100%'}}>
                     <View
                       style={{
