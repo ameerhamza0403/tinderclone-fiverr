@@ -70,8 +70,8 @@ class LoginScreen extends React.Component {
             .then(data => {
               DialogProgress.hide();
 
-              //Alert.alert('Registration SuccessFull, You Can Now Login!');
-              this.props.navigation.navigate('HomeScreen');
+            
+              //this.props.navigation.navigate('HomeScreen');
             })
             .catch(error => {
               DialogProgress.hide();
@@ -85,34 +85,34 @@ class LoginScreen extends React.Component {
     });
   }
 
-  async onFacebookButtonPress() {
-    // Attempt login with permissions
-    const result = await LoginManager.logInWithPermissions([
-      'public_profile',
-      'email',
-    ]);
-    console.log('///', result.token);
+  // async onFacebookButtonPress() {
+  //   // Attempt login with permissions
+  //   const result = await LoginManager.logInWithPermissions([
+  //     'public_profile',
+  //     'email',
+  //   ]);
+  //   console.log('///', result.token);
 
-    if (result.isCancelled) {
-      throw 'User cancelled the login process';
-    }
+  //   if (result.isCancelled) {
+  //     throw 'User cancelled the login process';
+  //   }
 
-    // Once signed in, get the users AccesToken
-    const data = await AccessToken.getCurrentAccessToken();
+  //   // Once signed in, get the users AccesToken
+  //   const data = await AccessToken.getCurrentAccessToken();
 
-    if (!data) {
-      throw 'Something went wrong obtaining access token';
-    }
+  //   if (!data) {
+  //     throw 'Something went wrong obtaining access token';
+  //   }
 
-    // Create a Firebase credential with the AccessToken
-    const facebookCredential = auth.FacebookAuthProvider.credential(
-      data.accessToken,
-    );
-    console.log('//', facebookCredential.token);
+  //   // Create a Firebase credential with the AccessToken
+  //   const facebookCredential = auth.FacebookAuthProvider.credential(
+  //     data.accessToken,
+  //   );
+  //   console.log('//', facebookCredential.token);
 
-    // Sign-in the user with the credential
-    auth().signInWithCredential(facebookCredential);
-  }
+  //   // Sign-in the user with the credential
+  //   auth().signInWithCredential(facebookCredential);
+  // }
 
   _validateFunction = async () => {
     DialogProgress.show(options);
@@ -163,7 +163,7 @@ class LoginScreen extends React.Component {
           DialogProgress.hide();
 
 
-         // this.props.navigation.navigate('HomeScreen');
+         this.props.navigation.navigate('HomeScreen');
         } catch (error) {
           DialogProgress.hide();
           Alert.alert('Error Occured ! ');
@@ -292,7 +292,9 @@ class LoginScreen extends React.Component {
               <View style={styles.roundBtn}>
                 <TouchableOpacity
                   style={{alignItems: 'center'}}
-                  onPress={() => this.onFacebookButtonPress()}>
+                  // onPress={() => this.onFacebookButtonPress()}
+                  
+                  >
                   <View>
                     <Text style={{color: 'white', fontSize: 17}}>
                       Login with Facebook
