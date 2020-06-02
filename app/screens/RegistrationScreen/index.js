@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 
 import DialogProgress from 'react-native-dialog-progress';
-import HomeScreen from '../HomeScreen/index';
+
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
@@ -23,7 +23,7 @@ import styles from './style';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import DatePicker from 'react-native-datepicker';
-import EditProfileInfo from '../MyProfile/index';
+
 import {Alert} from 'react-native';
 
 import {size} from '../../helpers/devices';
@@ -82,15 +82,17 @@ class EmailComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+          <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => this.saveData()}>
+            <View style={styles.roundBtn}>
+             
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-              </TouchableOpacity>
+              
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -151,17 +153,19 @@ class PasswordComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: size(0), flex: 1}}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+          <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => this.saveData()}>
+            <View style={styles.roundBtn}>
+           
                 <View>
                   <Text style={{color: 'white', fontSize: size(16)}}>
                     Continue
                   </Text>
                 </View>
-              </TouchableOpacity>
+            
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -218,15 +222,17 @@ class NameComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+          <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => this.saveData()}>
+            <View style={styles.roundBtn}>
+           
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -303,15 +309,17 @@ class BirthdayComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+          <TouchableOpacity
                 style={{alignItems: 'center'}} //this.props.navigation.navigate('Gender')}
                 onPress={() => this.saveData()}>
+            <View style={styles.roundBtn}>
+           
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-              </TouchableOpacity>
+            
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -369,27 +377,31 @@ class GenderComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+                <TouchableOpacity
                 onPress={() => this.saveFemale()}
                 style={{alignItems: 'center'}}>
+            <View style={styles.roundBtnTrans}>
+            
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Woman
                   </Text>
                 </View>
-              </TouchableOpacity>
+           
             </View>
-
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+            </TouchableOpacity>
+            <TouchableOpacity
                 onPress={() => this.saveMale()}
                 style={{alignItems: 'center'}}>
+
+            <View style={styles.roundBtnTrans}>
+            
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -458,37 +470,43 @@ class InterestComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+                <TouchableOpacity
                 onPress={() => this.womanInterested()}
                 style={{alignItems: 'center'}}>
+            <View style={styles.roundBtnTrans}>
+            
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Woman
                   </Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
 
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => this.manInterested()}
                 style={{alignItems: 'center'}}>
+            <View style={styles.roundBtnTrans}>
+           
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
 
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => this.mixInterested()}
                 style={{alignItems: 'center'}}>
+                  <View style={styles.roundBtnTrans}>
+           
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Both</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -546,29 +564,33 @@ class OccupationComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+                <TouchableOpacity
                 onPress={() => this.student()}
                 style={{alignItems: 'center'}}>
+            <View style={styles.roundBtnTrans}>
+            
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Student
                   </Text>
                 </View>
-              </TouchableOpacity>
+            
             </View>
+            </TouchableOpacity>
 
-            <View style={styles.roundBtnTrans}>
-              <TouchableOpacity
+            <TouchableOpacity
                 onPress={() => this.employee()}
                 style={{alignItems: 'center'}}>
+                  <View style={styles.roundBtnTrans}>
+            
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Employed
                   </Text>
                 </View>
-              </TouchableOpacity>
+            
             </View>
+            </TouchableOpacity>
           </View>
           {/* <View
           style={{
@@ -594,6 +616,17 @@ const options = {
   isCancelable: false,
 };
 class PhoneComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    console.ignoredYellowBox = ['Setting a timer'];
+
+    this.state = {
+      textInput_MobileNo: '',
+      userId: '',
+      currentDate:''
+    };
+  }
   saveData = async () => {
     const phone = this.state.textInput_MobileNo;
     if (phone == '') {
@@ -631,11 +664,12 @@ class PhoneComponent extends React.Component {
                   phone: phonee,
                   accType: 'Trial',
                   dob: birthday,
+                  currentDate:this.state.currentDate
                 })
                 .then(data => {
                   DialogProgress.hide();
-                  Alert.alert('Registration SuccessFull, You Can Now Login!');
-                  //  this.props.navigation.navigate('Home')
+                  Alert.alert('Registration SuccessFull!');
+                 
                 })
                 .catch(error => {
                   DialogProgress.hide();
@@ -657,16 +691,27 @@ class PhoneComponent extends React.Component {
     }
   };
 
-  constructor(props) {
-    super(props);
+  getCurrentDate=()=>{
+ 
+    var date = new Date().getDate();
+    var month = new Date().getMonth()+1 ;
+    var year = new Date().getFullYear();
 
-    console.ignoredYellowBox = ['Setting a timer'];
+    this.setState({
+      currentDate : date + '-' + month + '-' + year
+    })
+    console.log(this.state.currentDate)
+    this.saveData()
 
-    this.state = {
-      textInput_MobileNo: '',
-      userId: '',
-    };
-  }
+   
+
+
+   }
+
+
+
+
+
   render() {
     return (
       <ScrollView>
@@ -691,15 +736,17 @@ class PhoneComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+          <TouchableOpacity
                 style={{alignItems: 'center'}}
-                onPress={() => this.saveData()}>
+                onPress={() => this.getCurrentDate()}>
+            <View style={styles.roundBtn}>
+              
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>
@@ -760,12 +807,12 @@ const loginStack = createStackNavigator({
     },
   },
 
-  EditProfile: {
-    screen: EditProfileInfo,
-    navigationOptions: {
-      header: null,
-    },
-  },
+  // EditProfile: {
+  //   screen: EditProfileInfo,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // },
   // Home:{
   //   screen:HomeScreen,
   //   navigationOptions: {

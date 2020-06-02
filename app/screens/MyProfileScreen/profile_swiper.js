@@ -9,10 +9,11 @@ import Swiper from 'react-native-swiper';
 import { size } from '../../helpers/devices.android';
 import Rewind from '../../../assests/images/rewind.png'; 
 import Like from  '../../../assests/images/heart.png'; 
-import Boost from  '../../../assests/images/boost.png';  
-import SuperLike from  '../../../assests/images/super_like.png';  
-import MapIcon from  '../../../assests/images/map.png';  
-import Key  from '../../../assests/images/key.png';
+import Cardio from  '../../../assests/images/cardio.png';  
+import Beach from  '../../../assests/images/beach.png';  
+import Foodie from  '../../../assests/images/foodie.png';  
+import Beer  from '../../../assests/images/beer.png';
+import Music  from '../../../assests/images/music.png';
 
 export default class ProfileSwiper extends Component {
   constructor(props) {
@@ -39,46 +40,40 @@ export default class ProfileSwiper extends Component {
         >
           <View style={styles.slide}>
             <View style={styles.title_container}>
-              <Image source={Boost} style={styles.icon_style} />
-              <Text style={styles.title_text}>Get Matches Faster</Text>
+              <Image source={Cardio} style={styles.icon_style} />
+              <Text style={styles.title_text}>Cardio </Text>
             </View>
-            <Text style={styles.text}></Text>
+            <Text style={styles.text}> Social Dancing , Workout</Text>
           </View>
           <View style={styles.slide}>
             <View style={styles.title_container}>
-              <Image source={SuperLike} style={styles.icon_style}/>
-              <Text style={styles.title_text}>Stand Out With Super Likes</Text>
+              <Image source={Beach} style={styles.icon_style}/>
+              <Text style={styles.title_text}>Beach</Text>
             </View>
-            <Text style={styles.text}>You're 3x more likely to get a match!</Text>
+            <Text style={styles.text}>Kayaking , Waverunner</Text>
           </View>
           <View style={styles.slide}>
             <View style={styles.title_container}>
-              <Image source={MapIcon} style={styles.icon_style}/>
-              <Text style={styles.title_text}>Swipe Around The World</Text>
+              <Image source={Foodie} style={styles.icon_style}/>
+              <Text style={styles.title_text}>Foodie</Text>
             </View>
-            <Text style={styles.text}>Passport to anywhere with Tinder Plus!</Text>
+            <Text style={styles.text}>Cooking , Dinner , Brunch</Text>
           </View>
           <View style={styles.slide}>
             <View style={styles.title_container}>
-              <Image source={Key} style={styles.icon_style} />
-              <Text style={styles.title_text}>Control Your Profile</Text>
+              <Image source={Beer} style={styles.icon_style} />
+              <Text style={styles.title_text}>Drinking</Text>
             </View>
-            <Text style={styles.text}>Limit what others see with Tinder Plus</Text>
+            <Text style={styles.text}>Coffee , Wine Tasting</Text>
           </View>
           <View style={styles.slide}>
             <View style={styles.title_container}>
-              <Image source={Rewind} style={[styles.icon_style, {tintColor: 'rgb(250,177,11)'}]}/>
-              <Text style={styles.title_text}>I Meant to Swipe Right</Text>
+              <Image source={Music} style={[styles.icon_style, ]}/>
+              <Text style={styles.title_text}>Music</Text>
             </View>
-            <Text style={styles.text}>Get unlimited Rewinds with Tinder Plus!</Text>
+            <Text style={styles.text}>Sing , Karaoke , Instruments</Text>
           </View>
-          <View style={styles.slide}>
-            <View style={styles.title_container}>
-              <Image source={Like} style={styles.icon_style}/>
-              <Text style={styles.title_text}>Increase Your Chances</Text>
-            </View>
-            <Text style={styles.text}>Get unlimited Likes with Tinder Plus!</Text>
-          </View>
+        
         </Swiper>
       );
     } else {
@@ -104,8 +99,8 @@ const styles = StyleSheet.create({
     color: '#363636',
   },
   icon_style: {
-    width: size(25),
-    height: size(25),
+    width: size(35),
+    height: size(35),
     resizeMode: 'contain',
     marginRight: size(10),
   },
