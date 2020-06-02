@@ -34,7 +34,7 @@ const options = {
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
-    loggedIn: false;
+  
     this.unsubscribe = null;
     this.state = {
       emailInput: '',
@@ -47,12 +47,9 @@ class LoginScreen extends React.Component {
   componentDidMount() {
     console.disableYellowBox = true;
 
-    this.setState({
-      loggedIn: true,
-    });
-
+  
     auth().onAuthStateChanged(user => {
-      if (user != null && this.state.loggedIn == false) {
+      if (user != null ) {
         console.log(user.uid);
 
         try {
@@ -84,9 +81,7 @@ class LoginScreen extends React.Component {
           DialogProgress.hide();
           Alert.alert(error.toString());
         }
-      } else if (this.state.loggedIn == true) {
-        this.props.navigation.navigate('HomeScreen');
-      }
+      } 
     });
   }
 
@@ -138,6 +133,7 @@ class LoginScreen extends React.Component {
     }
   };
   _login = async () => {
+    const date=0;
     DialogProgress.show(options);
     auth()
       .signInWithEmailAndPassword(
@@ -146,9 +142,28 @@ class LoginScreen extends React.Component {
       )
       .then(res => {
         try {
+
+
+          database()
+          .ref('Users')
+          .child(res.user.uid).once("value", snapshot => {
+            console.log(snapshot.currentDate)
+
+
+           // date:snapshot.currentDate
+
+            
+           
+              
+                   
+  
+  
+                  })
           AsyncStorage.setItem('Id', res.user.uid);
           DialogProgress.hide();
-          this.props.navigation.navigate('HomeScreen');
+
+
+         // this.props.navigation.navigate('HomeScreen');
         } catch (error) {
           DialogProgress.hide();
           Alert.alert('Error Occured ! ');
