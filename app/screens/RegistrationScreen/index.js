@@ -12,9 +12,10 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
+  ActivityIndicator
 } from 'react-native';
 
-import DialogProgress from 'react-native-dialog-progress';
+
 
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
@@ -610,12 +611,8 @@ class OccupationComponent extends React.Component {
   }
 }
 
-const options = {
-  title: 'Loading.....',
-  message: 'Please Wait',
-  isCancelable: false,
-};
-class PhoneComponent extends React.Component {
+
+ class PhoneComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -624,7 +621,8 @@ class PhoneComponent extends React.Component {
     this.state = {
       textInput_MobileNo: '',
       userId: '',
-      currentDate:''
+      currentDate:'',
+      isLoading:false
     };
   }
   saveData = async () => {
@@ -642,7 +640,9 @@ class PhoneComponent extends React.Component {
         const birthday = await AsyncStorage.getItem('birthday');
         const password = await AsyncStorage.getItem('password');
         const occupation = await AsyncStorage.getItem('occupation');
-        DialogProgress.show(options);
+        this.setState({
+          isLoading: true,
+        });
         auth()
           .createUserWithEmailAndPassword(email, password)
           .then(res => {
@@ -667,21 +667,29 @@ class PhoneComponent extends React.Component {
                   currentDate:this.state.currentDate
                 })
                 .then(data => {
-                  DialogProgress.hide();
+                  this.setState({
+                    isLoading: false,
+                  });
                   Alert.alert('Registration SuccessFull!');
                  
                 })
                 .catch(error => {
-                  DialogProgress.hide();
+                  this.setState({
+                    isLoading: false,
+                  });
                   Alert.alert(error.toString());
                 });
             } catch (error) {
-              DialogProgress.hide();
+              this.setState({
+                isLoading: false,
+              });
               Alert.alert(error.toString());
             }
           })
           .catch(error => {
-            DialogProgress.hide();
+            this.setState({
+              isLoading: false,
+            });
             Alert.alert(JSON.stringify(error));
           });
       } catch (error) {
@@ -737,6 +745,7 @@ class PhoneComponent extends React.Component {
           </View>
           <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
           <TouchableOpacity
+          disabled={this.state.isLoading}
                 style={{alignItems: 'center'}}
                 onPress={() => this.getCurrentDate()}>
             <View style={styles.roundBtn}>
@@ -748,6 +757,15 @@ class PhoneComponent extends React.Component {
             </View>
             </TouchableOpacity>
           </View>
+
+          <View style={{marginTop: 20,flex:2}}>
+                <ActivityIndicator
+                  animating={this.state.isLoading}
+                  style={{marginTop: 0}}
+                  color={'#FF4A00FF'}
+                  size="large"
+                />
+              </View>
         </View>
       </ScrollView>
     );

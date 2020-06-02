@@ -13,6 +13,7 @@ export default {
       buttonContainer :{
           alignItems:'center',
           flex:3,
+          marginTop:20
           
       },
       fireImage :{
