@@ -34,7 +34,7 @@ const options = {
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
-  
+
     this.unsubscribe = null;
     this.state = {
       emailInput: '',
@@ -47,41 +47,39 @@ class LoginScreen extends React.Component {
   componentDidMount() {
     console.disableYellowBox = true;
 
-  
     auth().onAuthStateChanged(user => {
-      if (user != null ) {
+      if (user != null) {
         console.log(user.uid);
 
-        try {
-          database()
-            .ref('Users')
-            .child(user.uid)
-            .set({
-              Name: user.displayName,
-              Gender: 'Null',
-              Email: user.email,
-              Password: 'Null',
-              Interest: 'Null',
-              Occupation: 'Null',
-              Phone: user.phoneNumber,
-              AccType: 'Trial',
-              DOB: 'Null',
-            })
-            .then(data => {
-              DialogProgress.hide();
+        // try {
+        //   database()
+        //     .ref('Users')
+        //     .child(user.uid)
+        //     .set({
+        //       Name: user.displayName,
+        //       Gender: 'Null',
+        //       Email: user.email,
+        //       Password: 'Null',
+        //       Interest: 'Null',
+        //       Occupation: 'Null',
+        //       Phone: user.phoneNumber,
+        //       AccType: 'Trial',
+        //       DOB: 'Null',
+        //     })
+        //     .then(data => {
+        //       DialogProgress.hide();
 
-            
-              //this.props.navigation.navigate('HomeScreen');
-            })
-            .catch(error => {
-              DialogProgress.hide();
-              Alert.alert(error.toString());
-            });
-        } catch (error) {
-          DialogProgress.hide();
-          Alert.alert(error.toString());
-        }
-      } 
+        //       //this.props.navigation.navigate('HomeScreen');
+        //     })
+        //     .catch(error => {
+        //       DialogProgress.hide();
+        //       Alert.alert(error.toString());
+        //     });
+        // } catch (error) {
+        //   DialogProgress.hide();
+        //   Alert.alert(error.toString());
+        // }
+      }
     });
   }
 
@@ -133,7 +131,7 @@ class LoginScreen extends React.Component {
     }
   };
   _login = async () => {
-    const date=0;
+    const date = 0;
     DialogProgress.show(options);
     auth()
       .signInWithEmailAndPassword(
@@ -142,28 +140,18 @@ class LoginScreen extends React.Component {
       )
       .then(res => {
         try {
-
-
           database()
-          .ref('Users')
-          .child(res.user.uid).once("value", snapshot => {
-            console.log(snapshot.currentDate)
+            .ref('Users')
+            .child(res.user.uid)
+            .once('value', snapshot => {
+              console.log(snapshot.currentDate);
 
-
-           // date:snapshot.currentDate
-
-            
-           
-              
-                   
-  
-  
-                  })
+              // date:snapshot.currentDate
+            });
           AsyncStorage.setItem('Id', res.user.uid);
           DialogProgress.hide();
 
-
-         this.props.navigation.navigate('HomeScreen');
+          this.props.navigation.navigate('HomeScreen');
         } catch (error) {
           DialogProgress.hide();
           Alert.alert('Error Occured ! ');
@@ -293,8 +281,7 @@ class LoginScreen extends React.Component {
                 <TouchableOpacity
                   style={{alignItems: 'center'}}
                   // onPress={() => this.onFacebookButtonPress()}
-                  
-                  >
+                >
                   <View>
                     <Text style={{color: 'white', fontSize: 17}}>
                       Login with Facebook
