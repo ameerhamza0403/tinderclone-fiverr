@@ -11,8 +11,8 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
-import DialogProgress from 'react-native-dialog-progress';
 import styles from './style';
 
 import RegisterScreen from '../RegistrationScreen/index';
@@ -24,12 +24,6 @@ import * as Statics from '../../helpers/statics';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 import {LoginButton, AccessToken, LoginManager} from 'react-native-fbsdk';
-
-const options = {
-  title: 'Signing in .....',
-  message: 'Please Wait',
-  isCancelable: false,
-};
 
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -48,83 +42,95 @@ class LoginScreen extends React.Component {
     console.disableYellowBox = true;
 
     auth().onAuthStateChanged(user => {
-      if (user != null) {
-        console.log(user.uid);
+      // if (user != null) {
+      //   console.log(user.uid);
 
-        // try {
-        //   database()
-        //     .ref('Users')
-        //     .child(user.uid)
-        //     .set({
-        //       Name: user.displayName,
-        //       Gender: 'Null',
-        //       Email: user.email,
-        //       Password: 'Null',
-        //       Interest: 'Null',
-        //       Occupation: 'Null',
-        //       Phone: user.phoneNumber,
-        //       AccType: 'Trial',
-        //       DOB: 'Null',
-        //     })
-        //     .then(data => {
-        //       DialogProgress.hide();
+      //   try {
+      //     database()
+      //       .ref('Users')
+      //       .child(user.uid)
+      //       .add({
+      //         name: user.displayName,
+      //         gender: 'Null',
+      //         email: user.email,
+      //         password: 'Null',
+      //         interest: 'Null',
+      //         occupation: 'Null',
+      //         phone: user.phoneNumber,
+      //         accType: 'Trial',
+      //         dob: 'Null',
+      //       })
+      //       .then(data => {
+      //         this.setState({
+      //           isLoading: false,
+      //         });
 
-        //       //this.props.navigation.navigate('HomeScreen');
-        //     })
-        //     .catch(error => {
-        //       DialogProgress.hide();
-        //       Alert.alert(error.toString());
-        //     });
-        // } catch (error) {
-        //   DialogProgress.hide();
-        //   Alert.alert(error.toString());
-        // }
-      }
+      //         this.props.navigation.navigate('HomeScreen');
+      //       })
+      //       .catch(error => {
+      //         this.setState({
+      //           isLoading: false,
+      //         });
+      //         Alert.alert(error.toString());
+      //       });
+      //   } catch (error) {
+      //     this.setState({
+      //       isLoading: false,
+      //     });
+      //     Alert.alert(error.toString());
+      //   }
+      // }
     });
   }
 
-  // async onFacebookButtonPress() {
-  //   // Attempt login with permissions
-  //   const result = await LoginManager.logInWithPermissions([
-  //     'public_profile',
-  //     'email',
-  //   ]);
-  //   console.log('///', result.token);
+  async onFacebookButtonPress() {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions([
+      'public_profile',
+      'email',
+    ]);
+    console.log('///', result.token);
 
-  //   if (result.isCancelled) {
-  //     throw 'User cancelled the login process';
-  //   }
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
 
-  //   // Once signed in, get the users AccesToken
-  //   const data = await AccessToken.getCurrentAccessToken();
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
 
-  //   if (!data) {
-  //     throw 'Something went wrong obtaining access token';
-  //   }
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
 
-  //   // Create a Firebase credential with the AccessToken
-  //   const facebookCredential = auth.FacebookAuthProvider.credential(
-  //     data.accessToken,
-  //   );
-  //   console.log('//', facebookCredential.token);
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(
+      data.accessToken,
+    );
+    console.log('//', facebookCredential.token);
 
-  //   // Sign-in the user with the credential
-  //   auth().signInWithCredential(facebookCredential);
-  // }
+    // Sign-in the user with the credential
+    auth().signInWithCredential(facebookCredential);
+  }
 
   _validateFunction = async () => {
-    DialogProgress.show(options);
+    this.setState({
+      isLoading: true,
+    });
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     const {emailInput, passwordInput} = this.state;
 
     if (emailInput == '' || reg.test(emailInput) === false) {
       alert('Email is Not Correct');
-      DialogProgress.hide();
+      this.setState({
+        isLoading: false,
+      });
       return false;
     } else if (passwordInput == '' || passwordInput.length < 6) {
       alert('Please enter Password , More than 6 characters');
-      DialogProgress.hide();
+      this.setState({
+        isLoading: false,
+      });
       return false;
     } else {
       this._login();
@@ -132,7 +138,9 @@ class LoginScreen extends React.Component {
   };
   _login = async () => {
     const date = 0;
-    DialogProgress.show(options);
+    this.setState({
+      isLoading: true,
+    });
     auth()
       .signInWithEmailAndPassword(
         this.state.emailInput,
@@ -149,16 +157,22 @@ class LoginScreen extends React.Component {
               // date:snapshot.currentDate
             });
           AsyncStorage.setItem('Id', res.user.uid);
-          DialogProgress.hide();
+          this.setState({
+            isLoading: false,
+          });
 
           this.props.navigation.navigate('HomeScreen');
         } catch (error) {
-          DialogProgress.hide();
+          this.setState({
+            isLoading: false,
+          });
           Alert.alert('Error Occured ! ');
         }
       })
       .catch(function(error) {
-        DialogProgress.hide();
+        this.setState({
+          isLoading: false,
+        });
         Alert.alert('Invalid Email / Password , Please Try Again');
       });
   };
@@ -259,6 +273,7 @@ class LoginScreen extends React.Component {
                     justifyContent: 'center',
                   }}>
                   <TouchableOpacity
+                    disabled={this.state.isLoading}
                     onPress={() => this._validateFunction()}
                     style={{alignItems: 'center', width: '100%'}}>
                     <View
@@ -274,24 +289,34 @@ class LoginScreen extends React.Component {
                   </TouchableOpacity>
                 </View>
               </View>
+              <View style={{marginTop: 10}}>
+                <ActivityIndicator
+                  animating={this.state.isLoading}
+                  style={{marginTop: 0}}
+                  color={'#fff'}
+                  size="large"
+                />
+              </View>
             </View>
 
             <View style={styles.buttonContainer}>
-              <View style={styles.roundBtn}>
-                <TouchableOpacity
-                  style={{alignItems: 'center'}}
-                  // onPress={() => this.onFacebookButtonPress()}
-                >
+              <TouchableOpacity
+                disabled={this.state.isLoading}
+                style={{alignItems: 'center'}}
+                onPress={() => this.onFacebookButtonPress()}>
+                <View style={styles.roundBtn}>
                   <View>
                     <Text style={{color: 'white', fontSize: 17}}>
                       Login with Facebook
                     </Text>
                   </View>
-                </TouchableOpacity>
-              </View>
+                </View>
+              </TouchableOpacity>
 
               <View style={styles.roundBtn}>
-                <TouchableOpacity style={{alignItems: 'center'}}>
+                <TouchableOpacity
+                  disabled={this.state.isLoading}
+                  style={{alignItems: 'center'}}>
                   <View>
                     <Text style={{color: 'white', fontSize: 16}}>
                       Login with Phone Number
