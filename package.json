@@ -25,7 +25,7 @@
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-datepicker": "^1.7.2",
     "react-native-deck-swiper": "^1.6.7",
-    "react-native-dialog-progress": "^1.0.2",
+  
     "react-native-elements": "^1.2.7",
     "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.6.1",
