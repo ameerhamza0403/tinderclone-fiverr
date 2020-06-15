@@ -270,7 +270,7 @@ class SettingsScreen extends React.Component {
               </View>
               <View style={{marginTop: 10}}>
                 <Text style={styles.des}>
-                  Hobby Finder uses these prefreneces to suggest matches !
+                  Hobby Dutch uses these prefreneces to suggest matches !
                 </Text>
               </View>
             </View>
@@ -290,7 +290,7 @@ class SettingsScreen extends React.Component {
                         styles.heading,
                         {color: '#626262', height: 40, marginTop: 7},
                       ]}>
-                      Show me on Hobby Finder
+                      Show me on Hobby Dutch
                     </Text>
 
                     <Text />
@@ -514,7 +514,7 @@ class SettingsScreen extends React.Component {
                         fontSize: 20,
                         fontWeight: 'bold',
                       }}>
-                      Share Hobby Finder
+                      Share Hobby Dutch
                     </Text>
                   </View>
                 </View>

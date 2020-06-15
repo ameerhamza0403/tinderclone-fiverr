@@ -200,7 +200,7 @@ class LoginScreen extends React.Component {
                 flex: 1,
                 marginTop: size(30),
               }}>
-              <Text style={styles.logoText}>HobbyFinder</Text>
+              <Text style={styles.logoText}>HobbyDutch</Text>
             </View>
 
             <View

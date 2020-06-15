@@ -91,7 +91,7 @@ class Profile extends Component {
 
           <View style={styles.tinder_plus_button_container}>
             <TouchableOpacity style={styles.tinder_plus_button_style}>
-              <Text style={styles.tinder_button_text_style}>Hobby Finder</Text>
+              <Text style={styles.tinder_button_text_style}>Hobby Dutch</Text>
             </TouchableOpacity>
           </View>
         </View>
