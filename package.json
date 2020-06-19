@@ -25,7 +25,6 @@
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-datepicker": "^1.7.2",
     "react-native-deck-swiper": "^1.6.7",
-  
     "react-native-elements": "^1.2.7",
     "react-native-fbsdk": "^2.0.0",
     "react-native-gesture-handler": "^1.6.1",
@@ -43,7 +42,8 @@
     "react-native-view-overflow": "0.0.5",
     "react-navigation": "^4.3.7",
     "react-navigation-stack": "^2.3.11",
-    "react-navigation-tabs": "^2.8.11"
+    "react-navigation-tabs": "^2.8.11",
+    "tipsi-stripe": "^7.5.3"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
