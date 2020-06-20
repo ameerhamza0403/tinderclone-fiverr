@@ -15,11 +15,11 @@ import {createStackNavigator} from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
-//import Chat from '../ChatScreen/index'
+import Chat from '../ChatScreen/index'
 
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
-export default class MyMessagesScreen extends Component {
+ class MyMessagesScreen extends Component {
   render() {
     return (
       <ScrollView>
@@ -154,24 +154,24 @@ export default class MyMessagesScreen extends Component {
 //   )
 // }
 
-// const myStack = createStackNavigator({
+const myStack = createStackNavigator({
 
-//   Home: {
-//     screen: MessagesScreen,
-//     navigationOptions: {
-//       header: null,
+  Home: {
+    screen: MyMessagesScreen,
+    navigationOptions: {
+      header: null,
 
-//     },
+    },
 
-//   },
-//   Chat: {
-//     screen: Chat,
-//     navigationOptions: {
-//       header: null,
+  },
+  Chat: {
+    screen: Chat,
+    navigationOptions: {
+      header: null,
 
-//     },
-//   },
+    },
+  },
 
-// });
+});
 
-//   export default createAppContainer(myStack);
+export default createAppContainer(myStack);

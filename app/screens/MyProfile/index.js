@@ -46,15 +46,15 @@ export default class MyProfile extends Component {
         .on('value', querySnapShot => {
           let data = querySnapShot.val() ? querySnapShot.val() : {};
           let list = {...data};
-          const {Id, Name, Occupation, Gender, Phone, DOB, Email} = list;
+          const {id, name, occupation, gender, phone, dob, email} = list;
           mylist.push({
-            Id: Id,
-            Name: Name,
-            Gender: Gender,
-            Occupation: Occupation,
-            Phone: Phone,
-            DOB: DOB,
-            Email: Email,
+            id: id,
+            name: name,
+            gender: gender,
+            occupation: occupation,
+            phone: phone,
+            dob: dob,
+            email: email,
           });
 
           this.setState({
@@ -117,14 +117,14 @@ export default class MyProfile extends Component {
                 />
 
                 <View style={{flexDirection: 'row'}}>
-                  <Text style={styles.profile_name_style}>{item.Name}</Text>
+                  <Text style={styles.profile_name_style}>{item.name}</Text>
                 </View>
 
                 <View style={{marginTop: size(10)}}>
                   <View
                     style={{flexDirection: 'row', width: Statics.DEVICE_WIDTH}}>
                     <Icon name={'work'} size={18} style={styles.detailsIcon} />
-                    <Text style={styles.details}>{item.Occupation} </Text>
+                    <Text style={styles.details}>{item.occupation} </Text>
                   </View>
                   <View
                     style={{
@@ -137,7 +137,7 @@ export default class MyProfile extends Component {
                       style={styles.detailsIcon}
                     />
                     <Text style={styles.details}>
-                      {item.Gender} | {item.DOB}{' '}
+                      {item.gender} | {item.dob}{' '}
                     </Text>
                   </View>
                   <View style={{flexDirection: 'row', width: '75%'}}>
@@ -147,7 +147,7 @@ export default class MyProfile extends Component {
                       style={styles.detailsIcon}
                     />
                     <Text style={styles.details}>
-                      {item.Phone} | {item.Email}
+                      {item.phone} | {item.email}
                     </Text>
                   </View>
                 </View>
