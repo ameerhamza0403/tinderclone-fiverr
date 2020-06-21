@@ -598,7 +598,7 @@ export default class EditProfileInfo extends React.Component {
                   minimumValue={1}
                   activeColor={'#FB6C57'}
                   thumbImage={require('../../../assests/images/dance.png')}
-                  thumbStyle={{height: 10, width: 10}}
+             
                   step={1}
                   value={this.state.sliderValue}
                   onValueChange={value => {
@@ -612,8 +612,8 @@ export default class EditProfileInfo extends React.Component {
                     borderRadius: 10,
                   }}
                   thumbStyle={{
-                    width: 50,
-                    height: 50,
+                    width: 20,
+                    height: 20,
                     //   backgroundColor: 'green',
                     borderRadius: 50,
                   }}

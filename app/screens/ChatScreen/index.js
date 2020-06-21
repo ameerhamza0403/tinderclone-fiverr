@@ -251,7 +251,7 @@ export default class Chat extends React.Component {
             }}>
             <Image
               source={require('../../../assests/images/send.png')}
-              style={{marginLeft: 5, width: 40, height: 40}}
+              style={{marginLeft: 5, width: 35, height: 40}}
               resizeMode={'contain'}
             />
           </TouchableOpacity>
