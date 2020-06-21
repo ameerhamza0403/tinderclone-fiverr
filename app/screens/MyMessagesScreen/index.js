@@ -120,9 +120,10 @@ import styles from './styles';
                 style={{
                   width: Statics.DEVICE_WIDTH / 5,
                   fontWeight: 'bold',
+                  marginLeft:30,
                   fontSize: size(14),
                 }}>
-                Queen Bees
+              Shahbaz
               </Text>
             </View>
           </TouchableOpacity>

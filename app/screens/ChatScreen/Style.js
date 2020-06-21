@@ -2,12 +2,14 @@
 
 import { size } from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
+import {Dimensions} from 'react-native'
 export default {
 container: {
     flex: 1,
     paddingRight: 5,
     paddingLeft: 5,
-    width:'100%',
+    width:Dimensions.get('window').width,
+    height:Dimensions.get('window').height,
     alignItems: 'center',
     backgroundColor: '#e0ebeb',
 },

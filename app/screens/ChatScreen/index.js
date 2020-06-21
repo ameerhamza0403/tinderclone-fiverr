@@ -10,12 +10,12 @@ import {
   TextInput,
   Text,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import {View} from 'native-base';
 import database from '@react-native-firebase/database';
 import styles from './Style';
-
+import  moment from 'moment'
 
 export default class Chat extends React.Component {
   constructor() {
@@ -147,116 +147,116 @@ export default class Chat extends React.Component {
 
   render() {
     return (
-      <ImageBackground
-        source={require('../../../assests/images/chatsbackground.jpg')}
-        style={styles.container}>
-        <KeyboardAvoidingView />
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'space-between',
+          marginBottom: 1,
+          width: '100%',
+          paddingRight: 2,
+          paddingLeft: 2,
+          backgroundColor: '#FF4A00FF',
+        }}>
+        <FlatList
+          data={Object.values(this.state.messages)}
+          showsVerticalScrollIndicator={false}
+          showsHorizontalScrollIndicator={false}
+          ref="messages_flatlist"
+          keyExtractor={(item, index) => index.toString()}
+          onContentSizeChange={() => this.refs.messages_flatlist.scrollToEnd()}
+          renderItem={({item, index}) => {
+            const timestamp = item.startedAt;
+
+            return (
+              <View
+                style={{
+                  borderBottomRightRadius: 20,
+                  backgroundColor:
+                    item.sender == this.state.to_UserId ? '#DCF8C6' : '#FFFFFF',
+                  alignSelf:
+                    item.sender == this.state.from_UserId
+                      ? 'flex-end'
+                      : 'flex-start',
+                  paddingRight: 10,
+                  paddingLeft: 10,
+                  paddingTop: 5,
+                  paddingBottom: 8,
+                  borderRadius: 7,
+                  marginTop: 7,
+                  marginRight: 8,
+                  marginLeft: 8,
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}>
+                <Text
+                  style={{
+                    fontSize: 15,
+                    marginTop: 3,
+                    marginLeft: 10,
+                    textAlign: 'right',
+                  }}>
+                  {item.message}
+                </Text>
+
+                <Text
+                  style={{
+                    fontSize:8,
+                    marginTop: 3,
+                    marginLeft: 10,
+                    textAlign: 'right',
+                  }}>
+                  {moment(timestamp).format('hh:mm A')}
+                </Text>
+              </View>
+            );
+          }}
+        />
+
         <View
           style={{
-            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
             justifyContent: 'space-between',
-            marginBottom: 1,
-            width: '100%',
-            paddingRight: 2,
-            paddingLeft: 2,
+            paddingTop: 5,
+            paddingBottom: 25,
+            widht: '100%',
           }}>
-          <FlatList
-            data={Object.values(this.state.messages)}
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            ref="messages_flatlist"
-            keyExtractor={(item, index) => index.toString()}
-            onContentSizeChange={() =>
-              this.refs.messages_flatlist.scrollToEnd()
-            }
-            renderItem={({item, index}) => {
-              console.log(item.message);
-
-              console.log(item.message);
-              const timestamp = item.startedAt;
-
-              return (
-                <View
-                  style={{
-                    backgroundColor:
-                      item.sender == this.state.to_UserId
-                        ? '#DCF8C6'
-                        : '#FFFFFF',
-                    alignSelf:
-                      item.sender == this.state.from_UserId
-                        ? 'flex-end'
-                        : 'flex-start',
-                    paddingRight: 10,
-                    paddingLeft: 10,
-                    paddingTop: 5,
-                    paddingBottom: 5,
-                    borderRadius: 7,
-                    marginTop: 7,
-                    marginRight: 8,
-                    marginLeft: 8,
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 15,
-                      marginTop: 3,
-                      marginLeft: 10,
-                      textAlign: 'right',
-                    }}>
-                    {item.message}
-                  </Text>
-                </View>
-              );
-            }}
-          />
-      
-
-          <View
+          <TextInput
             style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              paddingTop: 5,
-              paddingBottom: 25,
-              widht: '100%',
-            }}>
-            <TextInput
-              style={{
-                borderRadius: 20,
-                width: '80%',
-                borderColor: 'white',
-                borderWidth: 2,
-                paddingLeft: 10,
-                paddingRight: 10,
-                backgroundColor: 'white',
-              }}
-              placeholder={'Type the message'}
-              multiline={true}
-              numberOfLines={0.1}
-              onChangeText={message => this.setState({message})}
-              value={this.state.message}
-            />
+              borderRadius: 20,
+              width: '80%',
+              borderColor: 'white',
+              borderWidth: 2,
+              paddingLeft: 10,
+              paddingRight: 10,
+              backgroundColor: 'white',
+            }}
+            autoFocus={true}
+            placeholder={'Type the message'}
+            multiline={true}
+            numberOfLines={0.1}
+            onChangeText={message => this.setState({message})}
+            value={this.state.message}
+          />
 
-            <TouchableOpacity
-              onPress={this.sendTextMessage}
-              style={{
-                backgroundColor: '#fff',
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: 50,
-                height: 50,
-                borderRadius: 50,
-              }}>
-              <Image
-                source={require('../../../assests/images/send.png')}
-                style={{width: 40, height: 40}}
-                resizeMode={'contain'}
-              />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={this.sendTextMessage}
+            style={{
+              backgroundColor: '#fff',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 50,
+              height: 50,
+              borderRadius: 50,
+            }}>
+            <Image
+              source={require('../../../assests/images/send.png')}
+              style={{marginLeft: 5, width: 40, height: 40}}
+              resizeMode={'contain'}
+            />
+          </TouchableOpacity>
         </View>
-      </ImageBackground>
+      </View>
     );
   }
 }
