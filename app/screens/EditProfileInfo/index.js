@@ -594,10 +594,12 @@ export default class EditProfileInfo extends React.Component {
               </View>
               <View style={{justifyContent: 'flex-end', marginBottom: 20}}>
                 <Slider
+              
                   maximumValue={5}
-                  minimumValue={1}
-                  activeColor={'#FB6C57'}
-                  thumbImage={require('../../../assests/images/dance.png')}
+                  minimumValue={0}
+                 
+                  thumbTintColor={'#FF655B'}
+                  // thumbImage={require('../../../assests/images/dance.png')}
              
                   step={1}
                   value={this.state.sliderValue}
@@ -606,17 +608,8 @@ export default class EditProfileInfo extends React.Component {
                       sliderValue: value,
                     });
                   }}
-                  trackStyle={{
-                    backgroundColor: '#FF655B',
-                    height: 10,
-                    borderRadius: 10,
-                  }}
-                  thumbStyle={{
-                    width: 20,
-                    height: 20,
-                    //   backgroundColor: 'green',
-                    borderRadius: 50,
-                  }}
+                
+                
                 />
               </View>
               <View style={{flexDirection: 'row', marginBottom: 50}}>
@@ -636,19 +629,32 @@ export default class EditProfileInfo extends React.Component {
           <View
             style={{
               backgroundColor: 'white',
-              alignItems: 'center',
+             
               width: '100%',
+            marginLeft:10,marginRight:10,
+            flex:1
             }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-              Wants To Dance
+
+              <View style={{alignItems:'center',justifyContent:'center'}}>
+
+              <Text style={{fontSize: 18, fontWeight: 'bold',alignSelf:'center'}}>
+            My Hobbies Picks
             </Text>
-            <Text style={{fontSize: 16}}>Max 3 Dances can be selected</Text>
+            <Text style={{fontSize: 16,alignSelf:'center'}}>Max 3 Dances can be selected</Text>
 
-            <View style={{flexDirection: 'row'}}>
+              </View>
+            <View style={{flex:1,}}>
+
+            <View style={{flex:1,marginRight:20}}>
+             <ScrollView horizontal
+              showsHorizontalScrollIndicator={false}>
+
+           
+              <View style={{flex:1,flexDirection: 'row',}}>
               <View style={styles.danceBtn}>
                 <TouchableOpacity>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Social dance</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -656,32 +662,40 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.danceBtn}>
                 <TouchableOpacity underlayColor={'black'}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Gym workout</Text>
                   </View>
                 </TouchableOpacity>
               </View>
 
+             
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Dance</Text>
                   </View>
                 </TouchableOpacity>
               </View>
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Fitness</Text>
                   </View>
                 </TouchableOpacity>
               </View>
+              </View>
+              </ScrollView>
             </View>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flex:1,marginRight:20}}>
+             <ScrollView horizontal
+              showsHorizontalScrollIndicator={false}>
+
+           
+              <View style={{flex:1,flexDirection: 'row',}}>
               <View style={styles.danceBtn}>
                 <TouchableOpacity>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Kayaking</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -689,7 +703,7 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.danceBtn}>
                 <TouchableOpacity underlayColor={'black'}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Wave running</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -697,24 +711,32 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Surfing</Text>
                   </View>
                 </TouchableOpacity>
               </View>
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Swimming</Text>
                   </View>
                 </TouchableOpacity>
               </View>
+              </View>
+              
+              </ScrollView>
             </View>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flex:1,marginRight:20}}>
+             <ScrollView horizontal
+              showsHorizontalScrollIndicator={false}>
+
+           
+              <View style={{flex:1,flexDirection: 'row',}}>
               <View style={styles.danceBtn}>
                 <TouchableOpacity>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Ballroom</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Horse riding</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -722,7 +744,7 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.danceBtn}>
                 <TouchableOpacity underlayColor={'black'}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Club</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Wine tasting</Text>
                   </View>
                 </TouchableOpacity>
               </View>
@@ -730,21 +752,117 @@ export default class EditProfileInfo extends React.Component {
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Kizomba</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Dining</Text>
                   </View>
                 </TouchableOpacity>
               </View>
               <View style={styles.danceBtn}>
                 <TouchableOpacity style={{}}>
                   <View>
-                    <Text style={{color: 'white', fontSize: 16}}>Tango</Text>
+                    <Text style={{color: 'white', fontSize: 16}}>Cooking class</Text>
                   </View>
                 </TouchableOpacity>
               </View>
+              </View>
+              
+              </ScrollView>
             </View>
+
+            <View style={{flex:1,marginRight:20}}>
+             <ScrollView horizontal
+              showsHorizontalScrollIndicator={false}>
+
+           
+              <View style={{flex:1,flexDirection: 'row',}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Music class </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity underlayColor={'black'}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}> Singing class</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity style={{}}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Karaoke</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity style={{}}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Movie </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity style={{}}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Theatre</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              </View>
+              
+              </ScrollView>
+            </View>
+
+            <View style={{flex:1,marginRight:20}}>
+             <ScrollView horizontal
+              showsHorizontalScrollIndicator={false}>
+
+           
+              <View style={{flex:1,flexDirection: 'row',}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Social dance</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity underlayColor={'black'}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Gym workout</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity style={{}}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Massage</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity style={{}}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Dance Fitness</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+              
+              </View>
+              
+              </ScrollView>
+            </View>
+            </View>
+
+           
           </View>
 
-          <View style={{alignItems: 'center', marginTop: 0, flex: 2}}>
+          <View style={{alignItems: 'center', marginTop: 0, flex: 2,marginBottom:30}}>
             <View style={styles.roundBtn}>
               <TouchableOpacity
                 style={{alignItems: 'center'}}

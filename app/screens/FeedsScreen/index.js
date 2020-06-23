@@ -37,7 +37,6 @@ export default class FeedsScreen extends React.Component {
                   position: 'absolute',
                   left: 0,
                   top: 220,
-                  height: 200,
                   backgroundColor: 'rgba(52, 52, 52, 0.8)',
                   width: '100%',
                   height: 80,
@@ -45,7 +44,7 @@ export default class FeedsScreen extends React.Component {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}>
-                <Text style={{color: '#FF4A00FF', fontSize: 20}}>Its a</Text>
+                <Text style={{color: '#FF4A00FF', fontSize: 20}}>You got</Text>
 
                 <Text
                   style={{
@@ -53,7 +52,7 @@ export default class FeedsScreen extends React.Component {
                     color: '#FF4A00FF',
                     fontWeight: 'bold',
                   }}>
-                  Match
+                 an Event Partner
                 </Text>
               </View>
 
@@ -62,7 +61,7 @@ export default class FeedsScreen extends React.Component {
                   position: 'absolute',
                   left: 250,
                   top: 430,
-                  backgroundColor: '#fff',
+                 
                   borderRadius: 60,
                   height: 65,
                   width: 65,
@@ -72,7 +71,7 @@ export default class FeedsScreen extends React.Component {
                 }}>
                 <Image
                   style={styles.iconStyle}
-                  source={require('../../../assests/images/heart.png')}
+                  source={require('../../../assests/images/like.png')}
                 />
               </View>
 
@@ -81,7 +80,7 @@ export default class FeedsScreen extends React.Component {
                   position: 'absolute',
                   left: 330,
                   top: 430,
-                  backgroundColor: '#fff',
+                 
                   borderRadius: 60,
                   height: 65,
                   width: 65,
@@ -146,7 +145,7 @@ export default class FeedsScreen extends React.Component {
                   style={styles.button_container}
                   onPress={() => navigation.navigate('EditProfile')}>
                   <Image
-                    source={require('../../../assests/images/star.png')}
+                    source={require('../../../assests/images/emoji.png')}
                     style={styles.button_style}
                   />
                 </TouchableOpacity>
@@ -157,7 +156,7 @@ export default class FeedsScreen extends React.Component {
                   // onPress={() => this.pushToScreen('Edit')}
                 >
                   <Image
-                    source={require('../../../assests/images/heart.png')}
+                    source={require('../../../assests/images/like.png')}
                     style={styles.button_style}
                   />
                 </TouchableOpacity>

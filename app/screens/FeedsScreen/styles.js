@@ -9,6 +9,7 @@ export default {
   container: {
     flex: 1,
     backgroundColor: 'rgb(244,246,251)',
+    marginBottom:20
     
   },
   //-----------------PROFILE PICTURE CONTAINER--------------//
@@ -18,12 +19,12 @@ export default {
   
   },
   iconStyle: {
-    width:size(45),
-    height: size(43),
+    width:size(70),
+    height: size(70),
   },
   profile_pic_style: {
     width: '100%',
-    height: 480,
+    height: 460,
   
   },
   profile_name_style: {
@@ -85,8 +86,8 @@ color:'red'
 
   },
   button_style: {
-    width: size(35),
-    height: size(35),
+    width: size(60),
+    height: size(60),
     resizeMode: 'contain',
  
   },

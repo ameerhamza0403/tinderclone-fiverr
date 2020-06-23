@@ -142,8 +142,9 @@ export default {
     marginLeft:5,
     borderColor: 'white',
     borderRadius: 15,
-    width: '22%',
+    width: 120,
     marginTop: 20,
+  
     height: 45,
     backgroundColor: '#FF4A00FF',
     alignItems: 'center',

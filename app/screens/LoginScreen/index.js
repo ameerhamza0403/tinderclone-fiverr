@@ -44,7 +44,6 @@ class LoginScreen extends React.Component {
     auth().onAuthStateChanged(user => {
       // if (user != null) {
       //   console.log(user.uid);
-
       //   try {
       //     database()
       //       .ref('Users')
@@ -64,7 +63,6 @@ class LoginScreen extends React.Component {
       //         this.setState({
       //           isLoading: false,
       //         });
-
       //         this.props.navigation.navigate('HomeScreen');
       //       })
       //       .catch(error => {
@@ -137,44 +135,51 @@ class LoginScreen extends React.Component {
     }
   };
   _login = async () => {
+    const that = this;
     const date = 0;
     this.setState({
       isLoading: true,
     });
-    auth()
-      .signInWithEmailAndPassword(
-        this.state.emailInput,
-        this.state.passwordInput,
-      )
-      .then(res => {
-        try {
-          database()
-            .ref('Users')
-            .child(res.user.uid)
-            .once('value', snapshot => {
-              console.log(snapshot.currentDate);
 
-              // date:snapshot.currentDate
+    try {
+      auth()
+        .signInWithEmailAndPassword(
+          this.state.emailInput,
+          this.state.passwordInput,
+        )
+        .then(res => {
+          try {
+            database()
+              .ref('Users')
+              .child(res.user.uid)
+              .once('value', snapshot => {
+                console.log(snapshot.currentDate);
+
+                // date:snapshot.currentDate
+              });
+            AsyncStorage.setItem('Id', res.user.uid);
+            that.setState({
+              isLoading: false,
             });
-          AsyncStorage.setItem('Id', res.user.uid);
-          this.setState({
+
+            this.props.navigation.navigate('HomeScreen');
+          } catch (error) {
+            that.setState({
+              isLoading: false,
+            });
+            Alert.alert('Error Occured ! ');
+          }
+        })
+        .catch(function(error) {
+          that.setState({
             isLoading: false,
           });
 
-          this.props.navigation.navigate('HomeScreen');
-        } catch (error) {
-          this.setState({
-            isLoading: false,
-          });
-          Alert.alert('Error Occured ! ');
-        }
-      })
-      .catch(function(error) {
-        this.setState({
-          isLoading: false,
+          Alert.alert(error.toString());
         });
-        Alert.alert('Invalid Email / Password , Please Try Again');
-      });
+    } catch (error) {
+      Alert.alert(error);
+    }
   };
 
   render() {
@@ -289,7 +294,7 @@ class LoginScreen extends React.Component {
                   </TouchableOpacity>
                 </View>
               </View>
-              <View style={{marginTop: 10}}>
+              <View style={{marginTop: 20, marginBottom: 20}}>
                 <ActivityIndicator
                   animating={this.state.isLoading}
                   style={{marginTop: 0}}

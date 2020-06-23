@@ -33,9 +33,10 @@ export default class SplashScreen extends Component {
             backgroundColor="#FF4A00FF"
             barStyle="light-content"></StatusBar>
           <View style={{flex:4,alignItems:'center',justifyContent:'center'}}>
-           <Text style={{fontSize:40,color:'#FF4A00FF',fontWeight:'bold',fontStyle:'italic'}}>
-             Hobby Dutch
-           </Text>
+           <Image
+           style={{height:200,width:270}}
+           source={require('../../../assests/images/logo.png')}
+           />
           </View>
   
           
