@@ -50,7 +50,7 @@ export default class NotificationSettings extends React.Component {
                     styles.heading,
                     {color: '#626262', height: 20, marginTop: 7},
                   ]}>
-                  New Matches
+                 Event Dutch
                 </Text>
 
                 <Text
@@ -58,7 +58,7 @@ export default class NotificationSettings extends React.Component {
                     styles.des,
                     {color: '#626262', height: 40, marginTop: 7},
                   ]}>
-                  You just got new matches
+                  You just got an event partner
                 </Text>
               </View>
 
@@ -85,7 +85,7 @@ export default class NotificationSettings extends React.Component {
                     styles.heading,
                     {color: '#626262', height: 20, marginTop: 7},
                   ]}>
-                  Messages
+                 Chat
                 </Text>
 
                 <Text
@@ -93,7 +93,7 @@ export default class NotificationSettings extends React.Component {
                     styles.des,
                     {color: '#626262', height: 40, marginTop: 7},
                   ]}>
-                  Someone sent you a new message
+                  Someone wants to chat
                 </Text>
               </View>
 
@@ -120,7 +120,7 @@ export default class NotificationSettings extends React.Component {
                     styles.heading,
                     {color: '#626262', height: 20, marginTop: 7},
                   ]}>
-                  Messages Likes
+                  Chat Likes
                 </Text>
 
                 <Text
@@ -128,7 +128,42 @@ export default class NotificationSettings extends React.Component {
                     styles.des,
                     {color: '#626262', height: 40, marginTop: 7},
                   ]}>
-                  Someone liked your message
+                Someone liked how you chat 
+                </Text>
+              </View>
+
+              <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
+                <Switch
+                  trackColor={{true: 'red', false: 'grey'}}
+                  style={{marginTop: 0}}
+                  onValueChange={this.toggleSwitch}
+                  value={this.state.switchValue}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                marginTop: 8,
+                backgroundColor: 'white',
+                flexDirection: 'row',
+                width: '100%',
+              }}>
+              <View style={{flexDirection: 'column'}}>
+                <Text
+                  style={[
+                    styles.heading,
+                    {color: '#626262', height: 20, marginTop: 7},
+                  ]}>
+                  Event Attendance
+                </Text>
+
+                <Text
+                  style={[
+                    styles.des,
+                    {color: '#626262', height: 40, marginTop: 7},
+                  ]}>
+                 Someone just joined an event
                 </Text>
               </View>
 

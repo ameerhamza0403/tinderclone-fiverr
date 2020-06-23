@@ -281,7 +281,7 @@ class SwipeCards extends React.Component {
                   marginLeft: 0,
                 }}>
                 <View style={{marginTop: size(20), marginLeft: size(20)}}>
-                  <Text style={{fontSize: size(20)}}>Confirm you can play</Text>
+                  <Text style={{fontSize: size(20)}}>Confirm you will attend event</Text>
                 </View>
                 <View
                   style={{
@@ -310,8 +310,7 @@ class SwipeCards extends React.Component {
                     marginTop: size(20),
                   }}>
                   <Text style={{fontSize: size(17)}}>
-                    By clicking play , you are making a commitment to Us that
-                    you will turn up for this game on time.
+                  By clicking Go Dutch, you are making a commitment to your partner that you will turn up for this event on time
                   </Text>
                 </View>
 
@@ -332,25 +331,12 @@ class SwipeCards extends React.Component {
                         width: 140,
                         borderRadius: 10,
                       }}>
-                      <Text style={{color: '#fff', fontSize: 16}}>Accept</Text>
+                      <Text style={{color: '#fff', fontSize: 16}}>Go Dutch</Text>
                     </View>
                   </TouchableOpacity>
                   {/* onPress={() => navigation.navigate('ChatScreen')} */}
 
-                  <TouchableOpacity>
-                    <View
-                      style={{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: '#34b6c7',
-                        height: 55,
-                        width: 140,
-                        marginLeft: 20,
-                        borderRadius: 10,
-                      }}>
-                      <Text style={{color: '#fff', fontSize: 16}}>Chat</Text>
-                    </View>
-                  </TouchableOpacity>
+                
                 </View>
 
                 {/* <Button  title="Hide" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } /> */}
