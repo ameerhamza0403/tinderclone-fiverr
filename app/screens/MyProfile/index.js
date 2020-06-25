@@ -32,7 +32,7 @@ export default class MyProfile extends Component {
   }
 
   async componentDidMount() {
-    const id = await AsyncStorage.getItem('Id', 0);
+    const id = await AsyncStorage.getItem('id', 0);
     console.log(id);
 
     try {

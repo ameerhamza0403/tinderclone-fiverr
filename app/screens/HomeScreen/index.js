@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, StatusBar} from 'react-native';
+import {StyleSheet, Text, View, StatusBar,BackHandler,Alert} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -7,9 +7,31 @@ import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 
 import AppNavigator from '../TabsRoutes/routes';
+import { AsyncStorage } from 'react-native';
 const AppIndex = createAppContainer(AppNavigator);
 
 export default class HomeScreen extends Component {
+
+
+
+
+  backAction = () => {
+    BackHandler.exitApp();
+  };
+
+  async componentDidMount() {
+
+    const id = await AsyncStorage.getItem('Id', 0);
+    console.log(id)
+    this.backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      this.backAction
+    );
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
   render() {
     return (
       <View

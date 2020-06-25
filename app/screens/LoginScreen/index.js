@@ -157,7 +157,8 @@ class LoginScreen extends React.Component {
 
                 // date:snapshot.currentDate
               });
-            AsyncStorage.setItem('Id', res.user.uid);
+           AsyncStorage.setItem('id', res.user.uid);
+         
             that.setState({
               isLoading: false,
             });

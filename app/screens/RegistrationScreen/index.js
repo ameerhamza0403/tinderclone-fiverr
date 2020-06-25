@@ -12,10 +12,9 @@ import {
   Button,
   TextInput,
   TouchableOpacity,
-  ActivityIndicator
+  ActivityIndicator,
 } from 'react-native';
-
-
+import LoginStack from '../LoginScreen/index';
 
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
@@ -29,6 +28,7 @@ import {Alert} from 'react-native';
 
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
+import HomePage from '../HomeScreen/index';
 
 class EmailComponent extends React.Component {
   constructor(props) {
@@ -83,16 +83,14 @@ class EmailComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-          <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => this.saveData()}>
-            <View style={styles.roundBtn}>
-             
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => this.saveData()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-              
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -154,18 +152,16 @@ class PasswordComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: size(0), flex: 1}}>
-          <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => this.saveData()}>
-            <View style={styles.roundBtn}>
-           
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => this.saveData()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: size(16)}}>
                     Continue
                   </Text>
                 </View>
-            
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -223,16 +219,14 @@ class NameComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-          <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => this.saveData()}>
-            <View style={styles.roundBtn}>
-           
+            <TouchableOpacity
+              style={{alignItems: 'center'}}
+              onPress={() => this.saveData()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -310,16 +304,14 @@ class BirthdayComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
-          <TouchableOpacity
-                style={{alignItems: 'center'}} //this.props.navigation.navigate('Gender')}
-                onPress={() => this.saveData()}>
-            <View style={styles.roundBtn}>
-           
+            <TouchableOpacity
+              style={{alignItems: 'center'}} //this.props.navigation.navigate('Gender')}
+              onPress={() => this.saveData()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-            
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -378,30 +370,25 @@ class GenderComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-                <TouchableOpacity
-                onPress={() => this.saveFemale()}
-                style={{alignItems: 'center'}}>
-            <View style={styles.roundBtnTrans}>
-            
+            <TouchableOpacity
+              onPress={() => this.saveFemale()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Woman
                   </Text>
                 </View>
-           
-            </View>
+              </View>
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={() => this.saveMale()}
-                style={{alignItems: 'center'}}>
-
-            <View style={styles.roundBtnTrans}>
-            
+              onPress={() => this.saveMale()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -471,42 +458,36 @@ class InterestComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-                <TouchableOpacity
-                onPress={() => this.womanInterested()}
-                style={{alignItems: 'center'}}>
-            <View style={styles.roundBtnTrans}>
-            
+            <TouchableOpacity
+              onPress={() => this.womanInterested()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Woman
                   </Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => this.manInterested()}
-                style={{alignItems: 'center'}}>
-            <View style={styles.roundBtnTrans}>
-           
+              onPress={() => this.manInterested()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Man</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => this.mixInterested()}
-                style={{alignItems: 'center'}}>
-                  <View style={styles.roundBtnTrans}>
-           
+              onPress={() => this.mixInterested()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>Both</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
@@ -565,32 +546,28 @@ class OccupationComponent extends React.Component {
               alignSelf: 'center',
               marginTop: 0,
             }}>
-                <TouchableOpacity
-                onPress={() => this.student()}
-                style={{alignItems: 'center'}}>
-            <View style={styles.roundBtnTrans}>
-            
+            <TouchableOpacity
+              onPress={() => this.student()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Student
                   </Text>
                 </View>
-            
-            </View>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity
-                onPress={() => this.employee()}
-                style={{alignItems: 'center'}}>
-                  <View style={styles.roundBtnTrans}>
-            
+              onPress={() => this.employee()}
+              style={{alignItems: 'center'}}>
+              <View style={styles.roundBtnTrans}>
                 <View>
                   <Text style={{color: 'black', fontSize: size(17)}}>
                     Employed
                   </Text>
                 </View>
-            
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
           {/* <View
@@ -611,8 +588,7 @@ class OccupationComponent extends React.Component {
   }
 }
 
-
- class PhoneComponent extends React.Component {
+class PhoneComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -621,11 +597,12 @@ class OccupationComponent extends React.Component {
     this.state = {
       textInput_MobileNo: '',
       userId: '',
-      currentDate:'',
-      isLoading:false
+      currentDate: '',
+      isLoading: false,
     };
   }
   saveData = async () => {
+  
     const phone = this.state.textInput_MobileNo;
     if (phone == '') {
       Alert.alert('Please enter phone number with country code! ');
@@ -650,6 +627,8 @@ class OccupationComponent extends React.Component {
               userId: res.user.uid,
             });
 
+            AsyncStorage.setItem('id', this.state.userId);
+
             try {
               database()
                 .ref('Users')
@@ -664,14 +643,23 @@ class OccupationComponent extends React.Component {
                   phone: phonee,
                   accType: 'Trial',
                   dob: birthday,
-                  currentDate:this.state.currentDate
+                  currentDate:this.state.currentDate,
+                  company:'Null',
+                  school:'Null',
+                  city:'Null',
+                  sexualOrientation:'Null',
+                  skills:'Null',
+                  hobbies:'Null'
+
+
                 })
                 .then(data => {
                   this.setState({
                     isLoading: false,
                   });
                   Alert.alert('Registration SuccessFull!');
-                 
+                 this.props.navigation.navigate('HomePage');
+
                 })
                 .catch(error => {
                   this.setState({
@@ -699,26 +687,17 @@ class OccupationComponent extends React.Component {
     }
   };
 
-  getCurrentDate=()=>{
- 
+  getCurrentDate = () => {
     var date = new Date().getDate();
-    var month = new Date().getMonth()+1 ;
+    var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
 
     this.setState({
-      currentDate : date + '-' + month + '-' + year
-    })
-    console.log(this.state.currentDate)
-    this.saveData()
-
-   
-
-
-   }
-
-
-
-
+      currentDate: date + '-' + month + '-' + year,
+    });
+    console.log(this.state.currentDate);
+    this.saveData();
+  };
 
   render() {
     return (
@@ -744,31 +723,35 @@ class OccupationComponent extends React.Component {
             />
           </View>
           <View style={{alignItems: 'center', marginTop: 40, flex: 2}}>
-          <TouchableOpacity
-          disabled={this.state.isLoading}
-                style={{alignItems: 'center'}}
-                onPress={() => this.getCurrentDate()}>
-            <View style={styles.roundBtn}>
-              
+            <TouchableOpacity
+              disabled={this.state.isLoading}
+              style={{alignItems: 'center'}}
+              onPress={() => this.getCurrentDate()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
 
-          <View style={{marginTop: 20,flex:2}}>
-                <ActivityIndicator
-                  animating={this.state.isLoading}
-                  style={{marginTop: 0}}
-                  color={'#FF4A00FF'}
-                  size="large"
-                />
-              </View>
+          <View style={{marginTop: 20, flex: 2}}>
+            <ActivityIndicator
+              animating={this.state.isLoading}
+              style={{marginTop: 0}}
+              color={'#FF4A00FF'}
+              size="large"
+            />
+          </View>
         </View>
       </ScrollView>
     );
+  }
+}
+
+class HomeScreen extends React.Component {
+  render() {
+    return <HomePage />;
   }
 }
 
@@ -831,12 +814,12 @@ const loginStack = createStackNavigator({
   //     header: null,
   //   },
   // },
-  // Home:{
-  //   screen:HomeScreen,
-  //   navigationOptions: {
-  //     header: null,
-  //   },
-  // }
+  HomePage: {
+    screen: HomeScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
 });
 
 export default createAppContainer(loginStack);
