@@ -23,7 +23,7 @@ import database from '@react-native-firebase/database';
 import styles from './style';
 
 import Slider from '@react-native-community/slider';
-import ImageListComponent from './ImagesListComponent'
+import ImageListComponent from './ImagesListComponent';
 import {cos} from 'react-native-reanimated';
 
 let sliderLevels = [
@@ -55,7 +55,7 @@ export default class EditProfileInfo extends React.Component {
       livingIn: '',
       sexualOrientation: '',
       gender: '',
-      showDistance:false,
+      showDistance: false,
       showAge: false,
       skills: '',
       hobbies: [],
@@ -63,10 +63,8 @@ export default class EditProfileInfo extends React.Component {
   }
   state = {switchValue: false, sliderValue: 1};
 
-
-
   setHobbies = value => {
-    if (myHobbies.length >= 3 ) {
+    if (myHobbies.length >= 3) {
       alert('Max 3 hobbies can be selected');
     } else {
       myHobbies.push(value);
@@ -76,11 +74,7 @@ export default class EditProfileInfo extends React.Component {
       this.setState({
         hobbies: hobbies,
       });
-     
-     
     }
-   
-   
   };
   showModalFunction(visible) {
     this.setState({modalVisibleStatus: visible});
@@ -108,9 +102,9 @@ export default class EditProfileInfo extends React.Component {
             gender: list.gender,
             sexualOrientation: list.sexualOrientation,
             hobbies: list.hobbies,
-            sliderValue:list.skills,
-            showDistance:list.showDistance,
-            showAge:list.showAge,
+            sliderValue: list.skills,
+            showDistance: list.showDistance,
+            showAge: list.showAge,
             isLoading: false,
           });
 
@@ -160,10 +154,9 @@ export default class EditProfileInfo extends React.Component {
             gender: this.state.gender,
             sexualOrientation: this.state.sexualOrientation,
             hobbies: this.state.hobbies,
-            skills:this.state.sliderValue,
-            showAge:this.state.showAge,
-            showDistance:this.state.showDistance
-            
+            skills: this.state.sliderValue,
+            showAge: this.state.showAge,
+            showDistance: this.state.showDistance,
           })
           .then(data => {
             this.setState({
@@ -417,10 +410,8 @@ export default class EditProfileInfo extends React.Component {
           </Modal>
 
           <View style={{width: '100%'}}>
-        
-
-<ImageListComponent/>
-         
+            {/* images List Component */}
+            <ImageListComponent />
 
             <View style={styles.viewContainer}>
               <View
@@ -551,7 +542,9 @@ export default class EditProfileInfo extends React.Component {
                 <Switch
                   trackColor={{true: '#FF4A00FF', false: 'grey'}}
                   style={{marginTop: 0}}
-                  onValueChange={(switchValue)=>this.setState({showDistance:switchValue})}
+                  onValueChange={switchValue =>
+                    this.setState({showDistance: switchValue})
+                  }
                   value={this.state.showDistance}
                 />
               </View>
@@ -576,7 +569,7 @@ export default class EditProfileInfo extends React.Component {
                 <Switch
                   trackColor={{true: '#FF4A00FF', false: 'grey'}}
                   style={{marginTop: 0}}
-                  onValueChange={(ageValue)=>this.setState({showAge:ageValue})}
+                  onValueChange={ageValue => this.setState({showAge: ageValue})}
                   value={this.state.showAge}
                 />
               </View>
@@ -670,7 +663,7 @@ export default class EditProfileInfo extends React.Component {
               style={{
                 marginTop: 8,
                 backgroundColor: 'white',
-                alignItems:'center'
+                alignItems: 'center',
               }}>
               <Text style={[{color: '#626262', height: 40, marginTop: 7}]}>
                 {this.state.hobbies}
