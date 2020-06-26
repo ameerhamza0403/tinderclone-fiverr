@@ -165,7 +165,7 @@ export default class MyProfile extends Component {
                     <Text style={styles.tinder_button_text_style}>REPORT </Text>
                   </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={this.ShareMessage}>
+                <TouchableOpacity onPress={this.shareMessage}>
                   <View
                     style={{alignItems: 'center', width: Statics.DEVICE_WIDTH}}>
                     <Text style={styles.share}>SHARE THIS</Text>
@@ -220,7 +220,7 @@ export default class MyProfile extends Component {
                       style={styles.button_container}
                       onPress={() => navigation.navigate('EditProfile')}>
                       <Image
-                        source={require('../../../assests/images/star.png')}
+                        source={require('../../../assests/images/emoji.png')}
                         style={styles.button_style}
                       />
                     </TouchableOpacity>
@@ -231,7 +231,7 @@ export default class MyProfile extends Component {
                       // onPress={() => this.pushToScreen('Edit')}
                     >
                       <Image
-                        source={require('../../../assests/images/heart.png')}
+                        source={require('../../../assests/images/like.png')}
                         style={styles.button_style}
                       />
                     </TouchableOpacity>
