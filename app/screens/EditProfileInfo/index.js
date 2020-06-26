@@ -40,6 +40,7 @@ let sliderDes = [
   'I am good at dancing and have experience',
   'I have competed locally or nationwide',
 ];
+let myHobbies = [];
 export default class EditProfileInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -74,8 +75,19 @@ export default class EditProfileInfo extends React.Component {
   //   console.log(this.state.showAge)
   // }
 
- 
+  setHobbies = value => {
+    if (myHobbies.length >= 3) {
+      alert('Max 3 hobbies can be selected');
+    } else {
+      myHobbies.push(value);
 
+      const hobbies = myHobbies.toString();
+      console.log(hobbies);
+      this.setState({
+        hobbies: hobbies,
+      });
+    }
+  };
   showModalFunction(visible) {
     this.setState({modalVisibleStatus: visible});
   }
@@ -101,6 +113,7 @@ export default class EditProfileInfo extends React.Component {
             livingIn: list.livingIn,
             gender: list.gender,
             sexualOrientation: list.sexualOrientation,
+            hobbies: list.hobbies,
             isLoading: false,
           });
 
@@ -110,12 +123,11 @@ export default class EditProfileInfo extends React.Component {
       Alert.alert(error.toString());
     }
   }
-  loader=(value)=>{
-
+  loader = value => {
     this.setState({
-      isLoading:value
-    })
-  }
+      isLoading: value,
+    });
+  };
 
   validate = () => {
     this.setState({
@@ -124,19 +136,21 @@ export default class EditProfileInfo extends React.Component {
 
     if (this.state.company == '') {
       alert('Enter Company');
-      this.loader(false)
+      this.loader(false);
     } else if (this.state.school == '') {
       alert('Enter School');
-      this.loader(false)
+      this.loader(false);
     } else if (this.state.livingIn == '') {
       alert('Enter city');
-      this.loader(false)
+      this.loader(false);
     } else if (this.state.gender == '') {
       alert('Enter gender');
-      this.loader(false)
+      this.loader(false);
     } else if (this.state.sexualOrientation == '') {
       alert('Enter sexual orientation');
-      this.loader(false)
+      this.loader(false);
+    } else if (this.state.myHobbies == '') {
+      alert('Select Hobbiess');
     } else {
       try {
         database()
@@ -148,6 +162,7 @@ export default class EditProfileInfo extends React.Component {
             livingIn: this.state.livingIn,
             gender: this.state.gender,
             sexualOrientation: this.state.sexualOrientation,
+            hobbies: this.state.hobbies,
           })
           .then(data => {
             this.setState({
@@ -804,12 +819,25 @@ export default class EditProfileInfo extends React.Component {
                 Max 3 Dances can be selected
               </Text>
             </View>
+
+            <View
+              style={{
+                marginTop: 8,
+                backgroundColor: 'white',
+                alignItems:'center'
+              }}>
+              <Text style={[{color: '#626262', height: 40, marginTop: 7}]}>
+                {this.state.hobbies}
+              </Text>
+            </View>
+
             <View style={{flex: 1}}>
               <View style={{flex: 1, marginRight: 20}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Social Dance')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Social dance
@@ -819,7 +847,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity underlayColor={'black'}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Gym Workout')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Gym workout
@@ -829,7 +858,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Dance')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Dance
@@ -838,7 +868,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Fitness')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Fitness
@@ -854,7 +885,8 @@ export default class EditProfileInfo extends React.Component {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Kayaking')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Kayaking
@@ -864,7 +896,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity underlayColor={'black'}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Wave running')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Wave running
@@ -874,7 +907,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Surfing')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Surfing
@@ -883,7 +917,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Swimming')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Swimming
@@ -899,7 +934,8 @@ export default class EditProfileInfo extends React.Component {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Horse riding')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Horse riding
@@ -909,7 +945,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity underlayColor={'black'}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Wine tasting')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Wine tasting
@@ -919,7 +956,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Dining')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Dining
@@ -928,7 +966,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Cooking class')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Cooking class
@@ -944,7 +983,8 @@ export default class EditProfileInfo extends React.Component {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Music class')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Music class{' '}
@@ -954,7 +994,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity underlayColor={'black'}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Singing class')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             {' '}
@@ -965,7 +1006,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Karaoke')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Karaoke
@@ -974,7 +1016,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Movie')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Movie{' '}
@@ -983,7 +1026,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Theatre')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Theatre
@@ -999,7 +1043,8 @@ export default class EditProfileInfo extends React.Component {
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Social dance')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Social dance
@@ -1009,7 +1054,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity underlayColor={'black'}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Gym workout')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Gym workout
@@ -1019,7 +1065,8 @@ export default class EditProfileInfo extends React.Component {
                     </View>
 
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Massage')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Massage
@@ -1028,7 +1075,8 @@ export default class EditProfileInfo extends React.Component {
                       </TouchableOpacity>
                     </View>
                     <View style={styles.danceBtn}>
-                      <TouchableOpacity style={{}}>
+                      <TouchableOpacity
+                        sonPress={() => this.setHobbies('Dance Fitness')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
                             Dance Fitness
