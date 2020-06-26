@@ -23,6 +23,7 @@ import database from '@react-native-firebase/database';
 import styles from './style';
 
 import Slider from '@react-native-community/slider';
+import ImageListComponent from './ImagesListComponent'
 import {cos} from 'react-native-reanimated';
 
 let sliderLevels = [
@@ -416,165 +417,10 @@ export default class EditProfileInfo extends React.Component {
           </Modal>
 
           <View style={{width: '100%'}}>
-            <View style={{flexDirection: 'row'}}>
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F20.jpg?alt=media&token=618db6e6-d986-46b7-a73a-b6f52e6093b8',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
+        
 
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F4.jpg?alt=media&token=151f5340-bc49-4fe4-bee5-3ef8da291edf',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
-
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F16.jpg?alt=media&token=75aadbbc-5517-41e1-a9fa-8ee5e081f8d8',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F19.jpg?alt=media&token=b1c5cc9a-1b6a-49dd-8653-229988549878',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
-
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F20.jpg?alt=media&token=618db6e6-d986-46b7-a73a-b6f52e6093b8',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
-
-              <View>
-                <View style={styles.imageView}>
-                  <Image
-                    style={styles.imageStyle}
-                    source={{
-                      uri:
-                        'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F14.jpg?alt=media&token=e87b6e59-c22c-45ab-ba2b-6f48c997d3cc',
-                    }}
-                  />
-                </View>
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                </View>
-              </View>
-            </View>
-
-            <View style={{flexDirection: 'row'}}>
-              <View>
-                <View style={styles.imageView} />
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/AddImage.png')}
-                  />
-                </View>
-              </View>
-
-              <View>
-                <View style={styles.imageView} />
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/AddImage.png')}
-                  />
-                </View>
-              </View>
-
-              <View>
-                <View style={styles.imageView} />
-                <View style={{position: 'absolute', left: 100, top: 170}}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/AddImage.png')}
-                  />
-                </View>
-              </View>
-            </View>
-
-            <View style={{alignItems: 'center', marginTop: 20, flex: 2}}>
-              <View style={styles.roundBtn}>
-                <TouchableOpacity
-                  style={{alignItems: 'center'}}
-                  onPress={() => {
-                    this.showModalFunction(true);
-                  }}>
-                  <View>
-                    <Text style={{color: 'white', fontSize: 16}}>
-                      Add Media
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              </View>
-            </View>
+<ImageListComponent/>
+         
 
             <View style={styles.viewContainer}>
               <View
