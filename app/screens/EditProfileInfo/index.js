@@ -54,29 +54,18 @@ export default class EditProfileInfo extends React.Component {
       livingIn: '',
       sexualOrientation: '',
       gender: '',
-      distanceVisible: '',
-      showAge: '',
+      showDistance:false,
+      showAge: false,
       skills: '',
       hobbies: [],
     };
   }
   state = {switchValue: false, sliderValue: 1};
 
-  // distanceSwitch=value=>{
-  //   this.setState({
 
-  //     distanceVisible:value
-  //   })
-  // }
-  // ageSwitch=value=>{
-  //   this.setState({
-  //     showAge:value
-  //   })
-  //   console.log(this.state.showAge)
-  // }
 
   setHobbies = value => {
-    if (myHobbies.length >= 3) {
+    if (myHobbies.length >= 3 ) {
       alert('Max 3 hobbies can be selected');
     } else {
       myHobbies.push(value);
@@ -86,7 +75,11 @@ export default class EditProfileInfo extends React.Component {
       this.setState({
         hobbies: hobbies,
       });
+     
+     
     }
+   
+   
   };
   showModalFunction(visible) {
     this.setState({modalVisibleStatus: visible});
@@ -105,7 +98,7 @@ export default class EditProfileInfo extends React.Component {
         .on('value', querySnapShot => {
           let data = querySnapShot.val() ? querySnapShot.val() : {};
           let list = {...data};
-          console.log(list.company);
+          console.log(list.showAge);
 
           this.setState({
             company: list.company,
@@ -114,6 +107,9 @@ export default class EditProfileInfo extends React.Component {
             gender: list.gender,
             sexualOrientation: list.sexualOrientation,
             hobbies: list.hobbies,
+            sliderValue:list.skills,
+            showDistance:list.showDistance,
+            showAge:list.showAge,
             isLoading: false,
           });
 
@@ -163,6 +159,10 @@ export default class EditProfileInfo extends React.Component {
             gender: this.state.gender,
             sexualOrientation: this.state.sexualOrientation,
             hobbies: this.state.hobbies,
+            skills:this.state.sliderValue,
+            showAge:this.state.showAge,
+            showDistance:this.state.showDistance
+            
           })
           .then(data => {
             this.setState({
@@ -703,10 +703,10 @@ export default class EditProfileInfo extends React.Component {
 
               <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
                 <Switch
-                  trackColor={{true: 'red', false: 'grey'}}
+                  trackColor={{true: '#FF4A00FF', false: 'grey'}}
                   style={{marginTop: 0}}
-                  // onValueChange={this.distanceSwitch()}
-                  value={this.state.distanceVisible}
+                  onValueChange={(switchValue)=>this.setState({showDistance:switchValue})}
+                  value={this.state.showDistance}
                 />
               </View>
             </View>
@@ -728,9 +728,9 @@ export default class EditProfileInfo extends React.Component {
 
               <View style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
                 <Switch
-                  trackColor={{true: 'red', false: 'grey'}}
+                  trackColor={{true: '#FF4A00FF', false: 'grey'}}
                   style={{marginTop: 0}}
-                  // onValueChange={this.ageSwitch()}
+                  onValueChange={(ageValue)=>this.setState({showAge:ageValue})}
                   value={this.state.showAge}
                 />
               </View>

@@ -648,8 +648,10 @@ class PhoneComponent extends React.Component {
                   school:'Null',
                   city:'Null',
                   sexualOrientation:'Null',
-                  skills:'Null',
-                  hobbies:'Null'
+                  skills:1,
+                  hobbies:'Null',
+                  showAge:false,
+                  showDistance:false
 
 
                 })
