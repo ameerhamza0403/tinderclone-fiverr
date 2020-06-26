@@ -122,7 +122,7 @@ export default {
     },
     
     ModalInsideView:{
-      flex: 1,
+      flex: 2,
       justifyContent: "center",
       alignItems: "center",
       marginTop: 22
