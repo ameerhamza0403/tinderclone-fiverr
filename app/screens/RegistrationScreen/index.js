@@ -643,7 +643,8 @@ class PhoneComponent extends React.Component {
                   phone: phonee,
                   accType: 'Trial',
                   dob: birthday,
-                  currentDate:this.state.currentDate,
+                  createdOn:this.state.currentDate,
+                  payment:false,
                   company:'Null',
                   school:'Null',
                   city:'Null',
@@ -695,7 +696,7 @@ class PhoneComponent extends React.Component {
     var year = new Date().getFullYear();
 
     this.setState({
-      currentDate: date + '-' + month + '-' + year,
+      currentDate: month  + '/' + date + '/' + year,
     });
     console.log(this.state.currentDate);
     this.saveData();
