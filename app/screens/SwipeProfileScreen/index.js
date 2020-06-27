@@ -249,7 +249,7 @@ class SwipeCards extends React.Component {
           ModalVisibleStatus: false,
         });
       } else if (this.state.payment == true) {
-        Alert.alert('Your are a subscriber, Congrats! Its a Dutch');
+        Alert.alert('You are a subscriber, Congrats! Its a Dutch');
         this.props.navigation.navigate('MatchScreen');
         this.setState({
           ModalVisibleStatus: false,
