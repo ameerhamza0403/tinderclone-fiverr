@@ -234,7 +234,7 @@ class SwipeCards extends React.Component {
     var difference_In_Time = todayDate.getTime() - accDate.getTime();
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
     if (difference_In_Days <= 7) {
-      Alert.alert('Your have trial');
+      Alert.alert('Your have trial, Congrats! Its a Dutch');
       this.props.navigation.navigate('MatchScreen');
       this.setState({
         ModalVisibleStatus: false,
@@ -249,7 +249,7 @@ class SwipeCards extends React.Component {
           ModalVisibleStatus: false,
         });
       } else if (this.state.payment == true) {
-        Alert.alert('Your are a subscriber');
+        Alert.alert('Your are a subscriber, Congrats! Its a Dutch');
         this.props.navigation.navigate('MatchScreen');
         this.setState({
           ModalVisibleStatus: false,
