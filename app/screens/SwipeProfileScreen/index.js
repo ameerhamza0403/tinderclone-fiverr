@@ -242,7 +242,7 @@ class SwipeCards extends React.Component {
     } else {
       if (this.state.payment == false || difference_In_Days >= 7) {
         Alert.alert(
-          'Your have no trial or you are not a subscriber ,Please Pay',
+          'You have no trial or you are not a subscriber ,Please Pay',
         );
         this.props.navigation.navigate('PaymentScreen');
         this.setState({
