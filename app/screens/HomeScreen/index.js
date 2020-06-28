@@ -15,23 +15,15 @@ export default class HomeScreen extends Component {
 
 
 
-  backAction = () => {
-    BackHandler.exitApp();
-  };
 
   async componentDidMount() {
 
     const id = await AsyncStorage.getItem('Id', 0);
     console.log(id)
-    this.backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      this.backAction
-    );
+   
   }
 
-  componentWillUnmount() {
-    this.backHandler.remove();
-  }
+ 
   render() {
     return (
       <View

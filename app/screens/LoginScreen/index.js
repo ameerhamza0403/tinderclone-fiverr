@@ -12,6 +12,7 @@ import {
   TextInput,
   Alert,
   ActivityIndicator,
+  BackHandler
 } from 'react-native';
 import styles from './style';
 
@@ -37,9 +38,20 @@ class LoginScreen extends React.Component {
       userType: '',
     };
   }
+  
+  backAction = () => {
+    BackHandler.exitApp();
+  };
+  componentWillUnmount() {
+    this.backHandler.remove();
+  }
 
   componentDidMount() {
     console.disableYellowBox = true;
+    this.backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      this.backAction
+    );
 
     auth().onAuthStateChanged(user => {
       // if (user != null) {

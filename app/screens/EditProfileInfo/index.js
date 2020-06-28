@@ -655,7 +655,7 @@ export default class EditProfileInfo extends React.Component {
                 My Hobbies Picks
               </Text>
               <Text style={{fontSize: 16, alignSelf: 'center'}}>
-                Max 3 Dances can be selected
+                Max 3 Hobbies can be selected
               </Text>
             </View>
 
@@ -670,8 +670,8 @@ export default class EditProfileInfo extends React.Component {
               </Text>
             </View>
 
-            <View style={{flex: 1}}>
-              <View style={{flex: 1, marginRight: 20}}>
+            <View style={{flex: 1, alignItems: 'center'}}>
+              <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
@@ -706,6 +706,13 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
+                  </View>
+                </ScrollView>
+              </View>
+
+              <View style={{flex: 1}}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
                       <TouchableOpacity
                         onPress={() => this.setHobbies('Fitness')}>
@@ -716,11 +723,70 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
+
+                    <View style={styles.danceBtn}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Swimming')}>
+                        <View>
+                          <Text style={{color: 'white', fontSize: 16}}>
+                            Swimming
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+
+                    <View style={styles.danceBtn}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Cooking class')}>
+                        <View>
+                          <Text style={{color: 'white', fontSize: 16}}>
+                            Cooking class
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </ScrollView>
               </View>
 
-              <View style={{flex: 1, marginRight: 20}}>
+              <View style={{flex: 1}}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <View style={styles.danceBtn}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Movie')}>
+                        <View>
+                          <Text style={{color: 'white', fontSize: 16}}>
+                            Movie{' '}
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.danceBtn}>
+                      <TouchableOpacity
+                        onPress={() => this.setHobbies('Theatre')}>
+                        <View>
+                          <Text style={{color: 'white', fontSize: 16}}>
+                            Theatre
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.danceBtn}>
+                      <TouchableOpacity
+                        sonPress={() => this.setHobbies('Dance Fitness')}>
+                        <View>
+                          <Text style={{color: 'white', fontSize: 16}}>
+                            Dance Fitness
+                          </Text>
+                        </View>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </ScrollView>
+              </View>
+
+              <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
@@ -755,21 +821,11 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        onPress={() => this.setHobbies('Swimming')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Swimming
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
                   </View>
                 </ScrollView>
               </View>
 
-              <View style={{flex: 1, marginRight: 20}}>
+              <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
@@ -804,21 +860,11 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        onPress={() => this.setHobbies('Cooking class')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Cooking class
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
                   </View>
                 </ScrollView>
               </View>
 
-              <View style={{flex: 1, marginRight: 20}}>
+              <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
@@ -854,43 +900,14 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        onPress={() => this.setHobbies('Movie')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Movie{' '}
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        onPress={() => this.setHobbies('Theatre')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Theatre
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
                   </View>
                 </ScrollView>
               </View>
 
-              <View style={{flex: 1, marginRight: 20}}>
+              <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        onPress={() => this.setHobbies('Social dance')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Social dance
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
+                
 
                     <View style={styles.danceBtn}>
                       <TouchableOpacity
@@ -913,16 +930,6 @@ export default class EditProfileInfo extends React.Component {
                         </View>
                       </TouchableOpacity>
                     </View>
-                    <View style={styles.danceBtn}>
-                      <TouchableOpacity
-                        sonPress={() => this.setHobbies('Dance Fitness')}>
-                        <View>
-                          <Text style={{color: 'white', fontSize: 16}}>
-                            Dance Fitness
-                          </Text>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
                   </View>
                 </ScrollView>
               </View>
@@ -931,20 +938,23 @@ export default class EditProfileInfo extends React.Component {
 
           <View
             style={{
-              alignItems: 'center',
-              marginTop: 0,
+              marginTop: 100,
               flex: 2,
               marginBottom: 30,
-            }}>
+             
+              
+            }}> 
+            <TouchableOpacity
+          
+            onPress={() => this.validate()}>
             <View style={styles.roundBtn}>
-              <TouchableOpacity
-                style={{alignItems: 'center'}}
-                onPress={() => this.validate()}>
+             
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Save</Text>
                 </View>
-              </TouchableOpacity>
+             
             </View>
+            </TouchableOpacity>
           </View>
         </View>
         {/* ))} */}

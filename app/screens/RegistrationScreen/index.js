@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import LoginStack from '../LoginScreen/index';
+
 
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
@@ -28,7 +28,7 @@ import {Alert} from 'react-native';
 
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
-import HomePage from '../HomeScreen/index';
+import LoginScreenComponent from '../LoginScreen/index';
 
 class EmailComponent extends React.Component {
   constructor(props) {
@@ -652,7 +652,11 @@ class PhoneComponent extends React.Component {
                   skills:1,
                   hobbies:'Null',
                   showAge:false,
-                  showDistance:false
+                  showDistance:false,
+                  eventDutchSwitch:false,
+                  chatSwitch:false,
+                  chatLikesSwitch:false,
+                  eventAttendanceSwitch:false,
 
 
                 })
@@ -660,8 +664,8 @@ class PhoneComponent extends React.Component {
                   this.setState({
                     isLoading: false,
                   });
-                  Alert.alert('Registration SuccessFull!');
-                 this.props.navigation.navigate('HomePage');
+                  Alert.alert('Registration successfull.You can now login to get started');
+                 this.props.navigation.navigate('Login');
 
                 })
                 .catch(error => {
@@ -752,9 +756,9 @@ class PhoneComponent extends React.Component {
   }
 }
 
-class HomeScreen extends React.Component {
+class LoginScreen extends React.Component {
   render() {
-    return <HomePage />;
+    return < LoginScreenComponent/>;
   }
 }
 
@@ -817,8 +821,8 @@ const loginStack = createStackNavigator({
   //     header: null,
   //   },
   // },
-  HomePage: {
-    screen: HomeScreen,
+  Login: {
+    screen: LoginScreen,
     navigationOptions: {
       header: null,
     },

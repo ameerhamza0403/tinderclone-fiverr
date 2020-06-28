@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   navigation_container: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginHorizontal: size(40),
+    marginHorizontal: size(100),
     marginVertical: size(10),
   },
   navigation_inner_container: {
