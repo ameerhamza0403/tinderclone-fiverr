@@ -396,20 +396,22 @@ export default class EditProfileInfo extends React.Component {
 
    
 
-            <View style={{alignItems: 'center', marginTop: 20, flex: 2}}>
-              <View style={styles.roundBtn}>
-                <TouchableOpacity
+            <View style={{ marginTop: 20, flex: 2}}>
+            <TouchableOpacity
                   style={{alignItems: 'center'}}
                   onPress={() => {
                     this.showModalFunction(true);
                   }}>
+              <View style={styles.roundBtn}>
+               
                   <View>
                     <Text style={{color: 'white', fontSize: 16}}>
                       Add Media
                     </Text>
                   </View>
-                </TouchableOpacity>
+               
               </View>
+              </TouchableOpacity>
             </View>
           </View>
 {/* 
