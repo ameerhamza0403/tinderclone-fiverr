@@ -156,11 +156,20 @@ class LoginScreen extends React.Component {
     try {
       auth()
         .signInWithEmailAndPassword(
-          this.state.emailInput,
+          this.state.emailInput.trim().toLowerCase(),
           this.state.passwordInput,
         )
         .then(res => {
           try {
+
+           AsyncStorage.setItem(
+              '@login_details',
+              JSON.stringify({
+                email: this.state.emailInput,
+                password: this.state.passwordInput,
+              }),
+            );
+
             database()
               .ref('Users')
               .child(res.user.uid)
@@ -174,6 +183,8 @@ class LoginScreen extends React.Component {
             that.setState({
               isLoading: false,
             });
+
+
 
             this.props.navigation.navigate('HomeScreen');
           } catch (error) {

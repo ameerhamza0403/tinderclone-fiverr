@@ -37,7 +37,7 @@ export default class SubscriptionScreen extends React.Component {
             <View style={{flex: 2, alignItems: 'center', marginTop: 50}}>
               <Text
                 style={{fontSize: 25, fontWeight: 'bold', color: '#FF4A00FF'}}>
-                Subscribe Us !
+               Make friends easily with us ! 
               </Text>
             </View>
             <View
