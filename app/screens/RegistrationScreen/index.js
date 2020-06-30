@@ -657,6 +657,7 @@ class PhoneComponent extends React.Component {
                   chatSwitch:false,
                   chatLikesSwitch:false,
                   eventAttendanceSwitch:false,
+                  eventImages:''
 
 
                 })
