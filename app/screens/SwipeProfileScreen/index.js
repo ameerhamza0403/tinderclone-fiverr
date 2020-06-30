@@ -233,6 +233,9 @@ class SwipeCards extends React.Component {
     var todayDate = new Date(this.state.currentDate);
     var difference_In_Time = todayDate.getTime() - accDate.getTime();
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
+
+
+
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
       this.props.navigation.navigate('MatchScreen');
@@ -240,7 +243,15 @@ class SwipeCards extends React.Component {
         ModalVisibleStatus: false,
       });
     } else {
-      if (this.state.payment == false || difference_In_Days >= 7) {
+
+      if (this.state.payment) {
+        Alert.alert('You are a subscriber, Congrats! Its a Dutch');
+        this.props.navigation.navigate('MatchScreen');
+        this.setState({
+          ModalVisibleStatus: false,
+        });
+      }
+      else  {
         Alert.alert(
           'You have no trial or you are not a subscriber ,Please Pay',
         );
@@ -248,25 +259,17 @@ class SwipeCards extends React.Component {
         this.setState({
           ModalVisibleStatus: false,
         });
-      } else if (this.state.payment == true) {
-        Alert.alert('You are a subscriber, Congrats! Its a Dutch');
-        this.props.navigation.navigate('MatchScreen');
-        this.setState({
-          ModalVisibleStatus: false,
-        });
-      }
+      } 
+     
     }
 
-    // this.setState({
-    //   ModalVisibleStatus: false,
-    // });
+    
   };
   state = {switchValue: false, sliderValue: 1};
   toggleSwitch = value => {
-    //onValueChange of the switch this function will be called
+ 
     this.setState({switchValue: value});
-    //state changes according to switch
-    //which will result in re-render the text
+  
   };
 
   showModalFunction(visible) {
