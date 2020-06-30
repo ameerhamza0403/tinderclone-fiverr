@@ -1,3 +1,4 @@
+import {Dimensions} from 'react-native'
 export default {
   mainContainer: {
     flex: 1,
@@ -80,6 +81,7 @@ export default {
     width: '100%',
     height: '100%',
     borderRadius: 10,
+    resizeMode: 'contain',
   },
   roundBtnTrans: {
     borderColor: 'black',
@@ -123,9 +125,8 @@ export default {
     
     ModalInsideView:{
       flex: 2,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22
+
+      marginTop: 5
     
     },
     
@@ -181,5 +182,12 @@ export default {
   des:{
     color:'#ABABAB',
     marginLeft:5
-  }
+  },
+  Category: {
+    flex:1,
+    justifyContent: 'flex-start',
+    alignItems:'center',    
+    margin:5
+},
+
 };
