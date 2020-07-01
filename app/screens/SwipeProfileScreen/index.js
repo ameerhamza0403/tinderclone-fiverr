@@ -55,7 +55,7 @@ class SwipeCards extends React.Component {
       payment: false,
       currentDate: '',
       isLoading: true,
-      cards:[]
+      cards: [],
     };
   }
 
@@ -151,7 +151,6 @@ class SwipeCards extends React.Component {
             payment: list.payment,
             accCreatedOn: list.createdOn,
             accType: list.accType,
-            isLoading: false,
           });
         });
     } catch (error) {
@@ -198,9 +197,7 @@ class SwipeCards extends React.Component {
           />
         </View>
       );
-    }
-
-    else {
+    } else {
       return (
         <View style={styles.Container}>
           <Modal
@@ -236,7 +233,7 @@ class SwipeCards extends React.Component {
                       marginTop: size(20),
                     }}
                   />
-  
+
                   <View
                     style={{
                       marginTop: size(20),
@@ -247,7 +244,7 @@ class SwipeCards extends React.Component {
                       If you have any question , please chat first.
                     </Text>
                   </View>
-  
+
                   <View
                     style={{
                       width: Statics.DEVICE_WIDTH / 1.2,
@@ -259,7 +256,7 @@ class SwipeCards extends React.Component {
                       partner that you will turn up for this event on time
                     </Text>
                   </View>
-  
+
                   <View
                     style={{
                       flexDirection: 'row',
@@ -284,7 +281,7 @@ class SwipeCards extends React.Component {
                     </TouchableOpacity>
                     {/* onPress={() => navigation.navigate('ChatScreen')} */}
                   </View>
-  
+
                   {/* <Button  title="Hide" onPress={() => { this.ShowModalFunction(!this.state.ModalVisibleStatus)} } /> */}
                 </View>
               </ScrollView>
@@ -322,7 +319,7 @@ class SwipeCards extends React.Component {
                   },
                 },
               },
-  
+
               top: {
                 title: 'LIKE',
                 style: {
@@ -344,8 +341,6 @@ class SwipeCards extends React.Component {
         </View>
       );
     }
-
-
   }
 }
 
