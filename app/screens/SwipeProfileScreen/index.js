@@ -18,12 +18,13 @@ import {
   SafeAreaView,
   Modal,
   Alert,
+  ActivityIndicator
 } from 'react-native';
 
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 
-import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
+
 
 import styles from './style';
 import SubscriptionScreen from '../SubscriptionScreen/index';
@@ -43,6 +44,7 @@ import {
 import MatchScreen from '../ItsAMatchScreen/index';
 import Swiper from 'react-native-deck-swiper';
 
+
 class SwipeCards extends React.Component {
   constructor(props) {
     super(props);
@@ -55,6 +57,7 @@ class SwipeCards extends React.Component {
       accType: '',
       payment: false,
       currentDate: '',
+      isLoading:true,
 
       cards: [
         // {
@@ -267,7 +270,7 @@ class SwipeCards extends React.Component {
 
           const firebaseData = obj;
 
-          console.log(',', firebaseData);
+         console.log(',', firebaseData);
 
           const {id, name, eventImages} = firebaseData;
           myList.push({
@@ -277,7 +280,8 @@ class SwipeCards extends React.Component {
           });
 
           that.setState({
-            cards: myList,
+            cards: firebaseData,
+            isLoading:false
           });
 
           console.log(',,', that.state.cards);
@@ -302,17 +306,20 @@ class SwipeCards extends React.Component {
     }
   }
 
-  renderCard = (card, index) => {
+  renderCard = (cards) => {
+    console.log(',,',cards)
+   
     return (
+      
       <View style={styles.card}>
-        <Text>{index}</Text>
-        {/* <View style={{flex: 4}}>
-          <Image style={{width: '100%', height: 530}} source={cards.image} />
+       
+         {/* <View style={{flex: 4}}>
+          <Image style={{width: '100%', height: 600}} source={ { uri : cards.eventImages}} />
         </View> */}
 
-        {/* <View style={{marginTop: 0, flex: 1}}>
+        <View style={{marginTop: 0, flex: 1}}>
           <Text style={styles.text}>{cards.name}</Text>
-        </View> */}
+        </View> 
       </View>
     );
   };
@@ -328,6 +335,22 @@ class SwipeCards extends React.Component {
   };
 
   render() {
+
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <StatusBar backgroundColor="#29AB87" barStyle="light-content" />
+
+          <ActivityIndicator
+            color="#29AB87"
+            size="large"
+            style={{marginTop: 10}}
+          />
+        </View>
+      );
+    }
+
+  
     return (
       <View style={styles.Container}>
         <Modal
