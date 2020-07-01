@@ -16,7 +16,7 @@ import {
   Modal,
   ActivityIndicator,
   Alert,
-  FlatList
+  FlatList,
 } from 'react-native';
 
 import database from '@react-native-firebase/database';
@@ -44,7 +44,6 @@ let sliderDes = [
 ];
 let myHobbies = [];
 
-
 export default class EditProfileInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -62,7 +61,7 @@ export default class EditProfileInfo extends React.Component {
       showAge: false,
       skills: '',
       hobbies: [],
-      selectedImagesDb:'',
+      selectedImagesDb: '',
       imagesUri: [
         {
           image:
@@ -109,7 +108,6 @@ export default class EditProfileInfo extends React.Component {
             'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F11.jpg?alt=media&token=144c172a-73be-4678-9883-d4d5aded916e',
         },
       ],
-      
     };
   }
   state = {switchValue: false, sliderValue: 1};
@@ -128,25 +126,19 @@ export default class EditProfileInfo extends React.Component {
     }
   };
 
-  
-  delImage=(item)=>{
+  delImage = item => {
     this.loader(true);
 
-    this.state.selectedImagesDb.pop(item)
+    this.state.selectedImagesDb.pop(item);
 
     this.loader(false);
-
-
-
-  }
+  };
   showModalFunction(visible) {
     this.setState({modalVisibleStatus: visible});
   }
 
   _renderSelectedItem = ({item, index}) => (
-    <TouchableOpacity
-      activeOpacity={0.5}
-     >
+    <TouchableOpacity activeOpacity={0.5}>
       <View style={styles.Category} key={index}>
         <View style={styles.imageView}>
           <Image
@@ -156,44 +148,32 @@ export default class EditProfileInfo extends React.Component {
             }}
           />
         </View>
-       
+
         <View style={{position: 'absolute', left: 100, top: 170}}>
-        <TouchableOpacity onPress={()=> this.delImage(item)}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/delImage.png')}
-                  />
-                      </TouchableOpacity>
-                </View>
-    
-        
+          <TouchableOpacity onPress={() => this.delImage(item)}>
+            <Image
+              style={styles.iconStyle}
+              source={require('../../../assests/images/delImage.png')}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
-
   );
-  pushImageToArray=(image)=>{
-
-    const selectedImage=image;
+  pushImageToArray = image => {
+    const selectedImage = image;
 
     this.setState({
-      selectedImagesDb:[...this.state.selectedImagesDb,selectedImage]
-    })
+      selectedImagesDb: [...this.state.selectedImagesDb, selectedImage],
+    });
 
-
-    this.showModalFunction(!this.state.modalVisibleStatus)
-
-
-
-
-
-  }
+    this.showModalFunction(!this.state.modalVisibleStatus);
+  };
 
   _renderModalItem = ({item, index}) => (
     <TouchableOpacity
       activeOpacity={0.5}
-      onPress={() =>
-        this.pushImageToArray(item.image)
-      }>
+      onPress={() => this.pushImageToArray(item.image)}>
       <View style={styles.Category} key={index}>
         <View style={styles.imageView}>
           <Image
@@ -203,12 +183,9 @@ export default class EditProfileInfo extends React.Component {
             }}
           />
         </View>
-       
       </View>
     </TouchableOpacity>
-
   );
- 
 
   async componentDidMount() {
     const id = await AsyncStorage.getItem('id', 0);
@@ -236,11 +213,8 @@ export default class EditProfileInfo extends React.Component {
             showDistance: list.showDistance,
             showAge: list.showAge,
             isLoading: false,
-            selectedImagesDb:list.eventImages
-            
+            selectedImagesDb: list.eventImages,
           });
-
-      
 
           // console.log(this.state.dataSource);
         });
@@ -255,11 +229,9 @@ export default class EditProfileInfo extends React.Component {
   };
 
   validate = () => {
-
-  
     this.loader(true);
 
-    console.log(this.state.selectedImagesDb)
+    console.log(this.state.selectedImagesDb);
 
     if (this.state.company == '') {
       alert('Enter Company');
@@ -279,17 +251,10 @@ export default class EditProfileInfo extends React.Component {
     } else if (this.state.myHobbies == '') {
       alert('Select Hobbiess');
       this.loader(false);
-    }
-
-    else if (this.state.selectedImagesDb == '') {
+    } else if (this.state.selectedImagesDb == '') {
       alert('Select Images');
       this.loader(false);
-    }
-    
-    
-    
-    else {
-   
+    } else {
       try {
         database()
           .ref('Users')
@@ -304,7 +269,7 @@ export default class EditProfileInfo extends React.Component {
             skills: this.state.sliderValue,
             showAge: this.state.showAge,
             showDistance: this.state.showDistance,
-            eventImages:this.state.selectedImagesDb
+            eventImages: this.state.selectedImagesDb,
           })
           .then(data => {
             this.setState({
@@ -376,45 +341,35 @@ export default class EditProfileInfo extends React.Component {
               </ScrollView>
             </SafeAreaView>
           </Modal>
-          
 
           <View style={{width: '100%'}}>
             {/* images List Component */}
             <View style={{width: '100%'}}>
+              <FlatList
+                horizontal={false}
+                data={this.state.selectedImagesDb}
+                keyExtractor={(item, index) => item.id}
+                numColumns={3}
+                renderItem={this._renderSelectedItem}
+              />
 
-
-
-          <FlatList
-                      horizontal={false}
-                      data={this.state.selectedImagesDb}
-                      keyExtractor={(item, index) => item.id}
-                      numColumns={3}
-                      renderItem={this._renderSelectedItem}
-                    />
-
-
-
-   
-
-            <View style={{ marginTop: 20, flex: 2}}>
-            <TouchableOpacity
+              <View style={{marginTop: 20, flex: 2}}>
+                <TouchableOpacity
                   style={{alignItems: 'center'}}
                   onPress={() => {
                     this.showModalFunction(true);
                   }}>
-              <View style={styles.roundBtn}>
-               
-                  <View>
-                    <Text style={{color: 'white', fontSize: 16}}>
-                      Add Media
-                    </Text>
+                  <View style={styles.roundBtn}>
+                    <View>
+                      <Text style={{color: 'white', fontSize: 16}}>
+                        Add Media
+                      </Text>
+                    </View>
                   </View>
-               
+                </TouchableOpacity>
               </View>
-              </TouchableOpacity>
             </View>
-          </View>
-{/* 
+            {/* 
             <View style={styles.viewContainer}>
               <View
                 style={{
@@ -909,8 +864,6 @@ export default class EditProfileInfo extends React.Component {
               <View style={{flex: 1}}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   <View style={{flex: 1, flexDirection: 'row'}}>
-                
-
                     <View style={styles.danceBtn}>
                       <TouchableOpacity
                         onPress={() => this.setHobbies('Gym workout')}>
@@ -943,19 +896,13 @@ export default class EditProfileInfo extends React.Component {
               marginTop: 100,
               flex: 2,
               marginBottom: 30,
-             
-              
-            }}> 
-            <TouchableOpacity
-          
-            onPress={() => this.validate()}>
-            <View style={styles.roundBtn}>
-             
+            }}>
+            <TouchableOpacity onPress={() => this.validate()}>
+              <View style={styles.roundBtn}>
                 <View>
                   <Text style={{color: 'white', fontSize: 16}}>Save</Text>
                 </View>
-             
-            </View>
+              </View>
             </TouchableOpacity>
           </View>
         </View>
