@@ -18,6 +18,7 @@ import {
   Alert,
   FlatList,
 } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 
 import database from '@react-native-firebase/database';
 
@@ -63,50 +64,50 @@ export default class EditProfileInfo extends React.Component {
       hobbies: [],
       selectedImagesDb: '',
       imagesUri: [
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F1.jpg?alt=media&token=d554d673-c044-410a-8a21-b6b093299527',
-        },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F1.jpg?alt=media&token=d554d673-c044-410a-8a21-b6b093299527',
+        // },
 
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F2.jpg?alt=media&token=403dad12-51b2-47ea-942a-34d5881fa0b6',
-        },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F2.jpg?alt=media&token=403dad12-51b2-47ea-942a-34d5881fa0b6',
+        // },
 
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F3.jpg?alt=media&token=11269f00-b091-40dc-9d53-e962dca2740b',
-        },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F3.jpg?alt=media&token=11269f00-b091-40dc-9d53-e962dca2740b',
+        // },
 
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F4.jpg?alt=media&token=151f5340-bc49-4fe4-bee5-3ef8da291edf',
-        },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F4.jpg?alt=media&token=151f5340-bc49-4fe4-bee5-3ef8da291edf',
+        // },
 
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F5.jpg?alt=media&token=c7d88a2b-a6f2-41b8-b037-e1d7f038b172',
-        },
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F7.jpg?alt=media&token=27060360-08fe-45db-b3e0-e1aed7c91f5e',
-        },
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F8.jpg?alt=media&token=6c097fb6-f733-43c9-8826-9e486aa85931',
-        },
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F9.jpg?alt=media&token=d2133450-eb87-473b-9dfc-910d06262fb8',
-        },
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508',
-        },
-        {
-          image:
-            'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F11.jpg?alt=media&token=144c172a-73be-4678-9883-d4d5aded916e',
-        },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F5.jpg?alt=media&token=c7d88a2b-a6f2-41b8-b037-e1d7f038b172',
+        // },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F7.jpg?alt=media&token=27060360-08fe-45db-b3e0-e1aed7c91f5e',
+        // },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F8.jpg?alt=media&token=6c097fb6-f733-43c9-8826-9e486aa85931',
+        // },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F9.jpg?alt=media&token=d2133450-eb87-473b-9dfc-910d06262fb8',
+        // },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F10.jpg?alt=media&token=4e953cbc-de3f-41e8-ada4-9739dd2f8508',
+        // },
+        // {
+        //   image:
+        //     'https://firebasestorage.googleapis.com/v0/b/ebigs-tinder.appspot.com/o/General%2FGallery%2F11.jpg?alt=media&token=144c172a-73be-4678-9883-d4d5aded916e',
+        // },
       ],
     };
   }
@@ -218,9 +219,52 @@ export default class EditProfileInfo extends React.Component {
 
           // console.log(this.state.dataSource);
         });
+
+        this.fetchImages();
     } catch (error) {
       Alert.alert(error.toString());
     }
+
+    
+  }
+
+  fetchImages=()=>{
+try {
+
+  let images=[];
+firestore().collection('Storage').doc('pNaM5QOA1JxlyZqkW8K1').
+ onSnapshot( 
+   
+  querySnapshot =>{
+    const list = [];
+
+    list.push(querySnapshot.data())
+
+   
+  this.setState({
+    imagesUri:list
+  })
+  
+    //console.log(list) 
+   
+  })
+
+  // this.setState({
+  //   imagesUri:Object.values(list)
+  // })
+
+  console.log(this.state.imagesUri[2])
+
+
+
+  
+
+
+}
+catch(error){
+  console.log(error)
+}
+
   }
   loader = value => {
     this.setState({
