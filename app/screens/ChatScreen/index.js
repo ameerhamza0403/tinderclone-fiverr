@@ -41,14 +41,19 @@ export default class Chat extends React.Component {
 
   componentDidMount = async () => {
 
-    const matched = this.props.navigation.getParam('matchedUser', 0);
-    console.log(matched)
+    const matchedUserId = this.props.navigation.getParam('matchedUserId', 0);
+    const matchedUserUserName= this.props.navigation.getParam('name', '');
+    console.log(matchedUserUserName)
+  
     const id = await AsyncStorage.getItem('id');
    
     this.setState({
-      to_UserId:matched,
-      from_UserId: id
+      to_UserId:matchedUserId,
+      to_UserName:matchedUserUserName,
+      from_UserId: id,
     })
+
+    this.fetchUserInfo();
   
 
 
@@ -78,17 +83,40 @@ export default class Chat extends React.Component {
       });
   };
 
+  fetchUserInfo = () => {
+    try {
+      database()
+        .ref('/Users/' + this.state.from_UserId)
+        .on('value', querySnapShot => {
+          let data = querySnapShot.val() ? querySnapShot.val() : {};
+          let list = {...data};
+          //console.log('User Data', list);
+
+          this.setState({
+           from_UserName:list.name
+          });
+        });
+    } catch (error) {
+      Alert.alert(error.toString());
+    }
+  };
+
   sendTextMessage = async () => {
     var message = this.state.message;
-    var sender = this.state.from_UserId;
-    var receiver = this.state.to_UserId;
+    var senderId = this.state.from_UserId;
+    var senderName=this.state.from_UserName
+  
+    var receiverId = this.state.to_UserId;
+    var recieverName=this.state.to_UserName
 
     database()
       .ref('Chats')
       .child(this.state.chat_Id)
       .push({
-        sender: sender,
-        receiver: receiver,
+        senderId: senderId,
+        receiverId: receiverId,
+        senderName:senderName,
+        recieverName:recieverName,
         message: message,
         messageType: 'text',
         startedAt: database.ServerValue.TIMESTAMP,
@@ -100,19 +128,21 @@ export default class Chat extends React.Component {
       });
     database()
       .ref('Chatlist')
-      .child(sender)
-      .child(receiver)
+      .child(senderId)
+      .child(receiverId)
       .set({
-        id: receiver,
+        id: receiverId,
+        name:recieverName,
         message: message,
         createdAt: database.ServerValue.TIMESTAMP,
       });
     database()
       .ref('Chatlist')
-      .child(receiver)
-      .child(sender)
+      .child(receiverId)
+      .child(senderId)
       .set({
-        id: sender,
+        id: senderId,
+        name:senderName,
         message: message,
         createdAt: database.ServerValue.TIMESTAMP,
       });
@@ -130,8 +160,8 @@ export default class Chat extends React.Component {
       async function(snapshot) {
         if (snapshot.val()) {
           const {
-            receiver,
-            sender,
+            receiverId,
+            senderId,
             message,
             startedAt,
             messageType,
@@ -141,8 +171,8 @@ export default class Chat extends React.Component {
             messages: [
               ...that.state.messages,
               {
-                receiver,
-                sender,
+                receiverId,
+                senderId,
                 message,
                 startedAt,
                 messageType,

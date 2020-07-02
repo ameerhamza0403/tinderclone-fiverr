@@ -9,18 +9,21 @@ import {
   ScrollView,
   Dimensions,
   TextInput,
-  AsyncStorage
+  AsyncStorage,
+  FlatList,
 } from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
-import Chat from '../ChatScreen/index'
+import Chat from '../ChatScreen/index';
+
+import database from '@react-native-firebase/database';
 
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
- class MyMessagesScreen extends Component {
+class MyMessagesScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,20 +32,33 @@ import styles from './styles';
       details: '',
       matchedUser: '',
       imagesArray: [],
+      myId: '',
+      useName: '',
+      LastMessage: '',
+      messagesData: [],
     };
   }
 
-
- 
   async componentDidMount() {
-    const matchedUser = await AsyncStorage.getItem('matchedUser');
+    const id = await AsyncStorage.getItem('id');
 
-    console.log('messages', matchedUser);
     this.setState({
-      matchedUser: matchedUser,
+      myId: id,
     });
 
-    this.fetchUserInfo();
+    database()
+      .ref('Chatlist')
+      .child(this.state.myId)
+      .on('value', querySnapShot => {
+        let data = querySnapShot.val() ? querySnapShot.val() : {};
+        let list = {...data};
+        this.setState({
+          messagesData: list,
+        });
+      });
+  }
+  catch(error) {
+    Alert.alert(error.toString());
   }
 
   render() {
@@ -119,8 +135,7 @@ import styles from './styles';
             </Text>
           </View>
 
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Chat',{'matchedUser' : this.state.matchedUser})}>
+          <TouchableOpacity>
             <View
               style={{
                 marginTop: 50,
@@ -145,10 +160,10 @@ import styles from './styles';
                 style={{
                   width: Statics.DEVICE_WIDTH / 5,
                   fontWeight: 'bold',
-                  marginLeft:30,
+                  marginLeft: 30,
                   fontSize: size(14),
                 }}>
-             User Just Matched
+                User Just Matched
               </Text>
             </View>
           </TouchableOpacity>
@@ -163,6 +178,74 @@ import styles from './styles';
               style={{fontSize: size(17), color: 'red', fontWeight: 'bold'}}>
               Messages
             </Text>
+          </View>
+
+          <View
+            style={{
+              flex: 2,
+
+              marginBottom: 1,
+
+              paddingRight: 2,
+              paddingLeft: 2,
+            }}>
+            <FlatList
+              data={Object.values(this.state.messagesData)}
+              showsVerticalScrollIndicator={false}
+              showsHorizontalScrollIndicator={false}
+              ref="messages_flatlist"
+              keyExtractor={(item, index) => index.toString()}
+              onContentSizeChange={() =>
+                this.refs.messages_flatlist.scrollToEnd()
+              }
+              renderItem={({item, index}) => {
+                const timestamp = item.startedAt;
+
+                return (
+                  <TouchableOpacity
+                  
+                  
+                  
+                  onPress={()=> this.props.navigation.navigate('Chat' , {'matchedUserId' :item.id , 'name' : item.name})}
+                  >
+                    <View
+                      style={{
+                        borderBottomRightRadius: 20,
+                        backgroundColor: '#ededed',
+
+                        paddingRight: 10,
+                        paddingLeft: 0,
+                        paddingTop: 5,
+                        paddingBottom: 8,
+                        borderRadius: 7,
+                        marginTop: 7,
+                        marginRight: 8,
+                        marginLeft: 8,
+                        flexDirection: 'column',
+                      }}>
+                      <Text
+                        style={{
+                          fontSize: 15,
+                          marginTop: 3,
+                          marginLeft: 10,
+                          fontWeight: 'bold',
+                        }}>
+                        {item.name}
+                      </Text>
+
+                      <Text
+                        style={{
+                          fontSize: 8,
+                          marginTop: 3,
+                          marginLeft: 10,
+                        }}>
+                        {item.message}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                );
+              }}
+            />
           </View>
         </View>
       </ScrollView>
@@ -181,23 +264,18 @@ import styles from './styles';
 // }
 
 const myStack = createStackNavigator({
-
   Home: {
     screen: MyMessagesScreen,
     navigationOptions: {
       header: null,
-
     },
-
   },
   Chat: {
     screen: Chat,
     navigationOptions: {
       header: null,
-
     },
   },
-
 });
 
 export default createAppContainer(myStack);
