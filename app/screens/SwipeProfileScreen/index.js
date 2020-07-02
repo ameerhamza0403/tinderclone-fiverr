@@ -27,7 +27,6 @@ import * as Statics from '../../helpers/statics';
 import styles from './style';
 import SubscriptionScreen from '../SubscriptionScreen/index';
 
-
 import MatchScreen from '../ItsAMatchScreen/index';
 import Swiper from 'react-native-deck-swiper';
 
@@ -63,28 +62,21 @@ class SwipeCards extends React.Component {
   //   this.goToMessages();
   // };
 
-  
-getCurrentDate=()=>{
+  getCurrentDate = () => {
+    var date = new Date().getDate();
+    var month = new Date().getMonth() + 1;
+    var year = new Date().getFullYear();
 
-  var date = new Date().getDate();
-  var month = new Date().getMonth() + 1;
-  var year = new Date().getFullYear();
-
-  this.setState({
-    currentDate: month + '/' + date + '/' + year,
-  });
-
-
- }
-
-
+    this.setState({
+      currentDate: month + '/' + date + '/' + year,
+    });
+  };
 
   goToMessages = () => {
     var accDate = new Date(this.state.accCreatedOn);
     var todayDate = new Date(this.state.currentDate);
     var difference_In_Time = todayDate.getTime() - accDate.getTime();
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
-    
 
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
@@ -129,7 +121,7 @@ getCurrentDate=()=>{
       this.setState({
         userId: id,
       });
-  this.getCurrentDate();
+      this.getCurrentDate();
       this.fetchUsersList();
       this.fetchUserInfo();
     } catch (error) {
