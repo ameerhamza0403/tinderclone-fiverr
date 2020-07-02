@@ -252,7 +252,7 @@ export default class EditProfileInfo extends React.Component {
       alert('Select Hobbiess');
       this.loader(false);
     } else if (this.state.selectedImagesDb == '') {
-      alert('Select Images');
+      alert('Select event of your choice to match a partner !');
       this.loader(false);
     } else {
       try {

@@ -634,6 +634,7 @@ class PhoneComponent extends React.Component {
                 .ref('Users')
                 .child(this.state.userId)
                 .set({
+                  id:this.state.userId,
                   name: name,
                   gender: gender,
                   email: email,

@@ -20,6 +20,13 @@ import Chat from '../ChatScreen/index'
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
  class MyMessagesScreen extends Component {
+
+ 
+  componentDidMount(){
+    
+
+  }
+
   render() {
     return (
       <ScrollView>

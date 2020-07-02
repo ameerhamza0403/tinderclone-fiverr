@@ -10,7 +10,8 @@ import {
   StyleSheet,
   View,
   Text,
-  AsyncStorage
+  AsyncStorage,
+  Alert
  
 } from 'react-native';
 
@@ -60,6 +61,7 @@ export default class App extends Component{
             isLoading:false
           })
             } catch (error) {
+              Alert.alert(error.tostring())
              
             }
           })

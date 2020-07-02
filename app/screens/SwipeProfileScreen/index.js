@@ -45,22 +45,11 @@ class SwipeCards extends React.Component {
       isLoading: true,
       cards: [],
       randomImageNumber: '',
+      selectedCard:''
     };
   }
 
-  // getCurrentDate = () => {
-  //   var date = new Date().getDate();
-  //   var month = new Date().getMonth() + 1;
-  //   var year = new Date().getFullYear();
 
-  //   this.setState({
-  //     currentDate: month + '/' + date + '/' + year,
-  //   });
-
-  //   console.log(this.state.currentDate)
-
-  //   this.goToMessages();
-  // };
 
   getCurrentDate = () => {
     var date = new Date().getDate();
@@ -80,7 +69,9 @@ class SwipeCards extends React.Component {
 
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
-      this.props.navigation.navigate('MatchScreen');
+      console.log('selected' ,this.state.selectedCard)
+      this.props.navigation.navigate('MatchScreen', {'matchedCard':this.state.selectedCard})
+
       this.setState({
         ModalVisibleStatus: false,
       });
@@ -156,8 +147,11 @@ class SwipeCards extends React.Component {
       database()
         .ref('Users')
         .on('value', querySnapShot => {
+          console.log(querySnapShot);
+
           let data = querySnapShot.val() ? querySnapShot.val() : {};
           const list = {...data};
+          console.log(list)
           const obj = Object.values(list);
 
           const firebaseData = obj;
@@ -173,6 +167,8 @@ class SwipeCards extends React.Component {
       Alert.alert(error.toString());
     }
   };
+
+ 
 
   renderCard = cards => {
     const imagesArray = cards.eventImages;
@@ -213,9 +209,17 @@ class SwipeCards extends React.Component {
     }
   };
 
-  onSwiped = type => {
-    console.log(`on swiped ${type}`);
+  onSwiped = swipe => {
+    console.log(`on swiped ${swipe}`);
   };
+  cardLiked=()=>
+  {
+    
+
+    this.showModalFunction(true)
+
+  }
+
 
   onSwipedAllCards = () => {
     this.setState({
@@ -236,7 +240,7 @@ class SwipeCards extends React.Component {
           />
         </View>
       );
-    } else {
+    } else if (this.state.cards && this.state.cards.length) {
       return (
         <View style={styles.Container}>
           <Modal
@@ -273,16 +277,7 @@ class SwipeCards extends React.Component {
                     }}
                   />
 
-                  <View
-                    style={{
-                      marginTop: size(20),
-                      width: Statics.DEVICE_WIDTH / 1.2,
-                      marginLeft: size(20),
-                    }}>
-                    <Text style={{fontSize: size(17)}}>
-                      If you have any question , please chat first.
-                    </Text>
-                  </View>
+                  
 
                   <View
                     style={{
@@ -326,17 +321,19 @@ class SwipeCards extends React.Component {
               </ScrollView>
             </SafeAreaView>
           </Modal>
+
           <Swiper
             ref={swiper => {
               this.swiper = swiper;
             }}
-            onSwipedTop={() => this.showModalFunction(true)}
+            onSwipedTop={()=> this.cardLiked()}
             onSwipedBottom={() => this.onSwiped('bottom')}
             cards={this.state.cards}
             cardVerticalMargin={10}
             backgroundColor={'tranparent'}
             renderCard={this.renderCard}
             onSwipedAll={this.onSwipedAllCards}
+            keyExtractor={item => this.setState({selectedCard:item.id})}
             stackSize={3}
             stackSeparation={15}
             disableLeftSwipe={true}
@@ -377,6 +374,12 @@ class SwipeCards extends React.Component {
               },
             }}
           />
+        </View>
+      );
+    } else {
+      return (
+        <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
+          <Text>No User found</Text>
         </View>
       );
     }
