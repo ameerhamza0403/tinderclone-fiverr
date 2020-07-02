@@ -16,7 +16,8 @@ import {
   Modal,
   Share,
   Alert,
-  ActivityIndicator
+  ActivityIndicator,
+  BackHandler
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
@@ -30,7 +31,7 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import NotificationScreen from '../NotificationSettingsScreen/index';
 import auth from '@react-native-firebase/auth';
-import LoginScreen from '../LoginScreen/index';
+import LoginScreenComponent from '../LoginScreen/index';
 import database from '@react-native-firebase/database';
 
 const agesArray=[
@@ -58,6 +59,7 @@ class SettingsScreen extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
 
     this.state = {
 
@@ -72,8 +74,16 @@ class SettingsScreen extends React.Component {
   
     };
   }
+  handleBackButtonClick() {
+    this.props.navigation.goBack(null);
+    return true;
+}
 
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+}
   async componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
     const id = await AsyncStorage.getItem('id', 0);
     this.setState({
       userId: id,
@@ -151,24 +161,25 @@ class SettingsScreen extends React.Component {
     
   };
   logout = () => {
-    try {
-      auth()
-        .signOut()
-        .then(() => console.log('User signed out!'));
+  
+      // auth()
+      //   .signOut()
+      //   .then(() => console.log('User signed out!'));
+      AsyncStorage.clear();
+      BackHandler.exitApp()
       this.props.navigation.navigate('Login');
-    } catch (error) {
-      console.log(error);
-    }
+     
+    
   };
   render() {
 
     if (this.state.isLoading) {
       return (
         <View>
-          <StatusBar backgroundColor="#29AB87" barStyle="light-content" />
+          <StatusBar backgroundColor="#FF4A00FF" barStyle="light-content" />
 
           <ActivityIndicator
-            color="#29AB87"
+            color="#FF4A00FF"
             size="large"
             style={{marginTop: 10}}
           />
@@ -725,6 +736,14 @@ class SettingsScreen extends React.Component {
   }
 }
 
+
+class LoginScreen extends React.Component {
+  render() {
+    return < LoginScreenComponent/>;
+  }
+}
+
+
 const notificationStack = createStackNavigator({
   Home: {
     screen: SettingsScreen,
@@ -738,12 +757,12 @@ const notificationStack = createStackNavigator({
       header: null,
     },
   },
-  // Login: {
-  //   screen: LoginScreen,
-  //   navigationOptions: {
-  //     header: null,
-  //   },
-  // },
+  Login: {
+    screen: LoginScreen,
+    navigationOptions: {
+      header: null,
+    },
+  },
 });
 
 export default createAppContainer(notificationStack);

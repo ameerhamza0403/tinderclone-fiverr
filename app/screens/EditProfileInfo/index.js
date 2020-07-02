@@ -286,10 +286,10 @@ export default class EditProfileInfo extends React.Component {
     if (this.state.isLoading) {
       return (
         <View>
-          <StatusBar backgroundColor="#29AB87" barStyle="light-content" />
+          <StatusBar backgroundColor="#FF4A00FF" barStyle="light-content" />
 
           <ActivityIndicator
-            color="#29AB87"
+            color="#FF4A00FF"
             size="large"
             style={{marginTop: 10}}
           />
