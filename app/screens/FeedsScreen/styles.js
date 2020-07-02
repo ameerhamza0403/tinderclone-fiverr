@@ -19,8 +19,10 @@ export default {
   
   },
   iconStyle: {
-    width:size(70),
-    height: size(70),
+    width:size(50),
+    height: size(50),
+    borderRadius:60,
+    marginRight:20
   },
   profile_pic_style: {
     width: '100%',
@@ -75,14 +77,16 @@ color:'red'
   navigation_inner_container: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius:30,
+    borderRadius:80,
     backgroundColor:'white'
+
   },
   
   button_container: {
     alignItems: 'center',
     padding: 15,
     borderRadius: 30,
+   
 
   },
   button_style: {

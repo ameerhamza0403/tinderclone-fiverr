@@ -56,6 +56,7 @@ class SwipeCards extends React.Component {
       currentDate: '',
       isLoading: true,
       cards: [],
+      randomImageNumber:''
     };
   }
 
@@ -159,13 +160,19 @@ class SwipeCards extends React.Component {
   }
 
   renderCard = cards => {
-    console.log(',,', cards);
+    const imagesArray=cards.eventImages
+
+    //console.log(',,', imagesArray.length);
+
+    var RandomNumber = Math.floor(Math.random() * imagesArray.length) + 0 ;
+    console.log(RandomNumber)
+
 
     return (
       <View style={styles.card}>
-        {/* <View style={{flex: 4}}>
-          <Image style={{width: '100%', height: 600}} source={ { uri : cards.eventImages}} />
-        </View> */}
+        <View style={{flex: 4}}>
+          <Image style={{width: '100%', height: 600}} source={ { uri : imagesArray[RandomNumber]}} />
+        </View>
 
         <View style={{marginTop: 0, flex: 1}}>
           <Text style={styles.text}>{cards.name}</Text>

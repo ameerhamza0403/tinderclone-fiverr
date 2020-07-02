@@ -84,7 +84,7 @@ export default class FeedsScreen extends React.Component {
                 }}>
                 <Image
                   style={styles.iconStyle}
-                  source={require('../../../assests/images/like.png')}
+                  source={require('../../../assests/images/like.jpeg')}
                 />
               </View>
 
@@ -103,13 +103,13 @@ export default class FeedsScreen extends React.Component {
                 }}>
                 <Image
                   style={styles.iconStyle}
-                  source={require('../../../assests/images/dislike.png')}
+                  source={require('../../../assests/images/dislike.jpeg')}
                 />
               </View>
                 <View
                 style={{
                   position: 'absolute',
-                  left: 350,
+                  left: 345,
                   top: 430,
                  
                   borderRadius: 60,
@@ -191,7 +191,7 @@ export default class FeedsScreen extends React.Component {
                   // onPress={() => this.pushToScreen('Settings')}
                 >
                   <Image
-                    source={require('../../../assests/images/dislike.png')}
+                    source={require('../../../assests/images/dislike.jpeg')}
                     style={styles.button_style}
                   />
                 </TouchableOpacity>
@@ -213,7 +213,7 @@ export default class FeedsScreen extends React.Component {
                   // onPress={() => this.pushToScreen('Edit')}
                 >
                   <Image
-                    source={require('../../../assests/images/like.png')}
+                    source={require('../../../assests/images/like.jpeg')}
                     style={styles.button_style}
                   />
                 </TouchableOpacity>
