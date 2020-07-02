@@ -1,5 +1,7 @@
 
-import { size } from '../../helpers/devices.android';
+
+import { size } from '../../helpers/devices';
+import * as Statics from '../../helpers/statics';
 export default {
 
 
@@ -7,6 +9,7 @@ export default {
   container: {
     flex: 1,
     backgroundColor: 'rgb(244,246,251)',
+    marginBottom:20
     
   },
   //-----------------PROFILE PICTURE CONTAINER--------------//
@@ -16,12 +19,14 @@ export default {
   
   },
   iconStyle: {
-    width:45,
-    height: 40,
+    width:size(50),
+    height: size(50),
+    borderRadius:60,
+    marginRight:20
   },
   profile_pic_style: {
     width: '100%',
-    height: 480,
+    height: 460,
   
   },
   profile_name_style: {
@@ -40,10 +45,10 @@ export default {
     marginLeft:10
   },
   details:{ 
-    fontSize: 19,
+    fontSize: 20,
     marginLeft:5,
 
-    color:'#969695'
+    color:'#000'
   },
   detailsIcon:{ 
 
@@ -72,19 +77,21 @@ color:'red'
   navigation_inner_container: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius:30,
+    borderRadius:80,
     backgroundColor:'white'
+
   },
   
   button_container: {
     alignItems: 'center',
     padding: 15,
     borderRadius: 30,
+   
 
   },
   button_style: {
-    width: size(35),
-    height: size(35),
+    width: size(60),
+    height: size(60),
     resizeMode: 'contain',
  
   },
