@@ -110,7 +110,7 @@ export default class EditProfileInfo extends React.Component {
       ],
     };
   }
-  state = {switchValue: false, sliderValue: 1};
+ 
 
   setHobbies = value => {
     if (myHobbies.length >= 3) {

@@ -17,15 +17,15 @@ export default {
     justifyContent: 'center',
   },
   danceBtn: {
-    marginLeft:20,
     borderColor: 'white',
     borderRadius: 15,
-    width: '30%',
+    width: '40%',
     marginTop: 20,
     height: 45,
     backgroundColor: '#FF4A00FF',
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf:'center'
 
   },
   roundBtn: {

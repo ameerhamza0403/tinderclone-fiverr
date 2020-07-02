@@ -16,6 +16,7 @@ import {
   Modal,
   Share,
   Alert,
+  ActivityIndicator
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {ProgressSteps, ProgressStep} from 'react-native-progress-steps';
@@ -30,9 +31,81 @@ import {createStackNavigator} from 'react-navigation-stack';
 import NotificationScreen from '../NotificationSettingsScreen/index';
 import auth from '@react-native-firebase/auth';
 import LoginScreen from '../LoginScreen/index';
+import database from '@react-native-firebase/database';
+
+const agesArray=[
+"20-22",
+"23-27",
+"28-30",
+"31-35",
+"36-40",
+"40-50",
+
+
+]
+const distanceArray=[
+  "1-2 mi.",
+"3-7 mi.",
+"8-15 mi.",
+"16-25 mi.",
+"25-30 mi.",
+"30-50 mil",
+
+
+]
 
 class SettingsScreen extends React.Component {
-  state = {switchValue: false, sliderValue: 1};
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+      isLoading: '',
+      showOnHobbyDutch:false,
+      shareFeed:false,
+      distane:2,
+      ageLimit:3,
+      mobileNumber:''
+
+   
+  
+    };
+  }
+
+  async componentDidMount() {
+    const id = await AsyncStorage.getItem('id', 0);
+    this.setState({
+      userId: id,
+    });
+    console.log(this.state.userId);
+
+    try {
+      database()
+        .ref('/Users/' + id)
+        .on('value', querySnapShot => {
+          let data = querySnapShot.val() ? querySnapShot.val() : {};
+          let list = {...data};
+          console.log(list.showAge);
+
+          this.setState({
+            showOnHobbyDutch:list.showOnHobbyDutch,
+            shareFeed:list.shareFeed,
+            distane:list.distane,
+            ageLimit:list.ageLimit,
+            mobileNumber:list.phone
+            
+          });
+
+          // console.log(this.state.dataSource);
+        });
+    } catch (error) {
+      Alert.alert(error.toString());
+    }
+  }
+
+
+ 
   toggleSwitch = value => {
     //onValueChange of the switch this function will be called
     this.setState({switchValue: value});
@@ -47,6 +120,36 @@ class SettingsScreen extends React.Component {
       .then(result => console.log(result))
       .catch(errorMsg => console.log(errorMsg));
   };
+  loader = value => {
+    this.setState({
+      isLoading: value,
+    });
+  };
+
+  validate = () => {
+    this.loader(true);
+
+
+      try {
+        database()
+          .ref('Users')
+          .child(this.state.userId)
+          .update({
+            showOnHobbyDutch:this.state.showOnHobbyDutch,
+      shareFeed:this.state.shareFeed,
+      distane:this.state.distane,
+      ageLimit:this.state.ageLimit,
+          })
+          .then(data => {
+            this.setState({
+              isLoading: false,
+            });
+          });
+      } catch (error) {
+        Alert.alert(error);
+      }
+    
+  };
   logout = () => {
     try {
       auth()
@@ -58,6 +161,20 @@ class SettingsScreen extends React.Component {
     }
   };
   render() {
+
+    if (this.state.isLoading) {
+      return (
+        <View>
+          <StatusBar backgroundColor="#29AB87" barStyle="light-content" />
+
+          <ActivityIndicator
+            color="#29AB87"
+            size="large"
+            style={{marginTop: 10}}
+          />
+        </View>
+      );
+    }
     return (
       <ScrollView>
         <View style={styles.mainContainer}>
@@ -99,7 +216,7 @@ class SettingsScreen extends React.Component {
                       alignItems: 'center',
                     }}>
                     <Text style={{fontSize: 16, color: '#ABABAB'}}>
-                      +92111232343
+                     {this.state.mobileNumber}
                     </Text>
                   </View>
                 </View>
@@ -188,7 +305,7 @@ class SettingsScreen extends React.Component {
                 </View>
 
                 <View style={{flex: 2, marginTop: 10}}>
-                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>9 mi.</Text>
+                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>{distanceArray[this.state.distane]}</Text>
                 </View>
               </View>
 
@@ -196,15 +313,16 @@ class SettingsScreen extends React.Component {
                 <View style={{flex: 7, marginTop: 5}}>
                   <Slider
                     maximumValue={5}
-                    minimumValue={1}
+                    minimumValue={0}
                     activeColor={'#FB6C57'}
                     thumbStyle={{height: 10, width: 10}}
                     step={1}
-                    // onValueChange={value => {
-                    //   this.setState({
-                    //     sliderValue: value,
-                    //   });
-                    // }}
+                    value={this.state.distane}
+                    onValueChange={value => {
+                      this.setState({
+                       distane: value,
+                      });
+                    }}
                     trackStyle={{
                       backgroundColor: '#FF655B',
                       height: 10,
@@ -243,7 +361,7 @@ class SettingsScreen extends React.Component {
                 </View>
 
                 <View style={{flex: 2, marginTop: 10}}>
-                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>20-25</Text>
+                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>{agesArray[this.state.ageLimit]}</Text>
                 </View>
               </View>
 
@@ -251,15 +369,17 @@ class SettingsScreen extends React.Component {
                 <View style={{flex: 7, marginTop: 5}}>
                   <Slider
                     maximumValue={5}
-                    minimumValue={1}
+                    minimumValue={0}
                     activeColor={'#FB6C57'}
                     thumbStyle={{height: 10, width: 10}}
                     step={1}
-                    // onValueChange={value => {
-                    //   this.setState({
-                    //     sliderValue: value,
-                    //   });
-                    // }}
+                    value={this.state.ageLimit}
+                    onValueChange={value => {
+                      this.setState({
+                       ageLimit: value,
+                      });
+                    }}
+                 
                     trackStyle={{
                       backgroundColor: '#FF655B',
                       height: 10,
@@ -299,10 +419,12 @@ class SettingsScreen extends React.Component {
                   <View
                     style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
                     <Switch
-                      trackColor={{true: 'red', false: 'grey'}}
+                      trackColor={{true: '#FF4A00FF', false: 'grey'}}
                       style={{marginTop: 0}}
-                      onValueChange={this.toggleSwitch}
-                      value={this.state.switchValue}
+                      onValueChange={switchValue =>
+                        this.setState({showOnHobbyDutch: switchValue})
+                      }
+                      value={this.state.showOnHobbyDutch}
                     />
                   </View>
                 </View>
@@ -332,13 +454,26 @@ class SettingsScreen extends React.Component {
                   <View
                     style={{alignItems: 'flex-end', marginTop: 10, flex: 1}}>
                     <Switch
-                      trackColor={{true: 'red', false: 'grey'}}
+                      trackColor={{true: '#FF4A00FF', false: 'grey'}}
                       style={{marginTop: 0}}
-                      onValueChange={this.toggleSwitch}
-                      value={this.state.switchValue}
+                      onValueChange={switchValue =>
+                        this.setState({shareFeed: switchValue})
+                      }
+                      value={this.state.shareFeed}
                     />
                   </View>
                 </View>
+                <TouchableOpacity onPress={() => this.validate()}>
+                <View style={styles.danceBtn}>
+                   
+                      <View>
+                        <Text style={{color: 'white', fontSize: 16}}>
+                         Save
+                        </Text>
+                      </View>
+                  
+                  </View>
+                  </TouchableOpacity>
               </View>
             </View>
             <View style={{flex: 1}}>
@@ -377,7 +512,7 @@ class SettingsScreen extends React.Component {
                 width: '90%',
                 marginLeft: '1%',
               }}>
-              <View style={{flex: 1}}>
+              {/* <View style={{flex: 1}}>
                 <View style={{flexDirection: 'row'}}>
                   <View style={[styles.itemsContainer, {flex: 6}]}>
                     <Text
@@ -422,7 +557,7 @@ class SettingsScreen extends React.Component {
                     </TouchableOpacity>
                   </View>
                 </View>
-              </View>
+              </View> */}
               <View style={{flex: 1}}>
                 <View style={styles.itemsContainer}>
                   <Text
