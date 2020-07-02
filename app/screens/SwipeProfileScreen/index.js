@@ -45,11 +45,9 @@ class SwipeCards extends React.Component {
       isLoading: true,
       cards: [],
       randomImageNumber: '',
-      selectedCard:''
+      selectedCard: '',
     };
   }
-
-
 
   getCurrentDate = () => {
     var date = new Date().getDate();
@@ -69,8 +67,10 @@ class SwipeCards extends React.Component {
 
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
-      console.log('selected' ,this.state.selectedCard)
-      this.props.navigation.navigate('MatchScreen', {'matchedUser':this.state.selectedCard})
+      console.log('selected', this.state.selectedCard);
+      this.props.navigation.navigate('MatchScreen', {
+        matchedUser: this.state.selectedCard,
+      });
 
       this.setState({
         ModalVisibleStatus: false,
@@ -151,7 +151,7 @@ class SwipeCards extends React.Component {
 
           let data = querySnapShot.val() ? querySnapShot.val() : {};
           const list = {...data};
-          console.log(list)
+          console.log(list);
           const obj = Object.values(list);
 
           const firebaseData = obj;
@@ -168,24 +168,22 @@ class SwipeCards extends React.Component {
     }
   };
 
- 
-
   renderCard = cards => {
     const imagesArray = cards.eventImages;
-    var randomNumber;
+    // var randomNumber;
 
     //console.log(',,', imagesArray.length);
 
     if (imagesArray && imagesArray.length) {
-      randomNumber = Math.floor(Math.random() * imagesArray.length) + 0;
-      console.log(randomNumber);
+      // randomNumber = Math.floor(Math.random() * imagesArray.length) + 0;
+      // console.log(randomNumber);
 
       return (
         <View style={styles.card}>
           <View style={{flex: 4}}>
             <Image
               style={{width: '100%', height: 600}}
-              source={{uri: imagesArray[randomNumber]}}
+              source={{uri: imagesArray[0]}}
             />
           </View>
 
@@ -213,24 +211,20 @@ class SwipeCards extends React.Component {
     console.log(`on swiped ${swipe}`);
   };
 
-
-
   onSwipedAllCards = () => {
     this.setState({
       swipedAllCards: true,
     });
   };
 
-  getCardId=(id)=>{
+  getCardId = id => {
+    console.log('Shahbaz', id);
+    const card = this.state.cards[id];
 
-console.log('Shahbaz' , id)
-const card=this.state.cards[id]
+    this.setState({selectedCard: card.id});
 
-this.setState({selectedCard:card.id})
-
-this.showModalFunction(true)
-
-  }
+    this.showModalFunction(true);
+  };
 
   render() {
     if (this.state.isLoading) {
@@ -282,8 +276,6 @@ this.showModalFunction(true)
                     }}
                   />
 
-                  
-
                   <View
                     style={{
                       width: Statics.DEVICE_WIDTH / 1.2,
@@ -331,7 +323,7 @@ this.showModalFunction(true)
             ref={swiper => {
               this.swiper = swiper;
             }}
-            onSwipedTop={(i)=> this.getCardId(i)}
+            onSwipedTop={i => this.getCardId(i)}
             // onSwiped={item => this.getId(item.id)}
             onSwipedBottom={() => this.onSwiped('bottom')}
             cards={this.state.cards}
@@ -383,7 +375,7 @@ this.showModalFunction(true)
       );
     } else {
       return (
-        <View style={{alignItems:'center',justifyContent:'center',flex:1}}>
+        <View style={{alignItems: 'center', justifyContent: 'center', flex: 1}}>
           <Text>No User found</Text>
         </View>
       );

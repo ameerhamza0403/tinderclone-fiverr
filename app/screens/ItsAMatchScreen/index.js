@@ -94,7 +94,10 @@ class FeedsScreen extends React.Component {
           />
         </View>
       );
-    } else {
+    } 
+   
+    
+    else {
       return (
         <ScrollView>
           <View style={styles.container}>
