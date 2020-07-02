@@ -223,7 +223,17 @@ class MyMessagesScreen extends Component {
                         marginLeft: 8,
                         flexDirection: 'column',
                       }}>
-                      <Text
+                        <View style={{flexDirection:'row'}}>
+
+                          <Image
+                          style={{height:50,width:50,borderRadius:60}}
+                          source={require('../../../assests/images/usericon.jpg')}
+                          />
+
+                          <View style={{flex:1}}>
+
+
+                          <Text
                         style={{
                           fontSize: 15,
                           marginTop: 3,
@@ -241,6 +251,13 @@ class MyMessagesScreen extends Component {
                         }}>
                         {item.message}
                       </Text>
+                          </View>
+                          
+
+                        </View>
+                     
+
+                      
                     </View>
                   </TouchableOpacity>
                 );

@@ -70,7 +70,7 @@ class SwipeCards extends React.Component {
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
       console.log('selected' ,this.state.selectedCard)
-      this.props.navigation.navigate('MatchScreen', {'matchedCard':this.state.selectedCard})
+      this.props.navigation.navigate('MatchScreen', {'matchedUser':this.state.selectedCard})
 
       this.setState({
         ModalVisibleStatus: false,
@@ -212,13 +212,7 @@ class SwipeCards extends React.Component {
   onSwiped = swipe => {
     console.log(`on swiped ${swipe}`);
   };
-  cardLiked=()=>
-  {
-    
 
-    this.showModalFunction(true)
-
-  }
 
 
   onSwipedAllCards = () => {
@@ -226,6 +220,17 @@ class SwipeCards extends React.Component {
       swipedAllCards: true,
     });
   };
+
+  getCardId=(id)=>{
+
+console.log('Shahbaz' , id)
+const card=this.state.cards[id]
+
+this.setState({selectedCard:card.id})
+
+this.showModalFunction(true)
+
+  }
 
   render() {
     if (this.state.isLoading) {
@@ -326,14 +331,14 @@ class SwipeCards extends React.Component {
             ref={swiper => {
               this.swiper = swiper;
             }}
-            onSwipedTop={()=> this.cardLiked()}
+            onSwipedTop={(i)=> this.getCardId(i)}
+            // onSwiped={item => this.getId(item.id)}
             onSwipedBottom={() => this.onSwiped('bottom')}
             cards={this.state.cards}
             cardVerticalMargin={10}
             backgroundColor={'tranparent'}
             renderCard={this.renderCard}
             onSwipedAll={this.onSwipedAllCards}
-            keyExtractor={item => this.setState({selectedCard:item.id})}
             stackSize={3}
             stackSeparation={15}
             disableLeftSwipe={true}

@@ -222,11 +222,11 @@ export default class Chat extends React.Component {
                     style={{
                       borderBottomRightRadius: 20,
                       backgroundColor:
-                        item.sender == this.state.to_UserId
+                        item.senderId == this.state.to_UserId
                           ? '#DCF8C6'
                           : '#FFFFFF',
                       alignSelf:
-                        item.sender == this.state.from_UserId
+                        item.senderId == this.state.from_UserId
                           ? 'flex-end'
                           : 'flex-start',
                       paddingRight: 10,

@@ -28,7 +28,7 @@ class FeedsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
+      isLoading: true,
       name: '',
       details: '',
       matchedUserId: '',
@@ -37,41 +37,42 @@ class FeedsScreen extends React.Component {
   }
 
   async componentDidMount() {
-    const matchedUser = await AsyncStorage.getItem('matchedUser');
+    const matchedUser = this.props.navigation.getParam('matchedUser' , 0);
 
-    console.log('feeds', matchedUser);
-    this.setState({
-      matchedUserId: matchedUser,
-    });
-
-    this.fetchUserInfo();
-  }
-
-  fetchUserInfo = () => {
-    const that = this;
+    console.log('shhhahbaz', matchedUser);
+     
 
     try {
       database()
-        .ref('/Users/' + this.state.matchedUserId)
-        .once('value', function(data) {
-          const firebaseObject = data.val();
+        .ref('/Users/' + matchedUser)
+        .on('value', querySnapShot => {
+          let data = querySnapShot.val() ? querySnapShot.val() : {};
+          let firebaseObject = {...data};
+          console.log('User Data', firebaseObject);
 
-          that.setState({
+          this.setState({
+            matchedUserId:firebaseObject.id,
             name: firebaseObject.name,
             details: `Phone # : ${firebaseObject.phone} \nInterest : ${
               firebaseObject.interest
             } \nOccupation: ${firebaseObject.occupation}`,
             imagesArray: firebaseObject.eventImages,
-
             isLoading: false,
           });
 
-          console.log(that.state.matchedUserData);
+
+      
+
         });
     } catch (error) {
       Alert.alert(error.toString());
     }
-  };
+
+    console.log(this.state.matchedUserId)
+
+
+  }
+
 
   shareMessage = () => {
     Share.share({
@@ -99,6 +100,7 @@ class FeedsScreen extends React.Component {
           <View style={styles.container}>
             <View style={{marginTop: size(5)}}>
               <View style={styles.profile_pic_container}>
+                
                 <Image
                   source={{
                     uri:this.state.imagesArray[0],
