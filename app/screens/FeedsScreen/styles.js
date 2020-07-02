@@ -45,10 +45,10 @@ export default {
     marginLeft:10
   },
   details:{ 
-    fontSize: 19,
+    fontSize: 20,
     marginLeft:5,
 
-    color:'#969695'
+    color:'#000'
   },
   detailsIcon:{ 
 
