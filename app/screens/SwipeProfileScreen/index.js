@@ -27,17 +27,6 @@ import * as Statics from '../../helpers/statics';
 import styles from './style';
 import SubscriptionScreen from '../SubscriptionScreen/index';
 
-import {
-  Container,
-  Header,
-  DeckSwiper,
-  Card,
-  CardItem,
-  Thumbnail,
-  Left,
-  Body,
-} from 'native-base';
-//import ChatScreen from '../ChatScreen/index'
 
 import MatchScreen from '../ItsAMatchScreen/index';
 import Swiper from 'react-native-deck-swiper';
@@ -56,27 +45,46 @@ class SwipeCards extends React.Component {
       currentDate: '',
       isLoading: true,
       cards: [],
-      randomImageNumber:''
+      randomImageNumber: '',
     };
   }
 
-  getCurrentDate = () => {
-    var date = new Date().getDate();
-    var month = new Date().getMonth() + 1;
-    var year = new Date().getFullYear();
+  // getCurrentDate = () => {
+  //   var date = new Date().getDate();
+  //   var month = new Date().getMonth() + 1;
+  //   var year = new Date().getFullYear();
 
-    this.setState({
-      currentDate: month + '/' + date + '/' + year,
-    });
+  //   this.setState({
+  //     currentDate: month + '/' + date + '/' + year,
+  //   });
 
-    this.goToMessages();
-  };
+  //   console.log(this.state.currentDate)
+
+  //   this.goToMessages();
+  // };
+
+  
+getCurrentDate=()=>{
+
+  var date = new Date().getDate();
+  var month = new Date().getMonth() + 1;
+  var year = new Date().getFullYear();
+
+  this.setState({
+    currentDate: month + '/' + date + '/' + year,
+  });
+
+
+ }
+
+
 
   goToMessages = () => {
     var accDate = new Date(this.state.accCreatedOn);
     var todayDate = new Date(this.state.currentDate);
     var difference_In_Time = todayDate.getTime() - accDate.getTime();
     var difference_In_Days = difference_In_Time / (1000 * 3600 * 24);
+    
 
     if (difference_In_Days <= 7) {
       Alert.alert('Your have trial, Congrats! Its a Dutch');
@@ -113,8 +121,6 @@ class SwipeCards extends React.Component {
     this.setState({ModalVisibleStatus: visible});
   }
   async componentDidMount() {
-    let myList = [];
-    const that = this;
     console.disableYellowBox = true;
     const id = await AsyncStorage.getItem('id', 0);
     console.log(id);
@@ -123,6 +129,37 @@ class SwipeCards extends React.Component {
       this.setState({
         userId: id,
       });
+  this.getCurrentDate();
+      this.fetchUsersList();
+      this.fetchUserInfo();
+    } catch (error) {
+      Alert.alert(error.toString());
+    }
+  }
+
+  fetchUserInfo = () => {
+    try {
+      database()
+        .ref('/Users/' + this.state.userId)
+        .on('value', querySnapShot => {
+          let data = querySnapShot.val() ? querySnapShot.val() : {};
+          let list = {...data};
+          //console.log('User Data', list);
+
+          this.setState({
+            payment: list.payment,
+            accCreatedOn: list.createdOn,
+            accType: list.accType,
+          });
+        });
+    } catch (error) {
+      Alert.alert(error.toString());
+    }
+  };
+
+  fetchUsersList = () => {
+    try {
+      const that = this;
 
       database()
         .ref('Users')
@@ -140,45 +177,48 @@ class SwipeCards extends React.Component {
 
           console.log(',,', that.state.cards);
         });
-
-      database()
-        .ref('/Users/' + id)
-        .on('value', querySnapShot => {
-          let data = querySnapShot.val() ? querySnapShot.val() : {};
-          let list = {...data};
-          //console.log('User Data', list);
-
-          this.setState({
-            payment: list.payment,
-            accCreatedOn: list.createdOn,
-            accType: list.accType,
-          });
-        });
     } catch (error) {
       Alert.alert(error.toString());
     }
-  }
+  };
 
   renderCard = cards => {
-    const imagesArray=cards.eventImages
+    const imagesArray = cards.eventImages;
+    var randomNumber;
 
     //console.log(',,', imagesArray.length);
 
-    var RandomNumber = Math.floor(Math.random() * imagesArray.length) + 0 ;
-    console.log(RandomNumber)
+    if (imagesArray && imagesArray.length) {
+      randomNumber = Math.floor(Math.random() * imagesArray.length) + 0;
+      console.log(randomNumber);
 
+      return (
+        <View style={styles.card}>
+          <View style={{flex: 4}}>
+            <Image
+              style={{width: '100%', height: 600}}
+              source={{uri: imagesArray[randomNumber]}}
+            />
+          </View>
 
-    return (
-      <View style={styles.card}>
-        <View style={{flex: 4}}>
-          <Image style={{width: '100%', height: 600}} source={ { uri : imagesArray[RandomNumber]}} />
+          <View style={{marginTop: 0, flex: 1}}>
+            <Text style={styles.text}>{cards.name}</Text>
+          </View>
         </View>
+      );
+    } else {
+      return (
+        <View style={styles.card}>
+          <View style={{flex: 4, justifyContent: 'center'}}>
+            <Text style={{alignSelf: 'center', fontSize: 25}}>No Image</Text>
+          </View>
 
-        <View style={{marginTop: 0, flex: 1}}>
-          <Text style={styles.text}>{cards.name}</Text>
+          <View style={{marginTop: 0, flex: 1}}>
+            <Text style={styles.text}>{cards.name}</Text>
+          </View>
         </View>
-      </View>
-    );
+      );
+    }
   };
 
   onSwiped = type => {
@@ -271,7 +311,7 @@ class SwipeCards extends React.Component {
                       justifyContent: 'center',
                       flex: 1,
                     }}>
-                    <TouchableOpacity onPress={() => this.getCurrentDate()}>
+                    <TouchableOpacity onPress={() => this.goToMessages()}>
                       <View
                         style={{
                           alignItems: 'center',
