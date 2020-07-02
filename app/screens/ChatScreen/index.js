@@ -30,8 +30,8 @@ export default class Chat extends React.Component {
       messages: [],
       from_UserId: '',
       from_UserName: '',
-      to_UserId: 'KQW10AFrRJQKklIre57CPSsGfK23',
-      to_UserName: 'shahbaz',
+      to_UserId: '',
+      to_UserName: '',
       chat_Id: '',
     };
   }
@@ -40,10 +40,17 @@ export default class Chat extends React.Component {
   });
 
   componentDidMount = async () => {
-    const id = await AsyncStorage.getItem('Id');
-    console.log(id);
 
-    this.setState({from_UserId: id});
+    const matched = this.props.navigation.getParam('matchedUser', 0);
+    console.log(matched)
+    const id = await AsyncStorage.getItem('id');
+   
+    this.setState({
+      to_UserId:matched,
+      from_UserId: id
+    })
+  
+
 
     var senderId = this.state.from_UserId;
     var receiverId = this.state.to_UserId;
@@ -52,9 +59,11 @@ export default class Chat extends React.Component {
     chatIDpre.push(receiverId);
     chatIDpre.sort();
     const chatId = chatIDpre.join('_');
+    console.log('chatId' , chatId)
     this.setState({
       chat_Id: chatId,
     });
+    console.log(this.state.chat_Id)
 
     this.fetchMessages();
 

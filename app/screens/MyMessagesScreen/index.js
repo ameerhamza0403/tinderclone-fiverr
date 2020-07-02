@@ -9,6 +9,7 @@ import {
   ScrollView,
   Dimensions,
   TextInput,
+  AsyncStorage
 } from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -20,11 +21,28 @@ import Chat from '../ChatScreen/index'
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
  class MyMessagesScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: false,
+      name: '',
+      details: '',
+      matchedUser: '',
+      imagesArray: [],
+    };
+  }
+
 
  
-  componentDidMount(){
-    
+  async componentDidMount() {
+    const matchedUser = await AsyncStorage.getItem('matchedUser');
 
+    console.log('messages', matchedUser);
+    this.setState({
+      matchedUser: matchedUser,
+    });
+
+    this.fetchUserInfo();
   }
 
   render() {
@@ -102,7 +120,7 @@ import styles from './styles';
           </View>
 
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Chat')}>
+            onPress={() => this.props.navigation.navigate('Chat',{'matchedUser' : this.state.matchedUser})}>
             <View
               style={{
                 marginTop: 50,
@@ -130,7 +148,7 @@ import styles from './styles';
                   marginLeft:30,
                   fontSize: size(14),
                 }}>
-              Shahbaz
+             User Just Matched
               </Text>
             </View>
           </TouchableOpacity>
