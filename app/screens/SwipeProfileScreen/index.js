@@ -196,7 +196,7 @@ class SwipeCards extends React.Component {
       return (
         <View style={styles.card}>
           <View style={{flex: 4, justifyContent: 'center'}}>
-            <Text style={{alignSelf: 'center', fontSize: 25}}>No Image</Text>
+            <Text style={{alignSelf: 'center', fontSize: 25}}>No Event Selected</Text>
           </View>
 
           <View style={{marginTop: 0, flex: 1}}>
