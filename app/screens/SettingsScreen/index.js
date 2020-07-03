@@ -35,12 +35,12 @@ import LoginScreenComponent from '../LoginScreen/index';
 import database from '@react-native-firebase/database';
 
 const agesArray=[
-"20-22",
-"23-27",
-"28-30",
-"31-35",
-"36-40",
-"40-50",
+"20 y-22y",
+"23y-27y",
+"28y-30y",
+"31y-35y",
+"36y-40y",
+"40y-50y",
 
 
 ]
@@ -316,7 +316,7 @@ class SettingsScreen extends React.Component {
                 </View>
 
                 <View style={{flex: 2, marginTop: 10}}>
-                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>{distanceArray[this.state.distane]}</Text>
+                  <Text style={{fontSize: 15, color: '#FF4A00FF'}}>{distanceArray[this.state.distane]}</Text>
                 </View>
               </View>
 
@@ -372,7 +372,7 @@ class SettingsScreen extends React.Component {
                 </View>
 
                 <View style={{flex: 2, marginTop: 10}}>
-                  <Text style={{fontSize: 22, color: '#FF4A00FF'}}>{agesArray[this.state.ageLimit]}</Text>
+                  <Text style={{fontSize: 15, color: '#FF4A00FF'}}>{agesArray[this.state.ageLimit]}</Text>
                 </View>
               </View>
 
