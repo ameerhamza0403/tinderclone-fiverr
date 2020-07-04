@@ -44,11 +44,18 @@ export default {
     marginTop:10,
     marginLeft:10
   },
-  details:{ 
+  name:{ 
     fontSize: 20,
     marginLeft:5,
 
-    color:'#000'
+    color:'#000',
+    fontWeight:'bold'
+  },
+  details:{ 
+    fontSize: 15,
+    marginLeft:5,
+
+    color:'#ababab'
   },
   detailsIcon:{ 
 
@@ -75,6 +82,7 @@ color:'red'
     marginVertical:40,
   },
   navigation_inner_container: {
+
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius:80,
@@ -93,6 +101,7 @@ color:'red'
     width: size(60),
     height: size(60),
     resizeMode: 'contain',
+    borderRadius:100,
  
   },
   button_text_style: {

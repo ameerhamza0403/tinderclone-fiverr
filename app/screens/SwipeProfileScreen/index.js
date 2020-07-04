@@ -182,12 +182,12 @@ class SwipeCards extends React.Component {
         <View style={styles.card}>
           <View style={{flex: 4}}>
             <Image
-              style={{width: '100%', height: 600}}
+              style={{width: '100%', height: 500}}
               source={{uri: imagesArray[0]}}
             />
           </View>
 
-          <View style={{marginTop: 0, flex: 1}}>
+          <View style={{marginTop: 0, flex: 2}}>
             <Text style={styles.text}>{cards.name}</Text>
           </View>
         </View>

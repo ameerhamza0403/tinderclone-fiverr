@@ -715,20 +715,22 @@ class SettingsScreen extends React.Component {
 
           <View
             style={{
-              alignItems: 'center',
+              width:'100%',
               marginTop: 0,
               flex: 2,
               marginBottom: 30,
             }}>
-            <View style={styles.roundBtn}>
-              <TouchableOpacity
+                   <TouchableOpacity
                 style={{alignItems: 'center'}}
                 onPress={() => this.logout()}>
+            <View style={styles.roundBtn}>
+         
                 <View>
                   <Text style={{color: '#000', fontSize: 16}}>Logout</Text>
                 </View>
-              </TouchableOpacity>
+            
             </View>
+            </TouchableOpacity>
           </View>
         </View>
       </ScrollView>

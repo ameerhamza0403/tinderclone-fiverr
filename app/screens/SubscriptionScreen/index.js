@@ -116,7 +116,7 @@ export default class SubscriptionScreen extends React.Component {
             justifyContent: 'center',
           }}>
           <Text style={{color: '#FFF', fontSize: 15}}>
-            Continue
+            Comming Soon
           </Text>
         </View>
       </TouchableOpacity>

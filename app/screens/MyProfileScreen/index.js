@@ -106,13 +106,8 @@ class Profile extends Component {
           <Text style={styles.button_text_style}>Settings</Text>
         </View>
         <View style={styles.seperator_style} />
-        <View style={styles.navigation_inner_container}>
-          <TouchableOpacity style={styles.button_container}>
-            <Image source={Camera} style={styles.button} />
-          </TouchableOpacity>
-          <Text style={styles.button_text_style}>Media</Text>
-        </View>
-        <View style={styles.seperator_style} />
+        
+       
 
         <View style={styles.navigation_inner_container}>
           <TouchableOpacity
@@ -145,12 +140,12 @@ class Profile extends Component {
         <View style={styles.container}>
           <ScrollView>
           <View style={{marginTop: 20}}>
-            <View style={styles.bottom_rounded_border_style} />
+      
             <View style={styles.profile_container}>
               {this.renderProfilePicContainer()}
               {this.renderNavigationContainer()}
             </View>
-            <View style={styles.bottom_rounded_style} />
+          
           </View>
           <View style={styles.footer}>
             <ProfileSwiper />

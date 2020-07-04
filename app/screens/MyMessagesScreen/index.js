@@ -65,7 +65,7 @@ class MyMessagesScreen extends Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <View
+          {/* <View
             style={{
               flexDirection: 'row',
               width: Statics.DEVICE_WIDTH,
@@ -110,7 +110,7 @@ class MyMessagesScreen extends Component {
                 </Text>
               </View>
             </View>
-          </View>
+          </View> */}
           <View
             style={{
               marginTop: size(30),

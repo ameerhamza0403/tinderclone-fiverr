@@ -15,10 +15,12 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
+import Loader from '../Loader/loader';
+
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
 import database from '@react-native-firebase/database';
-import ChatScreen from '../ChatScreen/index'
+import ChatScreen from '../ChatScreen/index';
 import EditProfile from '../EditProfileInfo/index';
 import styles from './styles';
 import {createStackNavigator} from 'react-navigation-stack';
@@ -33,14 +35,15 @@ class FeedsScreen extends React.Component {
       details: '',
       matchedUserId: '',
       imagesArray: [],
+      loading: false,
+      message: '',
     };
   }
 
   async componentDidMount() {
-    const matchedUser = this.props.navigation.getParam('matchedUser' , 0);
+    const matchedUser = this.props.navigation.getParam('matchedUser', 0);
 
     console.log('shhhahbaz', matchedUser);
-     
 
     try {
       database()
@@ -51,35 +54,67 @@ class FeedsScreen extends React.Component {
           console.log('User Data', firebaseObject);
 
           this.setState({
-            matchedUserId:firebaseObject.id,
+            matchedUserId: firebaseObject.id,
             name: firebaseObject.name,
-            details: `Phone # : ${firebaseObject.phone} \nInterest : ${
+            details: `Hi ! , I am glad that we have matched.I have interest in ${
               firebaseObject.interest
-            } \nOccupation: ${firebaseObject.occupation}`,
+            }
+            \n My occupation is  ${firebaseObject.occupation}
+            \n Please chat with me through this app , or call me at ${
+              firebaseObject.phone
+            }  , `,
             imagesArray: firebaseObject.eventImages,
             isLoading: false,
           });
-
-
-      
-
         });
     } catch (error) {
       Alert.alert(error.toString());
     }
 
-    console.log(this.state.matchedUserId)
-
-
+    console.log(this.state.matchedUserId);
   }
-
 
   shareMessage = () => {
     Share.share({
-      message: '',
+      message: `Hi! I have matched an event partner for my upcomming event in HobbyDutch.My event partner name is ${
+        this.state.name
+      }.Please checkout this app in Playstore or ios App Store`,
     })
       .then(result => console.log(result))
       .catch(errorMsg => console.log(errorMsg));
+  };
+
+  dislike = () => {
+    this.setState({
+      loading: true,
+    });
+
+    setTimeout(() => {
+      this.setState({loading: false});
+      Alert.alert('You have disliked the person');
+    }, 3000);
+  };
+
+  happy = () => {
+    this.setState({
+      loading: true,
+    });
+
+    setTimeout(() => {
+      this.setState({loading: false});
+      Alert.alert('We are glad that you are happy');
+    }, 3000);
+  };
+
+  like = () => {
+    this.setState({
+      loading: true,
+    });
+
+    setTimeout(() => {
+      this.setState({loading: false});
+      Alert.alert('You have liked the person');
+    }, 3000);
   };
   render() {
     if (this.state.isLoading) {
@@ -94,19 +129,16 @@ class FeedsScreen extends React.Component {
           />
         </View>
       );
-    } 
-   
-    
-    else {
+    } else {
       return (
         <ScrollView>
           <View style={styles.container}>
+            <Loader visible={this.state.loading} />
             <View style={{marginTop: size(5)}}>
               <View style={styles.profile_pic_container}>
-                
                 <Image
                   source={{
-                    uri:this.state.imagesArray[0],
+                    uri: this.state.imagesArray[0],
                   }}
                   style={styles.profile_pic_style}
                 />
@@ -140,39 +172,26 @@ class FeedsScreen extends React.Component {
                 <View
                   style={{
                     position: 'absolute',
-                    left: 200,
-                    top: 430,
-
-                    borderRadius: 60,
-                    height: 65,
-                    width: 65,
-                    alignContent: 'center',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/like.jpeg')}
-                  />
-                </View>
-
-                <View
-                  style={{
-                    position: 'absolute',
                     left: 270,
                     top: 430,
-
-                    borderRadius: 60,
                     height: 65,
                     width: 65,
                     alignContent: 'center',
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/dislike.jpeg')}
-                  />
+                  <TouchableOpacity
+                    onPress={() =>
+                      this.props.navigation.navigate('Chat', {
+                        matchedUserId: this.state.matchedUserId,
+                        name: this.state.name,
+                      })
+                    }>
+                    <Image
+                      style={[styles.iconStyle, {borderRadius: 0}]}
+                      source={require('../../../assests/images/chat.png')}
+                    />
+                  </TouchableOpacity>
                 </View>
                 <View
                   style={{
@@ -187,19 +206,18 @@ class FeedsScreen extends React.Component {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Image
-                    style={styles.iconStyle}
-                    source={require('../../../assests/images/download.png')}
-                  />
+                  <TouchableOpacity
+                    onPress={() => this.props.navigation.goBack()}>
+                    <Image
+                      style={styles.iconStyle}
+                      source={require('../../../assests/images/download.png')}
+                    />
+                  </TouchableOpacity>
                 </View>
 
                 <View style={{marginTop: 10}}>
-                  <View style={{marginLeft:20,width: '100%'}}>
-                  
-                   
-                    <Text style={styles.details}>{this.state.name}</Text>
-                   
-
+                  <View style={{marginLeft: 20, width: '100%'}}>
+                    <Text style={styles.name}>{this.state.name}</Text>
                   </View>
 
                   <View
@@ -215,33 +233,13 @@ class FeedsScreen extends React.Component {
 
                   <View
                     style={{
-                      alignItems: 'center',
-                      width: '100%',
-                      marginVertical: 20,
+                      marginLeft: 20,
                       marginTop: 30,
-                      marginBottom: 50,
-                      marginRight: 20,
+                      marginBottom: 20,
                     }}>
                     <Text style={styles.details}>{this.state.details}</Text>
                   </View>
 
-                  <View
-                  style={{ alignItems:'center',justifyContent:'center', alignSelf:'center',
-                 
-
-                    borderRadius: 0,
-                    height: 100,
-                    width: 100,
-                   
-                  }}>
-                    <TouchableOpacity onPress={()=> this.props.navigation.navigate('Chat' , {'matchedUserId' :this.state.matchedUserId , 'name' : this.state.name})}>
-                    <Image
-                    style={[styles.iconStyle,{borderRadius:0}]}
-                    source={require('../../../assests/images/chat.png')}
-                  />
-                    </TouchableOpacity>
-                 
-                </View>
                   <View>
                     <TouchableOpacity onPress={this.shareMessage}>
                       <View
@@ -272,25 +270,23 @@ class FeedsScreen extends React.Component {
                 flex: 1,
                 justifyContent: 'flex-end',
                 marginBottom: 20,
-                marginTop: 50,
+                marginTop: 20,
               }}>
               <View style={styles.navigation_container}>
-                <View style={styles.navigation_inner_container}>
-                  <TouchableOpacity
-                    style={styles.button_container}
-                    // onPress={() => this.pushToScreen('Settings')}
-                  >
+                <TouchableOpacity
+                  onPress={() => this.dislike()}
+                  // onPress={() => this.pushToScreen('Edit')}
+                >
+                  <View style={styles.navigation_inner_container}>
                     <Image
                       source={require('../../../assests/images/dislike.jpeg')}
                       style={styles.button_style}
                     />
-                  </TouchableOpacity>
-                </View>
+                  </View>
+                </TouchableOpacity>
 
                 <View style={styles.navigation_inner_container}>
-                  <TouchableOpacity
-                    style={styles.button_container}
-                    onPress={() => navigation.navigate('EditProfile')}>
+                  <TouchableOpacity onPress={() => this.happy()}>
                     <Image
                       source={require('../../../assests/images/emoji.png')}
                       style={styles.button_style}
@@ -299,7 +295,7 @@ class FeedsScreen extends React.Component {
                 </View>
                 <View style={styles.navigation_inner_container}>
                   <TouchableOpacity
-                    style={styles.button_container}
+                    onPress={() => this.like()}
                     // onPress={() => this.pushToScreen('Edit')}
                   >
                     <Image
@@ -330,7 +326,6 @@ const stack = createStackNavigator({
       header: null,
     },
   },
- 
 });
 
 export default stack;

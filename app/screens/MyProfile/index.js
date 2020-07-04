@@ -204,37 +204,29 @@ export default class MyProfile extends Component {
                 }}>
                 <View style={styles.navigation_container}>
                   <View style={styles.navigation_inner_container}>
-                    <TouchableOpacity
-                      style={styles.button_container}
-                      // onPress={() => this.pushToScreen('Settings')}
-                    >
+                  
                       <Image
                         source={require('../../../assests/images/dislike.png')}
                         style={styles.button_style}
                       />
-                    </TouchableOpacity>
+                  
                   </View>
 
                   <View style={styles.navigation_inner_container}>
-                    <TouchableOpacity
-                      style={styles.button_container}
-                      onPress={() => navigation.navigate('EditProfile')}>
+                  
                       <Image
                         source={require('../../../assests/images/emoji.png')}
                         style={styles.button_style}
                       />
-                    </TouchableOpacity>
+                   
                   </View>
                   <View style={styles.navigation_inner_container}>
-                    <TouchableOpacity
-                      style={styles.button_container}
-                      // onPress={() => this.pushToScreen('Edit')}
-                    >
+                  
                       <Image
                         source={require('../../../assests/images/like.png')}
                         style={styles.button_style}
                       />
-                    </TouchableOpacity>
+                   
                   </View>
                 </View>
               </View>
