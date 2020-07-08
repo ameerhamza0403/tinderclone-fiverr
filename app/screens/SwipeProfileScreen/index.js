@@ -204,7 +204,7 @@ class SwipeCards extends React.Component {
         <View style={styles.card}>
           <View style={{flex: 4}}>
             <Image
-              style={{width: '100%',height:Statics.DEVICE_HEIGHT/2}}
+              style={{width: '100%',height:Statics.DEVICE_HEIGHT/1.6}}
               source={{uri: imagesArray[0]}}
             />
           </View>
