@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import database from '@react-native-firebase/database';
+import ImageSlider from 'react-native-image-slider';
 import {
   StyleSheet,
   View,
@@ -203,10 +204,20 @@ class SwipeCards extends React.Component {
       return (
         <View style={styles.card}>
           <View style={{flex: 4}}>
-            <Image
+
+          {/* <ImageSlider images={imagesArray}/> */}
+
+          <ImageSlider
+         
+          autoPlayWithInterval={2000}
+          images={imagesArray}
+         
+   
+        />
+            {/* <Image
               style={{width: '100%',height:Statics.DEVICE_HEIGHT/1.6}}
               source={{uri: imagesArray[0]}}
-            />
+            /> */}
           </View>
 
           <View style={{flex: 2, marginTop: 50}}>
@@ -252,10 +263,10 @@ class SwipeCards extends React.Component {
     if (this.state.isLoading) {
       return (
         <View>
-          <StatusBar backgroundColor="#29AB87" barStyle="light-content" />
+          <StatusBar backgroundColor="#FF4A00FF" barStyle="light-content" />
 
           <ActivityIndicator
-            color="#29AB87"
+            color="#FF4A00FF"
             size="large"
             style={{marginTop: 10}}
           />
