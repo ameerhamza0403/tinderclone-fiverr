@@ -4,7 +4,6 @@ import * as Statics from '../../helpers/statics';
 
 export default {
     mainContainer: {
-     
       width:Statics.DEVICE_WIDTH,
       height:Statics.DEVICE_HEIGHT,
         flex: 1,
@@ -13,6 +12,19 @@ export default {
       textStyle :{
 
 fontSize:size(27)
+      },
+      danceBtn: {
+        marginLeft:5,
+        borderColor: 'white',
+        borderRadius: 15,
+        width: 120,
+        marginTop: 20,
+      
+        height: 45,
+        backgroundColor: '#FF4A00FF',
+        alignItems: 'center',
+        justifyContent: 'center',
+    
       },
       roundBtnTrans:{
 

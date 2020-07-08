@@ -60,6 +60,7 @@ class FeedsScreen extends React.Component {
               firebaseObject.interest
             }
             \n My occupation is  ${firebaseObject.occupation}
+            \n My hobbies are ${firebaseObject.hobbies}
             \n Please chat with me through this app , or call me at ${
               firebaseObject.phone
             }  , `,

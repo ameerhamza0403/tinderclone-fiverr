@@ -15,7 +15,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
@@ -508,23 +507,25 @@ class OccupationComponent extends React.Component {
   }
 
   student = async () => {
+    try {
     const occupation = 'Student';
 
-    try {
+
       await AsyncStorage.setItem('occupation', occupation);
-      this.props.navigation.navigate('Phone');
+   this.props.navigation.navigate('Hobbies');
     } catch (error) {
       // Error retrieving data
-      Alert.alert(error.message);
+      Alert.alert(error.toString)();
     }
   };
 
   employee = async () => {
+    try {
     const occupation = 'Employee';
 
-    try {
+
       await AsyncStorage.setItem('occupation', occupation);
-      this.props.navigation.navigate('Phone');
+      this.props.navigation.navigate('Hobbies');
     } catch (error) {
       // Error retrieving data
       Alert.alert(error.message);
@@ -588,6 +589,249 @@ class OccupationComponent extends React.Component {
   }
 }
 
+
+
+let myHobbies = [];
+class HobbiesComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    console.ignoredYellowBox = ['Setting a timer'];
+
+    this.state = {
+      hobbies: '',
+    };
+  }
+  setHobbies = value => {
+    if (myHobbies.length >= 3) {
+      alert('Max 3 hobbies can be selected');
+    } else {
+      myHobbies.push(value);
+
+      const hobbies = myHobbies.toString();
+      console.log(hobbies);
+      this.setState({
+        hobbies: hobbies,
+      });
+    }
+  };
+
+  saveData = async () => {
+ 
+    if (this.state.hobbies.length <= 0) {
+      Alert.alert('Please pick your Hobbiess!');
+    } else {
+      try {
+        await AsyncStorage.setItem('hobbies', this.state.hobbies);
+        this.props.navigation.navigate('Phone');
+      } catch (error) {
+        // Error retrieving data
+        Alert.alert(error.message);
+    }
+    }
+  };
+
+  render() {
+    return (
+      <ScrollView>
+        <View style={{flex:1,}}>
+           <View style={{marginTop: size(50), marginLeft: size(50), flex: 1}}>
+            <Text style={styles.textStyle}>My</Text>
+            <Text style={styles.textStyle}>Hobbies </Text>
+          </View>
+
+          <View
+            style={{
+              marginTop: 8,
+              backgroundColor: 'white',
+              alignItems: 'center',
+            }}>
+            <Text style={[{color: '#626262', height: 40, marginTop: 7}]}>
+              {this.state.hobbies}
+            </Text>
+          </View>
+          <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          
+              <View style={{flex: 1, flexDirection: 'row'}}>
+                <View style={styles.danceBtn}>
+                  <TouchableOpacity onPress={() => this.setHobbies('Movie')}>
+                    <View>
+                      <Text style={{color: 'white', fontSize: 16}}>Movie </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.danceBtn}>
+                  <TouchableOpacity onPress={() => this.setHobbies('Theatre')}>
+                    <View>
+                      <Text style={{color: 'white', fontSize: 16}}>
+                        Theatre
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+                <View style={styles.danceBtn}>
+                  <TouchableOpacity
+                    sonPress={() => this.setHobbies('Dance Fitness')}>
+                    <View>
+                      <Text style={{color: 'white', fontSize: 16}}>
+                        Dance Fitness
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              </View>
+        
+          </ScrollView>
+          </View>
+        </View>
+
+        <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity onPress={() => this.setHobbies('Kayaking')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Kayaking</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Wave running')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      Wave running
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity onPress={() => this.setHobbies('Surfing')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Surfing</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+
+        <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Horse riding')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      Horse riding
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Wine tasting')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      Wine tasting
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity onPress={() => this.setHobbies('Dining')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Dining</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+
+        <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Music class')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      Music class{' '}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Singing class')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      {' '}
+                      Singing class
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity onPress={() => this.setHobbies('Karaoke')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Karaoke</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+
+        <View style={{flex: 1,alignItems:'center',justifyContent:'center'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <View style={{flex: 1, flexDirection: 'row'}}>
+              <View style={styles.danceBtn}>
+                <TouchableOpacity
+                  onPress={() => this.setHobbies('Motor Sports')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>
+                      Motor Sports
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.danceBtn}>
+                <TouchableOpacity onPress={() => this.setHobbies('Massage')}>
+                  <View>
+                    <Text style={{color: 'white', fontSize: 16}}>Massage</Text>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+          <View style={{alignItems: 'center', marginTop: 0, flex: 1}}>
+            <TouchableOpacity
+              style={{alignItems: 'center'}} //this.props.navigation.navigate('Gender')}
+              onPress={() => this.saveData()}>
+              <View style={styles.roundBtn}>
+                <View>
+                  <Text style={{color: 'white', fontSize: 16}}>Continue</Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View> 
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
 class PhoneComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -602,7 +846,6 @@ class PhoneComponent extends React.Component {
     };
   }
   saveData = async () => {
-  
     const phone = this.state.textInput_MobileNo;
     if (phone == '') {
       Alert.alert('Please enter phone number with country code! ');
@@ -617,6 +860,7 @@ class PhoneComponent extends React.Component {
         const birthday = await AsyncStorage.getItem('birthday');
         const password = await AsyncStorage.getItem('password');
         const occupation = await AsyncStorage.getItem('occupation');
+        const hobbies = await AsyncStorage.getItem('hobbies');
         this.setState({
           isLoading: true,
         });
@@ -634,7 +878,7 @@ class PhoneComponent extends React.Component {
                 .ref('Users')
                 .child(this.state.userId)
                 .set({
-                  id:this.state.userId,
+                  id: this.state.userId,
                   name: name,
                   gender: gender,
                   email: email,
@@ -644,35 +888,34 @@ class PhoneComponent extends React.Component {
                   phone: phonee,
                   accType: 'Trial',
                   dob: birthday,
-                  createdOn:this.state.currentDate,
-                  payment:false,
-                  company:'Null',
-                  school:'Null',
-                  city:'Null',
-                  sexualOrientation:'Null',
-                  skills:1,
-                  hobbies:'Null',
-                  showAge:false,
-                  showDistance:false,
-                  eventDutchSwitch:false,
-                  chatSwitch:false,
-                  chatLikesSwitch:false,
-                  eventAttendanceSwitch:false,
-                  eventImages:'',
-                  showOnHobbyDutch:false,
-                  shareFeed:false,
-                  distane:2,
-                  ageLimit:3,
-
-
+                  createdOn: this.state.currentDate,
+                  payment: false,
+                  company: 'Null',
+                  school: 'Null',
+                  city: 'Null',
+                  sexualOrientation: 'Null',
+                  skills: 1,
+                  hobbies: hobbies,
+                  showAge: false,
+                  showDistance: false,
+                  eventDutchSwitch: false,
+                  chatSwitch: false,
+                  chatLikesSwitch: false,
+                  eventAttendanceSwitch: false,
+                  eventImages: '',
+                  showOnHobbyDutch: false,
+                  shareFeed: false,
+                  distane: 2,
+                  ageLimit: 3,
                 })
                 .then(data => {
                   this.setState({
                     isLoading: false,
                   });
-                  Alert.alert('Registration successfull.You can now login to get started');
-                 this.props.navigation.navigate('Login');
-
+                  Alert.alert(
+                    'Registration successfull.You can now login to get started',
+                  );
+                  this.props.navigation.navigate('Login');
                 })
                 .catch(error => {
                   this.setState({
@@ -706,7 +949,7 @@ class PhoneComponent extends React.Component {
     var year = new Date().getFullYear();
 
     this.setState({
-      currentDate: month  + '/' + date + '/' + year,
+      currentDate: month + '/' + date + '/' + year,
     });
     console.log(this.state.currentDate);
     this.saveData();
@@ -764,7 +1007,7 @@ class PhoneComponent extends React.Component {
 
 class LoginScreen extends React.Component {
   render() {
-    return < LoginScreenComponent/>;
+    return <LoginScreenComponent />;
   }
 }
 
@@ -816,6 +1059,13 @@ const loginStack = createStackNavigator({
 
   Interest: {
     screen: InterestComponent,
+    navigationOptions: {
+      header: null,
+    },
+  },
+
+  Hobbies: {
+    screen: HobbiesComponent,
     navigationOptions: {
       header: null,
     },

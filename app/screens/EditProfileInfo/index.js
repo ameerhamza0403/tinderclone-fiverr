@@ -861,10 +861,10 @@ catch(error){
                   <View style={{flex: 1, flexDirection: 'row'}}>
                     <View style={styles.danceBtn}>
                       <TouchableOpacity
-                        onPress={() => this.setHobbies('Gym workout')}>
+                        onPress={() => this.setHobbies('Motor Sports')}>
                         <View>
                           <Text style={{color: 'white', fontSize: 16}}>
-                            Gym workout
+                          Motor Sports
                           </Text>
                         </View>
                       </TouchableOpacity>
