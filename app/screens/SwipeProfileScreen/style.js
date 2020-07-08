@@ -51,8 +51,22 @@ export default {
     flex: 1,
    
   },
+  navigation_container: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginHorizontal: 80,
+    marginVertical:40,
+  },  button_style: {
+    width: size(60),
+    height: size(60),
+    resizeMode: 'contain',
+    borderRadius:100,
+ 
+  },
   card: {
     flex: 1,
+    height:Statics.DEVICE_HEIGHT/5,
+    
     borderRadius: 4,
     borderWidth: 2,
     borderColor: '#E8E8E8',

@@ -23,6 +23,7 @@ import {
 
 import {size} from '../../helpers/devices';
 import * as Statics from '../../helpers/statics';
+import Loader from '../Loader/loader';
 
 import styles from './style';
 import SubscriptionScreen from '../SubscriptionScreen/index';
@@ -46,8 +47,29 @@ class SwipeCards extends React.Component {
       cards: [],
       randomImageNumber: '',
       selectedCard: '',
+      loading: false,
     };
   }
+  dislike = () => {
+    this.swiper.swipeBottom()
+  };
+
+  happy = () => {
+    this.setState({
+      loading: true,
+    });
+
+  
+
+    setTimeout(() => {
+      this.setState({loading: false});
+      Alert.alert('We are glad that you are happy');
+    }, 3000);
+  };
+
+  like = () => {
+    this.swiper.swipeTop()
+  };
 
   getCurrentDate = () => {
     var date = new Date().getDate();
@@ -182,21 +204,21 @@ class SwipeCards extends React.Component {
         <View style={styles.card}>
           <View style={{flex: 4}}>
             <Image
-              style={{width: '100%', height: 500}}
+              style={{width: '100%',height:Statics.DEVICE_HEIGHT/2}}
               source={{uri: imagesArray[0]}}
             />
           </View>
 
-          <View style={{marginTop: 0, flex: 2}}>
+          <View style={{flex: 2, marginTop: 50}}>
             <Text style={styles.text}>{cards.name}</Text>
           </View>
         </View>
       );
     } else {
       return (
-        <View style={styles.card}>
-          <View style={{flex: 4, justifyContent: 'center'}}>
-            <Text style={{alignSelf: 'center', fontSize: 25}}>No Event Selected</Text>
+        <View style={[styles.card,{flex:1}]}>
+            <View style={{flex: 1,justifyContent:'center',alignItems:'center', marginTop: 50}}>
+            <Text style={styles.text}>No Event Selected</Text>
           </View>
 
           <View style={{marginTop: 0, flex: 1}}>
@@ -242,6 +264,7 @@ class SwipeCards extends React.Component {
     } else if (this.state.cards && this.state.cards.length) {
       return (
         <View style={styles.Container}>
+          <Loader visible={this.state.loading} />
           <Modal
             transparent={true}
             animationType={'slide'}
@@ -319,7 +342,9 @@ class SwipeCards extends React.Component {
             </SafeAreaView>
           </Modal>
 
-          <Swiper
+          
+<View style={{flex:3}}>
+<Swiper
             ref={swiper => {
               this.swiper = swiper;
             }}
@@ -371,6 +396,49 @@ class SwipeCards extends React.Component {
               },
             }}
           />
+
+</View>
+          <View
+            style={{
+              flex: 2,
+              justifyContent: 'flex-end',
+              marginBottom: 20,
+              marginTop: 20,
+            }}>
+            <View style={styles.navigation_container}>
+              <TouchableOpacity
+                onPress={() => this.dislike()}
+                // onPress={() => this.pushToScreen('Edit')}
+              >
+                <View style={styles.navigation_inner_container}>
+                  <Image
+                    source={require('../../../assests/images/dislike.jpeg')}
+                    style={styles.button_style}
+                  />
+                </View>
+              </TouchableOpacity>
+
+              <View style={styles.navigation_inner_container}>
+                <TouchableOpacity onPress={() => this.happy()}>
+                  <Image
+                    source={require('../../../assests/images/emoji.png')}
+                    style={styles.button_style}
+                  />
+                </TouchableOpacity>
+              </View>
+              <View style={styles.navigation_inner_container}>
+                <TouchableOpacity
+                  onPress={() => this.like()}
+                  // onPress={() => this.pushToScreen('Edit')}
+                >
+                  <Image
+                    source={require('../../../assests/images/like.jpeg')}
+                    style={styles.button_style}
+                  />
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
         </View>
       );
     } else {
